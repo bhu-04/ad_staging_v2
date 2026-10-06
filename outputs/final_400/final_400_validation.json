@@ -1,0 +1,32 @@
+{
+  "class_counts": {
+    "Non Demented": 100,
+    "Very Mild Demented": 100,
+    "Mild Demented": 100,
+    "Moderate Demented": 100
+  },
+  "moderate_pool_subjects": [
+    "OAS1_0308",
+    "OAS1_0351"
+  ],
+  "moderate_final_subject_counts": {
+    "OAS1_0308": 40,
+    "OAS1_0351": 60
+  },
+  "pool_sha256_sources_agree": true,
+  "checks": {
+    "rows_400": true,
+    "100_per_class": true,
+    "all_4_classes": true,
+    "no_duplicate_filepath": true,
+    "no_duplicate_sha256": true,
+    "no_unknown_subject": true,
+    "no_duplicate_class_subject_session_scan_slice": true,
+    "all_in_candidate_pool": true,
+    "all_readable_per_pool_info": true,
+    "all_moderate_subjects_represented": true,
+    "candidate_pool_unchanged": true,
+    "deterministic_rerun_identical": true
+  },
+  "PASS": true
+}

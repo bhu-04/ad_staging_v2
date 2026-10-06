@@ -1,0 +1,5 @@
+class_name,class_id,pool_images,selected,pool_subjects,selected_subjects,min_imgs_per_subject,median_imgs_per_subject,max_imgs_per_subject,pool_scans,selected_scans,selected_scan_labels,pool_unique_slices,selected_unique_slices,mean_quality,median_quality,pool_mean_quality,quality_flagged_selected,pairs_le2,pairs_le4,pairs_le6,pool_pairs_le2,pool_pairs_le4,pool_pairs_le6,adjacent_same_scan_pairs
+Non Demented,0,500,100,266,100,1,1.0,1,500,100,8,61,53,0.741421159804725,0.7330181497045378,0.6789242097466174,5,0,54,298,3563,15487,37230,0
+Very Mild Demented,1,500,100,58,58,1,2.0,3,225,100,4,61,54,0.655948081779519,0.6455911493823785,0.6215945818346523,2,1,69,393,1176,6605,24392,0
+Mild Demented,2,500,100,21,21,3,5.0,6,82,80,4,61,51,0.6138411711203403,0.6181312358241233,0.5797614266102277,3,4,75,369,1510,7205,21554,0
+Moderate Demented,3,488,100,2,2,40,50.0,60,8,8,4,61,56,0.5724592091555553,0.5798437253492001,0.5154484851613721,0,98,463,1195,4416,14641,37278,0

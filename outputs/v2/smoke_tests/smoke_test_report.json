@@ -1,0 +1,31 @@
+{
+  "dataset": {
+    "load_manifest": true,
+    "class_counts": {
+      "0": 100,
+      "1": 100,
+      "2": 100,
+      "3": 100
+    },
+    "all_classes_present": true,
+    "all_files_exist": true,
+    "no_duplicates": true,
+    "no_overlap": true
+  },
+  "models": {
+    "CNN2D": "pass",
+    "DenseNet2D": "pass",
+    "ViT2D": "pass"
+  },
+  "checkpoint": {
+    "save_load": true,
+    "valid_match": true,
+    "match_reason": "metadata matches current configuration",
+    "valid_reject": true,
+    "reject_reason": "metadata mismatch on 'image_size': checkpoint has [96, 96], current run has [128, 128]"
+  },
+  "v1_integrity_hashes": {
+    "final_400": "cd62ce417cc29a7f56682366e2fbf83f337c3ec7dd5efe906a4d4c478e2a0f59",
+    "split": "70246e6e39f4694b52c7a80f4871f1f48d831d8d04a92007ca8d52b06a4981b9"
+  }
+}

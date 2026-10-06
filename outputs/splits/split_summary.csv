@@ -1,0 +1,6 @@
+class_name,train_images,val_images,test_images,train_subjects,val_subjects,test_subjects
+Non Demented,70,15,15,70,15,15
+Very Mild Demented,70,15,15,40,9,9
+Mild Demented,73,14,13,15,3,3
+Moderate Demented,60,0,40,1,0,1
+TOTAL,273,44,83,126,27,28

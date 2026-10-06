@@ -1,0 +1,182 @@
+subject_id,class_name,split,n_images
+OAS1_0001,Non Demented,train,1
+OAS1_0003,Very Mild Demented,train,1
+OAS1_0009,Non Demented,train,1
+OAS1_0010,Non Demented,val,1
+OAS1_0015,Very Mild Demented,train,2
+OAS1_0016,Very Mild Demented,train,1
+OAS1_0017,Non Demented,train,1
+OAS1_0018,Non Demented,test,1
+OAS1_0019,Non Demented,train,1
+OAS1_0021,Very Mild Demented,test,2
+OAS1_0022,Very Mild Demented,test,2
+OAS1_0023,Very Mild Demented,train,2
+OAS1_0028,Mild Demented,train,6
+OAS1_0031,Mild Demented,train,4
+OAS1_0035,Mild Demented,test,5
+OAS1_0037,Non Demented,train,1
+OAS1_0039,Very Mild Demented,val,2
+OAS1_0040,Non Demented,test,1
+OAS1_0041,Very Mild Demented,val,1
+OAS1_0042,Very Mild Demented,val,2
+OAS1_0043,Non Demented,train,1
+OAS1_0046,Very Mild Demented,train,2
+OAS1_0047,Non Demented,train,1
+OAS1_0051,Non Demented,train,1
+OAS1_0052,Mild Demented,train,6
+OAS1_0053,Mild Demented,train,6
+OAS1_0056,Mild Demented,train,4
+OAS1_0060,Very Mild Demented,train,1
+OAS1_0061,Non Demented,train,1
+OAS1_0063,Non Demented,train,1
+OAS1_0064,Non Demented,train,1
+OAS1_0066,Very Mild Demented,train,1
+OAS1_0067,Mild Demented,val,5
+OAS1_0069,Non Demented,train,1
+OAS1_0073,Mild Demented,train,5
+OAS1_0075,Non Demented,train,1
+OAS1_0076,Non Demented,train,1
+OAS1_0078,Non Demented,train,1
+OAS1_0082,Very Mild Demented,train,2
+OAS1_0084,Very Mild Demented,train,2
+OAS1_0090,Non Demented,val,1
+OAS1_0092,Non Demented,train,1
+OAS1_0094,Very Mild Demented,train,2
+OAS1_0098,Very Mild Demented,test,2
+OAS1_0107,Non Demented,train,1
+OAS1_0113,Non Demented,val,1
+OAS1_0114,Non Demented,train,1
+OAS1_0115,Very Mild Demented,train,2
+OAS1_0117,Non Demented,train,1
+OAS1_0119,Non Demented,val,1
+OAS1_0120,Very Mild Demented,train,2
+OAS1_0121,Non Demented,val,1
+OAS1_0122,Mild Demented,train,4
+OAS1_0123,Very Mild Demented,train,1
+OAS1_0124,Very Mild Demented,train,2
+OAS1_0130,Non Demented,test,1
+OAS1_0134,Mild Demented,train,6
+OAS1_0135,Non Demented,val,1
+OAS1_0137,Mild Demented,test,4
+OAS1_0139,Non Demented,test,1
+OAS1_0142,Very Mild Demented,train,2
+OAS1_0143,Very Mild Demented,train,2
+OAS1_0145,Non Demented,train,1
+OAS1_0146,Non Demented,train,1
+OAS1_0151,Non Demented,train,1
+OAS1_0155,Very Mild Demented,train,2
+OAS1_0157,Non Demented,train,1
+OAS1_0158,Very Mild Demented,train,2
+OAS1_0160,Non Demented,val,1
+OAS1_0161,Very Mild Demented,train,1
+OAS1_0162,Non Demented,train,1
+OAS1_0164,Very Mild Demented,test,1
+OAS1_0166,Very Mild Demented,train,2
+OAS1_0167,Non Demented,train,1
+OAS1_0170,Non Demented,train,1
+OAS1_0173,Non Demented,test,1
+OAS1_0176,Non Demented,train,1
+OAS1_0178,Non Demented,train,1
+OAS1_0179,Very Mild Demented,train,1
+OAS1_0180,Non Demented,train,1
+OAS1_0182,Non Demented,train,1
+OAS1_0183,Non Demented,val,1
+OAS1_0184,Mild Demented,train,5
+OAS1_0185,Mild Demented,val,5
+OAS1_0189,Non Demented,train,1
+OAS1_0190,Non Demented,train,1
+OAS1_0191,Non Demented,train,1
+OAS1_0197,Non Demented,train,1
+OAS1_0198,Non Demented,train,1
+OAS1_0199,Non Demented,train,1
+OAS1_0201,Non Demented,train,1
+OAS1_0203,Non Demented,val,1
+OAS1_0204,Non Demented,test,1
+OAS1_0205,Very Mild Demented,train,2
+OAS1_0206,Non Demented,val,1
+OAS1_0210,Very Mild Demented,train,2
+OAS1_0211,Non Demented,train,1
+OAS1_0214,Non Demented,train,1
+OAS1_0217,Very Mild Demented,val,2
+OAS1_0222,Non Demented,train,1
+OAS1_0223,Mild Demented,train,6
+OAS1_0226,Very Mild Demented,test,1
+OAS1_0233,Very Mild Demented,val,1
+OAS1_0234,Non Demented,val,1
+OAS1_0235,Non Demented,test,1
+OAS1_0238,Very Mild Demented,test,1
+OAS1_0240,Very Mild Demented,train,2
+OAS1_0243,Very Mild Demented,train,2
+OAS1_0247,Very Mild Demented,train,1
+OAS1_0253,Non Demented,train,1
+OAS1_0254,Non Demented,val,1
+OAS1_0256,Non Demented,train,1
+OAS1_0260,Non Demented,test,1
+OAS1_0261,Non Demented,train,1
+OAS1_0262,Non Demented,train,1
+OAS1_0263,Very Mild Demented,test,3
+OAS1_0264,Non Demented,train,1
+OAS1_0266,Non Demented,train,1
+OAS1_0267,Very Mild Demented,train,1
+OAS1_0268,Mild Demented,train,5
+OAS1_0269,Mild Demented,train,4
+OAS1_0271,Non Demented,train,1
+OAS1_0272,Very Mild Demented,train,2
+OAS1_0273,Very Mild Demented,test,2
+OAS1_0277,Non Demented,train,1
+OAS1_0278,Mild Demented,train,5
+OAS1_0279,Non Demented,train,1
+OAS1_0283,Non Demented,train,1
+OAS1_0284,Non Demented,train,1
+OAS1_0285,Non Demented,val,1
+OAS1_0286,Very Mild Demented,train,2
+OAS1_0287,Very Mild Demented,val,1
+OAS1_0288,Very Mild Demented,val,2
+OAS1_0290,Very Mild Demented,train,2
+OAS1_0291,Mild Demented,train,4
+OAS1_0296,Non Demented,train,1
+OAS1_0298,Very Mild Demented,test,1
+OAS1_0300,Very Mild Demented,val,2
+OAS1_0301,Non Demented,train,1
+OAS1_0304,Very Mild Demented,train,2
+OAS1_0307,Very Mild Demented,train,2
+OAS1_0308,Moderate Demented,test,40
+OAS1_0310,Non Demented,train,1
+OAS1_0312,Very Mild Demented,train,3
+OAS1_0314,Non Demented,train,1
+OAS1_0315,Very Mild Demented,val,2
+OAS1_0316,Mild Demented,train,3
+OAS1_0317,Non Demented,test,1
+OAS1_0319,Non Demented,train,1
+OAS1_0326,Non Demented,test,1
+OAS1_0327,Non Demented,test,1
+OAS1_0329,Very Mild Demented,train,2
+OAS1_0330,Non Demented,test,1
+OAS1_0331,Non Demented,val,1
+OAS1_0335,Very Mild Demented,train,1
+OAS1_0338,Non Demented,train,1
+OAS1_0339,Very Mild Demented,train,2
+OAS1_0342,Non Demented,train,1
+OAS1_0346,Non Demented,train,1
+OAS1_0350,Non Demented,train,1
+OAS1_0351,Moderate Demented,train,60
+OAS1_0352,Very Mild Demented,train,1
+OAS1_0354,Non Demented,train,1
+OAS1_0355,Non Demented,train,1
+OAS1_0358,Non Demented,train,1
+OAS1_0359,Non Demented,train,1
+OAS1_0362,Very Mild Demented,train,2
+OAS1_0365,Non Demented,train,1
+OAS1_0366,Non Demented,train,1
+OAS1_0368,Non Demented,val,1
+OAS1_0369,Non Demented,train,1
+OAS1_0371,Non Demented,test,1
+OAS1_0372,Non Demented,train,1
+OAS1_0373,Mild Demented,test,4
+OAS1_0374,Very Mild Demented,train,2
+OAS1_0375,Non Demented,train,1
+OAS1_0377,Non Demented,test,1
+OAS1_0378,Non Demented,train,1
+OAS1_0380,Very Mild Demented,train,2
+OAS1_0381,Non Demented,test,1
+OAS1_0382,Mild Demented,val,4

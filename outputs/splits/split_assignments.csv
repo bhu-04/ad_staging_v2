@@ -1,0 +1,401 @@
+filepath,class_name,class_id,subject_id,session,scan,slice_idx,split
+oasis_subset\non demented\OAS1_0117_MR2_mpr-4_146.jpg,Non Demented,0,OAS1_0117,MR2,mpr-4,146,train
+oasis_subset\non demented\OAS1_0092_MR2_mpr-1_127.jpg,Non Demented,0,OAS1_0092,MR2,mpr-1,127,train
+oasis_subset\non demented\OAS1_0365_MR1_mpr-4_112.jpg,Non Demented,0,OAS1_0365,MR1,mpr-4,112,train
+oasis_subset\non demented\OAS1_0199_MR1_mpr-1_140.jpg,Non Demented,0,OAS1_0199,MR1,mpr-1,140,train
+oasis_subset\non demented\OAS1_0146_MR1_mpr-3_121.jpg,Non Demented,0,OAS1_0146,MR1,mpr-3,121,train
+oasis_subset\non demented\OAS1_0119_MR1_mpr-2_152.jpg,Non Demented,0,OAS1_0119,MR1,mpr-2,152,val
+oasis_subset\non demented\OAS1_0009_MR1_mpr-3_106.jpg,Non Demented,0,OAS1_0009,MR1,mpr-3,106,train
+oasis_subset\non demented\OAS1_0371_MR1_mpr-4_100.jpg,Non Demented,0,OAS1_0371,MR1,mpr-4,100,test
+oasis_subset\non demented\OAS1_0061_MR2_mpr-2_130.jpg,Non Demented,0,OAS1_0061,MR2,mpr-2,130,train
+oasis_subset\non demented\OAS1_0019_MR1_mpr-1_135.jpg,Non Demented,0,OAS1_0019,MR1,mpr-1,135,train
+oasis_subset\non demented\OAS1_0222_MR1_mpr-3_156.jpg,Non Demented,0,OAS1_0222,MR1,mpr-3,156,train
+oasis_subset\non demented\OAS1_0368_MR2_mpr-2_117.jpg,Non Demented,0,OAS1_0368,MR2,mpr-2,117,val
+oasis_subset\non demented\OAS1_0063_MR1_mpr-1_160.jpg,Non Demented,0,OAS1_0063,MR1,mpr-1,160,train
+oasis_subset\non demented\OAS1_0234_MR1_mpr-2_109.jpg,Non Demented,0,OAS1_0234,MR1,mpr-2,109,val
+oasis_subset\non demented\OAS1_0256_MR1_mpr-4_103.jpg,Non Demented,0,OAS1_0256,MR1,mpr-4,103,train
+oasis_subset\non demented\OAS1_0317_MR1_mpr-1_123.jpg,Non Demented,0,OAS1_0317,MR1,mpr-1,123,test
+oasis_subset\non demented\OAS1_0372_MR1_mpr-2_115.jpg,Non Demented,0,OAS1_0372,MR1,mpr-2,115,train
+oasis_subset\non demented\OAS1_0350_MR1_mpr-4_142.jpg,Non Demented,0,OAS1_0350,MR1,mpr-4,142,train
+oasis_subset\non demented\OAS1_0043_MR1_mpr-2_138.jpg,Non Demented,0,OAS1_0043,MR1,mpr-2,138,train
+oasis_subset\non demented\OAS1_0310_MR1_mpr-4_133.jpg,Non Demented,0,OAS1_0310,MR1,mpr-4,133,train
+oasis_subset\non demented\OAS1_0197_MR1_mpr-4_120.jpg,Non Demented,0,OAS1_0197,MR1,mpr-4,120,train
+oasis_subset\non demented\OAS1_0139_MR1_mpr-2_106.jpg,Non Demented,0,OAS1_0139,MR1,mpr-2,106,test
+oasis_subset\non demented\OAS1_0170_MR1_mpr-2_158.jpg,Non Demented,0,OAS1_0170,MR1,mpr-2,158,train
+oasis_subset\non demented\OAS1_0204_MR1_mpr-4_110.jpg,Non Demented,0,OAS1_0204,MR1,mpr-4,110,test
+oasis_subset\non demented\OAS1_0319_MR1_mpr-1_118.jpg,Non Demented,0,OAS1_0319,MR1,mpr-1,118,train
+oasis_subset\non demented\OAS1_0130_MR1_mpr-2_100.jpg,Non Demented,0,OAS1_0130,MR1,mpr-2,100,test
+oasis_subset\non demented\OAS1_0381_MR1_mpr-1_140.jpg,Non Demented,0,OAS1_0381,MR1,mpr-1,140,test
+oasis_subset\non demented\OAS1_0017_MR1_mpr-3_126.jpg,Non Demented,0,OAS1_0017,MR1,mpr-3,126,train
+oasis_subset\non demented\OAS1_0189_MR1_mpr-4_150.jpg,Non Demented,0,OAS1_0189,MR1,mpr-4,150,train
+oasis_subset\non demented\OAS1_0203_MR1_mpr-1_103.jpg,Non Demented,0,OAS1_0203,MR1,mpr-1,103,val
+oasis_subset\non demented\OAS1_0167_MR1_mpr-3_113.jpg,Non Demented,0,OAS1_0167,MR1,mpr-3,113,train
+oasis_subset\non demented\OAS1_0369_MR1_mpr-1_154.jpg,Non Demented,0,OAS1_0369,MR1,mpr-1,154,train
+oasis_subset\non demented\OAS1_0069_MR1_mpr-1_137.jpg,Non Demented,0,OAS1_0069,MR1,mpr-1,137,train
+oasis_subset\non demented\OAS1_0121_MR1_mpr-4_132.jpg,Non Demented,0,OAS1_0121,MR1,mpr-4,132,val
+oasis_subset\non demented\OAS1_0135_MR1_mpr-1_121.jpg,Non Demented,0,OAS1_0135,MR1,mpr-1,121,val
+oasis_subset\non demented\OAS1_0235_MR1_mpr-3_146.jpg,Non Demented,0,OAS1_0235,MR1,mpr-3,146,test
+oasis_subset\non demented\OAS1_0037_MR1_mpr-3_109.jpg,Non Demented,0,OAS1_0037,MR1,mpr-3,109,train
+oasis_subset\non demented\OAS1_0326_MR1_mpr-2_101.jpg,Non Demented,0,OAS1_0326,MR1,mpr-2,101,test
+oasis_subset\non demented\OAS1_0266_MR1_mpr-3_124.jpg,Non Demented,0,OAS1_0266,MR1,mpr-3,124,train
+oasis_subset\non demented\OAS1_0342_MR1_mpr-4_115.jpg,Non Demented,0,OAS1_0342,MR1,mpr-4,115,train
+oasis_subset\non demented\OAS1_0206_MR1_mpr-2_112.jpg,Non Demented,0,OAS1_0206,MR1,mpr-2,112,val
+oasis_subset\non demented\OAS1_0338_MR1_mpr-4_151.jpg,Non Demented,0,OAS1_0338,MR1,mpr-4,151,train
+oasis_subset\non demented\OAS1_0010_MR1_mpr-3_134.jpg,Non Demented,0,OAS1_0010,MR1,mpr-3,134,val
+oasis_subset\non demented\OAS1_0260_MR1_mpr-1_144.jpg,Non Demented,0,OAS1_0260,MR1,mpr-1,144,test
+oasis_subset\non demented\OAS1_0284_MR1_mpr-4_102.jpg,Non Demented,0,OAS1_0284,MR1,mpr-4,102,train
+oasis_subset\non demented\OAS1_0354_MR1_mpr-2_106.jpg,Non Demented,0,OAS1_0354,MR1,mpr-2,106,train
+oasis_subset\non demented\OAS1_0285_MR2_mpr-4_153.jpg,Non Demented,0,OAS1_0285,MR2,mpr-4,153,val
+oasis_subset\non demented\OAS1_0378_MR1_mpr-2_110.jpg,Non Demented,0,OAS1_0378,MR1,mpr-2,110,train
+oasis_subset\non demented\OAS1_0331_MR1_mpr-1_123.jpg,Non Demented,0,OAS1_0331,MR1,mpr-1,123,val
+oasis_subset\non demented\OAS1_0279_MR1_mpr-4_108.jpg,Non Demented,0,OAS1_0279,MR1,mpr-4,108,train
+oasis_subset\non demented\OAS1_0254_MR1_mpr-5_129.jpg,Non Demented,0,OAS1_0254,MR1,mpr-5,129,val
+oasis_subset\non demented\OAS1_0160_MR1_mpr-2_100.jpg,Non Demented,0,OAS1_0160,MR1,mpr-2,100,val
+oasis_subset\non demented\OAS1_0211_MR1_mpr-4_136.jpg,Non Demented,0,OAS1_0211,MR1,mpr-4,136,train
+oasis_subset\non demented\OAS1_0358_MR1_mpr-2_147.jpg,Non Demented,0,OAS1_0358,MR1,mpr-2,147,train
+oasis_subset\non demented\OAS1_0018_MR1_mpr-4_111.jpg,Non Demented,0,OAS1_0018,MR1,mpr-4,111,test
+oasis_subset\non demented\OAS1_0264_MR1_mpr-3_118.jpg,Non Demented,0,OAS1_0264,MR1,mpr-3,118,train
+oasis_subset\non demented\OAS1_0145_MR2_mpr-2_122.jpg,Non Demented,0,OAS1_0145,MR2,mpr-2,122,train
+oasis_subset\non demented\OAS1_0330_MR1_mpr-3_102.jpg,Non Demented,0,OAS1_0330,MR1,mpr-3,102,test
+oasis_subset\non demented\OAS1_0359_MR1_mpr-3_139.jpg,Non Demented,0,OAS1_0359,MR1,mpr-3,139,train
+oasis_subset\non demented\OAS1_0198_MR1_mpr-2_114.jpg,Non Demented,0,OAS1_0198,MR1,mpr-2,114,train
+oasis_subset\non demented\OAS1_0078_MR1_mpr-2_100.jpg,Non Demented,0,OAS1_0078,MR1,mpr-2,100,train
+oasis_subset\non demented\OAS1_0377_MR1_mpr-3_116.jpg,Non Demented,0,OAS1_0377,MR1,mpr-3,116,test
+oasis_subset\non demented\OAS1_0180_MR1_mpr-2_112.jpg,Non Demented,0,OAS1_0180,MR1,mpr-2,112,train
+oasis_subset\non demented\OAS1_0107_MR1_mpr-1_120.jpg,Non Demented,0,OAS1_0107,MR1,mpr-1,120,train
+oasis_subset\non demented\OAS1_0346_MR1_mpr-1_157.jpg,Non Demented,0,OAS1_0346,MR1,mpr-1,157,train
+oasis_subset\non demented\OAS1_0076_MR1_mpr-3_127.jpg,Non Demented,0,OAS1_0076,MR1,mpr-3,127,train
+oasis_subset\non demented\OAS1_0201_MR1_mpr-2_105.jpg,Non Demented,0,OAS1_0201,MR1,mpr-2,105,train
+oasis_subset\non demented\OAS1_0090_MR1_mpr-3_136.jpg,Non Demented,0,OAS1_0090,MR1,mpr-3,136,val
+oasis_subset\non demented\OAS1_0151_MR1_mpr-4_142.jpg,Non Demented,0,OAS1_0151,MR1,mpr-4,142,train
+oasis_subset\non demented\OAS1_0355_MR1_mpr-4_110.jpg,Non Demented,0,OAS1_0355,MR1,mpr-4,110,train
+oasis_subset\non demented\OAS1_0001_MR1_mpr-4_102.jpg,Non Demented,0,OAS1_0001,MR1,mpr-4,102,train
+oasis_subset\non demented\OAS1_0314_MR1_mpr-3_154.jpg,Non Demented,0,OAS1_0314,MR1,mpr-3,154,train
+oasis_subset\non demented\OAS1_0261_MR1_mpr-1_128.jpg,Non Demented,0,OAS1_0261,MR1,mpr-1,128,train
+oasis_subset\non demented\OAS1_0183_MR1_mpr-3_139.jpg,Non Demented,0,OAS1_0183,MR1,mpr-3,139,val
+oasis_subset\non demented\OAS1_0114_MR1_mpr-3_116.jpg,Non Demented,0,OAS1_0114,MR1,mpr-3,116,train
+oasis_subset\non demented\OAS1_0262_MR1_mpr-1_101.jpg,Non Demented,0,OAS1_0262,MR1,mpr-1,101,train
+oasis_subset\non demented\OAS1_0051_MR1_mpr-1_101.jpg,Non Demented,0,OAS1_0051,MR1,mpr-1,101,train
+oasis_subset\non demented\OAS1_0162_MR1_mpr-4_136.jpg,Non Demented,0,OAS1_0162,MR1,mpr-4,136,train
+oasis_subset\non demented\OAS1_0173_MR1_mpr-1_160.jpg,Non Demented,0,OAS1_0173,MR1,mpr-1,160,test
+oasis_subset\non demented\OAS1_0366_MR1_mpr-4_154.jpg,Non Demented,0,OAS1_0366,MR1,mpr-4,154,train
+oasis_subset\non demented\OAS1_0277_MR1_mpr-1_104.jpg,Non Demented,0,OAS1_0277,MR1,mpr-1,104,train
+oasis_subset\non demented\OAS1_0191_MR2_mpr-1_149.jpg,Non Demented,0,OAS1_0191,MR2,mpr-1,149,train
+oasis_subset\non demented\OAS1_0271_MR1_mpr-1_121.jpg,Non Demented,0,OAS1_0271,MR1,mpr-1,121,train
+oasis_subset\non demented\OAS1_0375_MR1_mpr-2_103.jpg,Non Demented,0,OAS1_0375,MR1,mpr-2,103,train
+oasis_subset\non demented\OAS1_0176_MR1_mpr-3_105.jpg,Non Demented,0,OAS1_0176,MR1,mpr-3,105,train
+oasis_subset\non demented\OAS1_0190_MR1_mpr-3_151.jpg,Non Demented,0,OAS1_0190,MR1,mpr-3,151,train
+oasis_subset\non demented\OAS1_0296_MR1_mpr-2_139.jpg,Non Demented,0,OAS1_0296,MR1,mpr-2,139,train
+oasis_subset\non demented\OAS1_0075_MR1_mpr-1_105.jpg,Non Demented,0,OAS1_0075,MR1,mpr-1,105,train
+oasis_subset\non demented\OAS1_0113_MR1_mpr-3_110.jpg,Non Demented,0,OAS1_0113,MR1,mpr-3,110,val
+oasis_subset\non demented\OAS1_0214_MR1_mpr-2_144.jpg,Non Demented,0,OAS1_0214,MR1,mpr-2,144,train
+oasis_subset\non demented\OAS1_0040_MR1_mpr-4_159.jpg,Non Demented,0,OAS1_0040,MR1,mpr-4,159,test
+oasis_subset\non demented\OAS1_0283_MR1_mpr-2_126.jpg,Non Demented,0,OAS1_0283,MR1,mpr-2,126,train
+oasis_subset\non demented\OAS1_0327_MR1_mpr-1_134.jpg,Non Demented,0,OAS1_0327,MR1,mpr-1,134,test
+oasis_subset\non demented\OAS1_0253_MR1_mpr-3_101.jpg,Non Demented,0,OAS1_0253,MR1,mpr-3,101,train
+oasis_subset\non demented\OAS1_0301_MR1_mpr-2_108.jpg,Non Demented,0,OAS1_0301,MR1,mpr-2,108,train
+oasis_subset\non demented\OAS1_0064_MR1_mpr-2_117.jpg,Non Demented,0,OAS1_0064,MR1,mpr-2,117,train
+oasis_subset\non demented\OAS1_0047_MR1_mpr-2_102.jpg,Non Demented,0,OAS1_0047,MR1,mpr-2,102,train
+oasis_subset\non demented\OAS1_0157_MR1_mpr-1_109.jpg,Non Demented,0,OAS1_0157,MR1,mpr-1,109,train
+oasis_subset\non demented\OAS1_0182_MR1_mpr-4_148.jpg,Non Demented,0,OAS1_0182,MR1,mpr-4,148,train
+oasis_subset\non demented\OAS1_0178_MR1_mpr-4_105.jpg,Non Demented,0,OAS1_0178,MR1,mpr-4,105,train
+oasis_subset\very mild demented\OAS1_0272_MR1_mpr-2_106.jpg,Very Mild Demented,1,OAS1_0272,MR1,mpr-2,106,train
+oasis_subset\very mild demented\OAS1_0205_MR1_mpr-4_156.jpg,Very Mild Demented,1,OAS1_0205,MR1,mpr-4,156,train
+oasis_subset\very mild demented\OAS1_0042_MR1_mpr-1_114.jpg,Very Mild Demented,1,OAS1_0042,MR1,mpr-1,114,val
+oasis_subset\very mild demented\OAS1_0021_MR1_mpr-3_100.jpg,Very Mild Demented,1,OAS1_0021,MR1,mpr-3,100,test
+oasis_subset\very mild demented\OAS1_0312_MR1_mpr-3_150.jpg,Very Mild Demented,1,OAS1_0312,MR1,mpr-3,150,train
+oasis_subset\very mild demented\OAS1_0120_MR1_mpr-1_122.jpg,Very Mild Demented,1,OAS1_0120,MR1,mpr-1,122,train
+oasis_subset\very mild demented\OAS1_0115_MR1_mpr-2_130.jpg,Very Mild Demented,1,OAS1_0115,MR1,mpr-2,130,train
+oasis_subset\very mild demented\OAS1_0307_MR1_mpr-4_139.jpg,Very Mild Demented,1,OAS1_0307,MR1,mpr-4,139,train
+oasis_subset\very mild demented\OAS1_0084_MR1_mpr-3_110.jpg,Very Mild Demented,1,OAS1_0084,MR1,mpr-3,110,train
+oasis_subset\very mild demented\OAS1_0142_MR1_mpr-2_144.jpg,Very Mild Demented,1,OAS1_0142,MR1,mpr-2,144,train
+oasis_subset\very mild demented\OAS1_0374_MR1_mpr-4_126.jpg,Very Mild Demented,1,OAS1_0374,MR1,mpr-4,126,train
+oasis_subset\very mild demented\OAS1_0335_MR1_mpr-3_118.jpg,Very Mild Demented,1,OAS1_0335,MR1,mpr-3,118,train
+oasis_subset\very mild demented\OAS1_0023_MR1_mpr-2_134.jpg,Very Mild Demented,1,OAS1_0023,MR1,mpr-2,134,train
+oasis_subset\very mild demented\OAS1_0263_MR1_mpr-1_102.jpg,Very Mild Demented,1,OAS1_0263,MR1,mpr-1,102,test
+oasis_subset\very mild demented\OAS1_0015_MR1_mpr-3_147.jpg,Very Mild Demented,1,OAS1_0015,MR1,mpr-3,147,train
+oasis_subset\very mild demented\OAS1_0290_MR1_mpr-4_108.jpg,Very Mild Demented,1,OAS1_0290,MR1,mpr-4,108,train
+oasis_subset\very mild demented\OAS1_0315_MR1_mpr-2_104.jpg,Very Mild Demented,1,OAS1_0315,MR1,mpr-2,104,val
+oasis_subset\very mild demented\OAS1_0288_MR1_mpr-1_154.jpg,Very Mild Demented,1,OAS1_0288,MR1,mpr-1,154,val
+oasis_subset\very mild demented\OAS1_0304_MR1_mpr-4_114.jpg,Very Mild Demented,1,OAS1_0304,MR1,mpr-4,114,train
+oasis_subset\very mild demented\OAS1_0155_MR1_mpr-2_123.jpg,Very Mild Demented,1,OAS1_0155,MR1,mpr-2,123,train
+oasis_subset\very mild demented\OAS1_0158_MR1_mpr-2_111.jpg,Very Mild Demented,1,OAS1_0158,MR1,mpr-2,111,train
+oasis_subset\very mild demented\OAS1_0082_MR1_mpr-1_138.jpg,Very Mild Demented,1,OAS1_0082,MR1,mpr-1,138,train
+oasis_subset\very mild demented\OAS1_0041_MR1_mpr-4_159.jpg,Very Mild Demented,1,OAS1_0041,MR1,mpr-4,159,val
+oasis_subset\very mild demented\OAS1_0094_MR1_mpr-2_121.jpg,Very Mild Demented,1,OAS1_0094,MR1,mpr-2,121,train
+oasis_subset\very mild demented\OAS1_0240_MR1_mpr-2_149.jpg,Very Mild Demented,1,OAS1_0240,MR1,mpr-2,149,train
+oasis_subset\very mild demented\OAS1_0286_MR1_mpr-4_141.jpg,Very Mild Demented,1,OAS1_0286,MR1,mpr-4,141,train
+oasis_subset\very mild demented\OAS1_0339_MR1_mpr-4_104.jpg,Very Mild Demented,1,OAS1_0339,MR1,mpr-4,104,train
+oasis_subset\very mild demented\OAS1_0362_MR1_mpr-2_136.jpg,Very Mild Demented,1,OAS1_0362,MR1,mpr-2,136,train
+oasis_subset\very mild demented\OAS1_0098_MR1_mpr-4_116.jpg,Very Mild Demented,1,OAS1_0098,MR1,mpr-4,116,test
+oasis_subset\very mild demented\OAS1_0243_MR1_mpr-1_113.jpg,Very Mild Demented,1,OAS1_0243,MR1,mpr-1,113,train
+oasis_subset\very mild demented\OAS1_0380_MR1_mpr-2_132.jpg,Very Mild Demented,1,OAS1_0380,MR1,mpr-2,132,train
+oasis_subset\very mild demented\OAS1_0046_MR1_mpr-1_157.jpg,Very Mild Demented,1,OAS1_0046,MR1,mpr-1,157,train
+oasis_subset\very mild demented\OAS1_0143_MR1_mpr-3_107.jpg,Very Mild Demented,1,OAS1_0143,MR1,mpr-3,107,train
+oasis_subset\very mild demented\OAS1_0210_MR1_mpr-3_127.jpg,Very Mild Demented,1,OAS1_0210,MR1,mpr-3,127,train
+oasis_subset\very mild demented\OAS1_0003_MR1_mpr-2_147.jpg,Very Mild Demented,1,OAS1_0003,MR1,mpr-2,147,train
+oasis_subset\very mild demented\OAS1_0166_MR1_mpr-3_152.jpg,Very Mild Demented,1,OAS1_0166,MR1,mpr-3,152,train
+oasis_subset\very mild demented\OAS1_0273_MR1_mpr-2_114.jpg,Very Mild Demented,1,OAS1_0273,MR1,mpr-2,114,test
+oasis_subset\very mild demented\OAS1_0124_MR1_mpr-4_120.jpg,Very Mild Demented,1,OAS1_0124,MR1,mpr-4,120,train
+oasis_subset\very mild demented\OAS1_0329_MR1_mpr-1_103.jpg,Very Mild Demented,1,OAS1_0329,MR1,mpr-1,103,train
+oasis_subset\very mild demented\OAS1_0217_MR1_mpr-3_125.jpg,Very Mild Demented,1,OAS1_0217,MR1,mpr-3,125,val
+oasis_subset\very mild demented\OAS1_0039_MR1_mpr-1_149.jpg,Very Mild Demented,1,OAS1_0039,MR1,mpr-1,149,val
+oasis_subset\very mild demented\OAS1_0300_MR1_mpr-1_139.jpg,Very Mild Demented,1,OAS1_0300,MR1,mpr-1,139,val
+oasis_subset\very mild demented\OAS1_0022_MR1_mpr-2_142.jpg,Very Mild Demented,1,OAS1_0022,MR1,mpr-2,142,test
+oasis_subset\very mild demented\OAS1_0267_MR1_mpr-3_101.jpg,Very Mild Demented,1,OAS1_0267,MR1,mpr-3,101,train
+oasis_subset\very mild demented\OAS1_0016_MR1_mpr-1_118.jpg,Very Mild Demented,1,OAS1_0016,MR1,mpr-1,118,train
+oasis_subset\very mild demented\OAS1_0060_MR1_mpr-4_125.jpg,Very Mild Demented,1,OAS1_0060,MR1,mpr-4,125,train
+oasis_subset\very mild demented\OAS1_0123_MR1_mpr-4_100.jpg,Very Mild Demented,1,OAS1_0123,MR1,mpr-4,100,train
+oasis_subset\very mild demented\OAS1_0226_MR1_mpr-1_119.jpg,Very Mild Demented,1,OAS1_0226,MR1,mpr-1,119,test
+oasis_subset\very mild demented\OAS1_0164_MR1_mpr-2_115.jpg,Very Mild Demented,1,OAS1_0164,MR1,mpr-2,115,test
+oasis_subset\very mild demented\OAS1_0247_MR1_mpr-1_115.jpg,Very Mild Demented,1,OAS1_0247,MR1,mpr-1,115,train
+oasis_subset\very mild demented\OAS1_0238_MR1_mpr-4_110.jpg,Very Mild Demented,1,OAS1_0238,MR1,mpr-4,110,test
+oasis_subset\very mild demented\OAS1_0179_MR1_mpr-1_137.jpg,Very Mild Demented,1,OAS1_0179,MR1,mpr-1,137,train
+oasis_subset\very mild demented\OAS1_0352_MR1_mpr-2_109.jpg,Very Mild Demented,1,OAS1_0352,MR1,mpr-2,109,train
+oasis_subset\very mild demented\OAS1_0161_MR1_mpr-3_130.jpg,Very Mild Demented,1,OAS1_0161,MR1,mpr-3,130,train
+oasis_subset\very mild demented\OAS1_0233_MR1_mpr-2_147.jpg,Very Mild Demented,1,OAS1_0233,MR1,mpr-2,147,val
+oasis_subset\very mild demented\OAS1_0287_MR1_mpr-4_108.jpg,Very Mild Demented,1,OAS1_0287,MR1,mpr-4,108,val
+oasis_subset\very mild demented\OAS1_0298_MR1_mpr-1_113.jpg,Very Mild Demented,1,OAS1_0298,MR1,mpr-1,113,test
+oasis_subset\very mild demented\OAS1_0066_MR1_mpr-4_117.jpg,Very Mild Demented,1,OAS1_0066,MR1,mpr-4,117,train
+oasis_subset\very mild demented\OAS1_0015_MR1_mpr-1_152.jpg,Very Mild Demented,1,OAS1_0015,MR1,mpr-1,152,train
+oasis_subset\very mild demented\OAS1_0205_MR1_mpr-2_140.jpg,Very Mild Demented,1,OAS1_0205,MR1,mpr-2,140,train
+oasis_subset\very mild demented\OAS1_0312_MR1_mpr-1_160.jpg,Very Mild Demented,1,OAS1_0312,MR1,mpr-1,160,train
+oasis_subset\very mild demented\OAS1_0290_MR1_mpr-3_100.jpg,Very Mild Demented,1,OAS1_0290,MR1,mpr-3,100,train
+oasis_subset\very mild demented\OAS1_0272_MR1_mpr-1_134.jpg,Very Mild Demented,1,OAS1_0272,MR1,mpr-1,134,train
+oasis_subset\very mild demented\OAS1_0263_MR1_mpr-3_107.jpg,Very Mild Demented,1,OAS1_0263,MR1,mpr-3,107,test
+oasis_subset\very mild demented\OAS1_0120_MR1_mpr-2_130.jpg,Very Mild Demented,1,OAS1_0120,MR1,mpr-2,130,train
+oasis_subset\very mild demented\OAS1_0084_MR1_mpr-4_128.jpg,Very Mild Demented,1,OAS1_0084,MR1,mpr-4,128,train
+oasis_subset\very mild demented\OAS1_0021_MR1_mpr-2_120.jpg,Very Mild Demented,1,OAS1_0021,MR1,mpr-2,120,test
+oasis_subset\very mild demented\OAS1_0307_MR1_mpr-3_110.jpg,Very Mild Demented,1,OAS1_0307,MR1,mpr-3,110,train
+oasis_subset\very mild demented\OAS1_0042_MR1_mpr-3_156.jpg,Very Mild Demented,1,OAS1_0042,MR1,mpr-3,156,val
+oasis_subset\very mild demented\OAS1_0243_MR1_mpr-4_104.jpg,Very Mild Demented,1,OAS1_0243,MR1,mpr-4,104,train
+oasis_subset\very mild demented\OAS1_0304_MR1_mpr-3_130.jpg,Very Mild Demented,1,OAS1_0304,MR1,mpr-3,130,train
+oasis_subset\very mild demented\OAS1_0315_MR1_mpr-3_111.jpg,Very Mild Demented,1,OAS1_0315,MR1,mpr-3,111,val
+oasis_subset\very mild demented\OAS1_0082_MR1_mpr-2_131.jpg,Very Mild Demented,1,OAS1_0082,MR1,mpr-2,131,train
+oasis_subset\very mild demented\OAS1_0142_MR1_mpr-4_109.jpg,Very Mild Demented,1,OAS1_0142,MR1,mpr-4,109,train
+oasis_subset\very mild demented\OAS1_0115_MR1_mpr-1_121.jpg,Very Mild Demented,1,OAS1_0115,MR1,mpr-1,121,train
+oasis_subset\very mild demented\OAS1_0155_MR1_mpr-4_111.jpg,Very Mild Demented,1,OAS1_0155,MR1,mpr-4,111,train
+oasis_subset\very mild demented\OAS1_0094_MR1_mpr-3_134.jpg,Very Mild Demented,1,OAS1_0094,MR1,mpr-3,134,train
+oasis_subset\very mild demented\OAS1_0286_MR1_mpr-1_124.jpg,Very Mild Demented,1,OAS1_0286,MR1,mpr-1,124,train
+oasis_subset\very mild demented\OAS1_0124_MR1_mpr-2_115.jpg,Very Mild Demented,1,OAS1_0124,MR1,mpr-2,115,train
+oasis_subset\very mild demented\OAS1_0023_MR1_mpr-4_102.jpg,Very Mild Demented,1,OAS1_0023,MR1,mpr-4,102,train
+oasis_subset\very mild demented\OAS1_0046_MR1_mpr-4_126.jpg,Very Mild Demented,1,OAS1_0046,MR1,mpr-4,126,train
+oasis_subset\very mild demented\OAS1_0210_MR1_mpr-2_105.jpg,Very Mild Demented,1,OAS1_0210,MR1,mpr-2,105,train
+oasis_subset\very mild demented\OAS1_0143_MR1_mpr-2_116.jpg,Very Mild Demented,1,OAS1_0143,MR1,mpr-2,116,train
+oasis_subset\very mild demented\OAS1_0273_MR1_mpr-1_133.jpg,Very Mild Demented,1,OAS1_0273,MR1,mpr-1,133,test
+oasis_subset\very mild demented\OAS1_0380_MR1_mpr-1_103.jpg,Very Mild Demented,1,OAS1_0380,MR1,mpr-1,103,train
+oasis_subset\very mild demented\OAS1_0158_MR1_mpr-3_135.jpg,Very Mild Demented,1,OAS1_0158,MR1,mpr-3,135,train
+oasis_subset\very mild demented\OAS1_0217_MR1_mpr-2_119.jpg,Very Mild Demented,1,OAS1_0217,MR1,mpr-2,119,val
+oasis_subset\very mild demented\OAS1_0240_MR1_mpr-1_158.jpg,Very Mild Demented,1,OAS1_0240,MR1,mpr-1,158,train
+oasis_subset\very mild demented\OAS1_0329_MR1_mpr-4_112.jpg,Very Mild Demented,1,OAS1_0329,MR1,mpr-4,112,train
+oasis_subset\very mild demented\OAS1_0098_MR1_mpr-3_107.jpg,Very Mild Demented,1,OAS1_0098,MR1,mpr-3,107,test
+oasis_subset\very mild demented\OAS1_0339_MR1_mpr-1_124.jpg,Very Mild Demented,1,OAS1_0339,MR1,mpr-1,124,train
+oasis_subset\very mild demented\OAS1_0374_MR1_mpr-3_155.jpg,Very Mild Demented,1,OAS1_0374,MR1,mpr-3,155,train
+oasis_subset\very mild demented\OAS1_0362_MR1_mpr-4_122.jpg,Very Mild Demented,1,OAS1_0362,MR1,mpr-4,122,train
+oasis_subset\very mild demented\OAS1_0263_MR1_mpr-2_112.jpg,Very Mild Demented,1,OAS1_0263,MR1,mpr-2,112,test
+oasis_subset\very mild demented\OAS1_0312_MR1_mpr-4_130.jpg,Very Mild Demented,1,OAS1_0312,MR1,mpr-4,130,train
+oasis_subset\very mild demented\OAS1_0166_MR1_mpr-2_160.jpg,Very Mild Demented,1,OAS1_0166,MR1,mpr-2,160,train
+oasis_subset\very mild demented\OAS1_0288_MR1_mpr-3_113.jpg,Very Mild Demented,1,OAS1_0288,MR1,mpr-3,113,val
+oasis_subset\very mild demented\OAS1_0039_MR1_mpr-3_116.jpg,Very Mild Demented,1,OAS1_0039,MR1,mpr-3,116,val
+oasis_subset\very mild demented\OAS1_0300_MR1_mpr-3_102.jpg,Very Mild Demented,1,OAS1_0300,MR1,mpr-3,102,val
+oasis_subset\very mild demented\OAS1_0022_MR1_mpr-3_123.jpg,Very Mild Demented,1,OAS1_0022,MR1,mpr-3,123,test
+oasis_subset\Mild dementia\OAS1_0035_MR1_mpr-2_105.jpg,Mild Demented,2,OAS1_0035,MR1,mpr-2,105,test
+oasis_subset\Mild dementia\OAS1_0278_MR1_mpr-1_122.jpg,Mild Demented,2,OAS1_0278,MR1,mpr-1,122,train
+oasis_subset\Mild dementia\OAS1_0134_MR1_mpr-3_115.jpg,Mild Demented,2,OAS1_0134,MR1,mpr-3,115,train
+oasis_subset\Mild dementia\OAS1_0073_MR1_mpr-4_132.jpg,Mild Demented,2,OAS1_0073,MR1,mpr-4,132,train
+oasis_subset\Mild dementia\OAS1_0291_MR1_mpr-1_100.jpg,Mild Demented,2,OAS1_0291,MR1,mpr-1,100,train
+oasis_subset\Mild dementia\OAS1_0223_MR1_mpr-3_126.jpg,Mild Demented,2,OAS1_0223,MR1,mpr-3,126,train
+oasis_subset\Mild dementia\OAS1_0268_MR1_mpr-2_145.jpg,Mild Demented,2,OAS1_0268,MR1,mpr-2,145,train
+oasis_subset\Mild dementia\OAS1_0053_MR1_mpr-4_112.jpg,Mild Demented,2,OAS1_0053,MR1,mpr-4,112,train
+oasis_subset\Mild dementia\OAS1_0184_MR1_mpr-3_139.jpg,Mild Demented,2,OAS1_0184,MR1,mpr-3,139,train
+oasis_subset\Mild dementia\OAS1_0028_MR1_mpr-1_152.jpg,Mild Demented,2,OAS1_0028,MR1,mpr-1,152,train
+oasis_subset\Mild dementia\OAS1_0373_MR1_mpr-4_108.jpg,Mild Demented,2,OAS1_0373,MR1,mpr-4,108,test
+oasis_subset\Mild dementia\OAS1_0056_MR1_mpr-4_118.jpg,Mild Demented,2,OAS1_0056,MR1,mpr-4,118,train
+oasis_subset\Mild dementia\OAS1_0185_MR1_mpr-2_157.jpg,Mild Demented,2,OAS1_0185,MR1,mpr-2,157,val
+oasis_subset\Mild dementia\OAS1_0382_MR1_mpr-4_160.jpg,Mild Demented,2,OAS1_0382,MR1,mpr-4,160,val
+oasis_subset\Mild dementia\OAS1_0067_MR1_mpr-1_104.jpg,Mild Demented,2,OAS1_0067,MR1,mpr-1,104,val
+oasis_subset\Mild dementia\OAS1_0052_MR1_mpr-2_150.jpg,Mild Demented,2,OAS1_0052,MR1,mpr-2,150,train
+oasis_subset\Mild dementia\OAS1_0137_MR1_mpr-2_111.jpg,Mild Demented,2,OAS1_0137,MR1,mpr-2,111,test
+oasis_subset\Mild dementia\OAS1_0122_MR1_mpr-3_130.jpg,Mild Demented,2,OAS1_0122,MR1,mpr-3,130,train
+oasis_subset\Mild dementia\OAS1_0031_MR1_mpr-1_116.jpg,Mild Demented,2,OAS1_0031,MR1,mpr-1,116,train
+oasis_subset\Mild dementia\OAS1_0316_MR1_mpr-3_120.jpg,Mild Demented,2,OAS1_0316,MR1,mpr-3,120,train
+oasis_subset\Mild dementia\OAS1_0269_MR1_mpr-2_124.jpg,Mild Demented,2,OAS1_0269,MR1,mpr-2,124,train
+oasis_subset\Mild dementia\OAS1_0073_MR1_mpr-2_136.jpg,Mild Demented,2,OAS1_0073,MR1,mpr-2,136,train
+oasis_subset\Mild dementia\OAS1_0278_MR1_mpr-3_101.jpg,Mild Demented,2,OAS1_0278,MR1,mpr-3,101,train
+oasis_subset\Mild dementia\OAS1_0223_MR1_mpr-2_141.jpg,Mild Demented,2,OAS1_0223,MR1,mpr-2,141,train
+oasis_subset\Mild dementia\OAS1_0134_MR1_mpr-1_109.jpg,Mild Demented,2,OAS1_0134,MR1,mpr-1,109,train
+oasis_subset\Mild dementia\OAS1_0185_MR1_mpr-4_147.jpg,Mild Demented,2,OAS1_0185,MR1,mpr-4,147,val
+oasis_subset\Mild dementia\OAS1_0035_MR1_mpr-3_122.jpg,Mild Demented,2,OAS1_0035,MR1,mpr-3,122,test
+oasis_subset\Mild dementia\OAS1_0028_MR1_mpr-4_133.jpg,Mild Demented,2,OAS1_0028,MR1,mpr-4,133,train
+oasis_subset\Mild dementia\OAS1_0053_MR1_mpr-1_119.jpg,Mild Demented,2,OAS1_0053,MR1,mpr-1,119,train
+oasis_subset\Mild dementia\OAS1_0268_MR1_mpr-1_114.jpg,Mild Demented,2,OAS1_0268,MR1,mpr-1,114,train
+oasis_subset\Mild dementia\OAS1_0056_MR1_mpr-3_106.jpg,Mild Demented,2,OAS1_0056,MR1,mpr-3,106,train
+oasis_subset\Mild dementia\OAS1_0291_MR1_mpr-2_110.jpg,Mild Demented,2,OAS1_0291,MR1,mpr-2,110,train
+oasis_subset\Mild dementia\OAS1_0122_MR1_mpr-4_103.jpg,Mild Demented,2,OAS1_0122,MR1,mpr-4,103,train
+oasis_subset\Mild dementia\OAS1_0052_MR1_mpr-1_125.jpg,Mild Demented,2,OAS1_0052,MR1,mpr-1,125,train
+oasis_subset\Mild dementia\OAS1_0184_MR1_mpr-4_120.jpg,Mild Demented,2,OAS1_0184,MR1,mpr-4,120,train
+oasis_subset\Mild dementia\OAS1_0067_MR1_mpr-2_109.jpg,Mild Demented,2,OAS1_0067,MR1,mpr-2,109,val
+oasis_subset\Mild dementia\OAS1_0137_MR1_mpr-3_117.jpg,Mild Demented,2,OAS1_0137,MR1,mpr-3,117,test
+oasis_subset\Mild dementia\OAS1_0223_MR1_mpr-1_149.jpg,Mild Demented,2,OAS1_0223,MR1,mpr-1,149,train
+oasis_subset\Mild dementia\OAS1_0373_MR1_mpr-1_116.jpg,Mild Demented,2,OAS1_0373,MR1,mpr-1,116,test
+oasis_subset\Mild dementia\OAS1_0134_MR1_mpr-2_102.jpg,Mild Demented,2,OAS1_0134,MR1,mpr-2,102,train
+oasis_subset\Mild dementia\OAS1_0269_MR1_mpr-4_104.jpg,Mild Demented,2,OAS1_0269,MR1,mpr-4,104,train
+oasis_subset\Mild dementia\OAS1_0052_MR1_mpr-3_133.jpg,Mild Demented,2,OAS1_0052,MR1,mpr-3,133,train
+oasis_subset\Mild dementia\OAS1_0056_MR1_mpr-2_100.jpg,Mild Demented,2,OAS1_0056,MR1,mpr-2,100,train
+oasis_subset\Mild dementia\OAS1_0035_MR1_mpr-4_117.jpg,Mild Demented,2,OAS1_0035,MR1,mpr-4,117,test
+oasis_subset\Mild dementia\OAS1_0382_MR1_mpr-3_105.jpg,Mild Demented,2,OAS1_0382,MR1,mpr-3,105,val
+oasis_subset\Mild dementia\OAS1_0028_MR1_mpr-2_145.jpg,Mild Demented,2,OAS1_0028,MR1,mpr-2,145,train
+oasis_subset\Mild dementia\OAS1_0073_MR1_mpr-1_118.jpg,Mild Demented,2,OAS1_0073,MR1,mpr-1,118,train
+oasis_subset\Mild dementia\OAS1_0268_MR1_mpr-3_103.jpg,Mild Demented,2,OAS1_0268,MR1,mpr-3,103,train
+oasis_subset\Mild dementia\OAS1_0031_MR1_mpr-4_137.jpg,Mild Demented,2,OAS1_0031,MR1,mpr-4,137,train
+oasis_subset\Mild dementia\OAS1_0053_MR1_mpr-3_154.jpg,Mild Demented,2,OAS1_0053,MR1,mpr-3,154,train
+oasis_subset\Mild dementia\OAS1_0278_MR1_mpr-2_127.jpg,Mild Demented,2,OAS1_0278,MR1,mpr-2,127,train
+oasis_subset\Mild dementia\OAS1_0185_MR1_mpr-3_120.jpg,Mild Demented,2,OAS1_0185,MR1,mpr-3,120,val
+oasis_subset\Mild dementia\OAS1_0067_MR1_mpr-3_117.jpg,Mild Demented,2,OAS1_0067,MR1,mpr-3,117,val
+oasis_subset\Mild dementia\OAS1_0316_MR1_mpr-4_136.jpg,Mild Demented,2,OAS1_0316,MR1,mpr-4,136,train
+oasis_subset\Mild dementia\OAS1_0035_MR1_mpr-1_143.jpg,Mild Demented,2,OAS1_0035,MR1,mpr-1,143,test
+oasis_subset\Mild dementia\OAS1_0134_MR1_mpr-4_124.jpg,Mild Demented,2,OAS1_0134,MR1,mpr-4,124,train
+oasis_subset\Mild dementia\OAS1_0122_MR1_mpr-1_109.jpg,Mild Demented,2,OAS1_0122,MR1,mpr-1,109,train
+oasis_subset\Mild dementia\OAS1_0184_MR1_mpr-1_160.jpg,Mild Demented,2,OAS1_0184,MR1,mpr-1,160,train
+oasis_subset\Mild dementia\OAS1_0028_MR1_mpr-3_115.jpg,Mild Demented,2,OAS1_0028,MR1,mpr-3,115,train
+oasis_subset\Mild dementia\OAS1_0291_MR1_mpr-4_135.jpg,Mild Demented,2,OAS1_0291,MR1,mpr-4,135,train
+oasis_subset\Mild dementia\OAS1_0278_MR1_mpr-4_106.jpg,Mild Demented,2,OAS1_0278,MR1,mpr-4,106,train
+oasis_subset\Mild dementia\OAS1_0056_MR1_mpr-1_122.jpg,Mild Demented,2,OAS1_0056,MR1,mpr-1,122,train
+oasis_subset\Mild dementia\OAS1_0137_MR1_mpr-4_129.jpg,Mild Demented,2,OAS1_0137,MR1,mpr-4,129,test
+oasis_subset\Mild dementia\OAS1_0373_MR1_mpr-2_148.jpg,Mild Demented,2,OAS1_0373,MR1,mpr-2,148,test
+oasis_subset\Mild dementia\OAS1_0053_MR1_mpr-2_100.jpg,Mild Demented,2,OAS1_0053,MR1,mpr-2,100,train
+oasis_subset\Mild dementia\OAS1_0052_MR1_mpr-4_115.jpg,Mild Demented,2,OAS1_0052,MR1,mpr-4,115,train
+oasis_subset\Mild dementia\OAS1_0223_MR1_mpr-2_131.jpg,Mild Demented,2,OAS1_0223,MR1,mpr-2,131,train
+oasis_subset\Mild dementia\OAS1_0269_MR1_mpr-1_150.jpg,Mild Demented,2,OAS1_0269,MR1,mpr-1,150,train
+oasis_subset\Mild dementia\OAS1_0073_MR1_mpr-3_110.jpg,Mild Demented,2,OAS1_0073,MR1,mpr-3,110,train
+oasis_subset\Mild dementia\OAS1_0031_MR1_mpr-3_105.jpg,Mild Demented,2,OAS1_0031,MR1,mpr-3,105,train
+oasis_subset\Mild dementia\OAS1_0268_MR1_mpr-4_127.jpg,Mild Demented,2,OAS1_0268,MR1,mpr-4,127,train
+oasis_subset\Mild dementia\OAS1_0382_MR1_mpr-1_122.jpg,Mild Demented,2,OAS1_0382,MR1,mpr-1,122,val
+oasis_subset\Mild dementia\OAS1_0291_MR1_mpr-3_106.jpg,Mild Demented,2,OAS1_0291,MR1,mpr-3,106,train
+oasis_subset\Mild dementia\OAS1_0185_MR1_mpr-1_131.jpg,Mild Demented,2,OAS1_0185,MR1,mpr-1,131,val
+oasis_subset\Mild dementia\OAS1_0184_MR1_mpr-2_134.jpg,Mild Demented,2,OAS1_0184,MR1,mpr-2,134,train
+oasis_subset\Mild dementia\OAS1_0223_MR1_mpr-3_121.jpg,Mild Demented,2,OAS1_0223,MR1,mpr-3,121,train
+oasis_subset\Mild dementia\OAS1_0122_MR1_mpr-2_120.jpg,Mild Demented,2,OAS1_0122,MR1,mpr-2,120,train
+oasis_subset\Mild dementia\OAS1_0052_MR1_mpr-2_158.jpg,Mild Demented,2,OAS1_0052,MR1,mpr-2,158,train
+oasis_subset\Mild dementia\OAS1_0134_MR1_mpr-4_140.jpg,Mild Demented,2,OAS1_0134,MR1,mpr-4,140,train
+oasis_subset\Mild dementia\OAS1_0067_MR1_mpr-1_113.jpg,Mild Demented,2,OAS1_0067,MR1,mpr-1,113,val
+oasis_subset\Mild dementia\OAS1_0035_MR1_mpr-4_100.jpg,Mild Demented,2,OAS1_0035,MR1,mpr-4,100,test
+oasis_subset\Mild dementia\OAS1_0053_MR1_mpr-3_105.jpg,Mild Demented,2,OAS1_0053,MR1,mpr-3,105,train
+oasis_subset\Mild dementia\OAS1_0316_MR1_mpr-1_130.jpg,Mild Demented,2,OAS1_0316,MR1,mpr-1,130,train
+oasis_subset\Mild dementia\OAS1_0073_MR1_mpr-4_103.jpg,Mild Demented,2,OAS1_0073,MR1,mpr-4,103,train
+oasis_subset\Mild dementia\OAS1_0268_MR1_mpr-1_120.jpg,Mild Demented,2,OAS1_0268,MR1,mpr-1,120,train
+oasis_subset\Mild dementia\OAS1_0185_MR1_mpr-2_143.jpg,Mild Demented,2,OAS1_0185,MR1,mpr-2,143,val
+oasis_subset\Mild dementia\OAS1_0028_MR1_mpr-1_130.jpg,Mild Demented,2,OAS1_0028,MR1,mpr-1,130,train
+oasis_subset\Mild dementia\OAS1_0269_MR1_mpr-3_140.jpg,Mild Demented,2,OAS1_0269,MR1,mpr-3,140,train
+oasis_subset\Mild dementia\OAS1_0278_MR1_mpr-2_114.jpg,Mild Demented,2,OAS1_0278,MR1,mpr-2,114,train
+oasis_subset\Mild dementia\OAS1_0223_MR1_mpr-1_158.jpg,Mild Demented,2,OAS1_0223,MR1,mpr-1,158,train
+oasis_subset\Mild dementia\OAS1_0053_MR1_mpr-4_125.jpg,Mild Demented,2,OAS1_0053,MR1,mpr-4,125,train
+oasis_subset\Mild dementia\OAS1_0373_MR1_mpr-3_122.jpg,Mild Demented,2,OAS1_0373,MR1,mpr-3,122,test
+oasis_subset\Mild dementia\OAS1_0052_MR1_mpr-1_105.jpg,Mild Demented,2,OAS1_0052,MR1,mpr-1,105,train
+oasis_subset\Mild dementia\OAS1_0184_MR1_mpr-3_146.jpg,Mild Demented,2,OAS1_0184,MR1,mpr-3,146,train
+oasis_subset\Mild dementia\OAS1_0137_MR1_mpr-2_103.jpg,Mild Demented,2,OAS1_0137,MR1,mpr-2,103,test
+oasis_subset\Mild dementia\OAS1_0028_MR1_mpr-3_120.jpg,Mild Demented,2,OAS1_0028,MR1,mpr-3,120,train
+oasis_subset\Mild dementia\OAS1_0031_MR1_mpr-2_126.jpg,Mild Demented,2,OAS1_0031,MR1,mpr-2,126,train
+oasis_subset\Mild dementia\OAS1_0067_MR1_mpr-3_106.jpg,Mild Demented,2,OAS1_0067,MR1,mpr-3,106,val
+oasis_subset\Mild dementia\OAS1_0382_MR1_mpr-2_142.jpg,Mild Demented,2,OAS1_0382,MR1,mpr-2,142,val
+oasis_subset\Mild dementia\OAS1_0134_MR1_mpr-3_120.jpg,Mild Demented,2,OAS1_0134,MR1,mpr-3,120,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_102.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,102,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-2_134.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-2,134,test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_117.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,117,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_140.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-3,140,test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_127.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,127,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_107.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,107,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_145.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-1,145,test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_151.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-4,151,test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_113.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-3,113,test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_122.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,122,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_137.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,137,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_155.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,155,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_110.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,110,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_129.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-1,129,test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_148.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,148,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_159.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-4,159,test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_132.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,132,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_143.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,143,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_105.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-4,105,test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_100.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,100,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-2_119.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-2,119,test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_114.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,114,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_160.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,160,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_137.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-3,137,test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_125.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,125,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_109.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-1,109,test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_147.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-4,147,test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_151.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,151,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_120.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,120,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-2_102.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-2,102,test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_104.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,104,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_134.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,134,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_132.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-3,132,test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_155.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-1,155,test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_140.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,140,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_146.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,146,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_123.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-1,123,test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_142.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-4,142,test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_128.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,128,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_112.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,112,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_116.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-1,116,test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_105.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,105,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_130.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,130,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-2_137.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-2,137,test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_101.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,101,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_158.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,158,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_149.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,149,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-2_144.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-2,144,test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_122.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,122,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_118.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,118,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_100.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,100,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_149.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-3,149,test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_108.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,108,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_136.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-1,136,test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_121.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-4,121,test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_126.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-3,126,test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_115.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,115,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_106.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,106,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_119.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,119,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_100.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-4,100,test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-2_157.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-2,157,test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_125.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,125,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_153.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-3,153,test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_121.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,121,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_113.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,113,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_102.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,102,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_135.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,135,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_111.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,111,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_130.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,130,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_105.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,105,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_137.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-4,137,test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_152.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,152,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_143.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,143,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_102.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,102,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_139.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,139,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_117.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,117,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_130.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,130,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_125.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,125,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-2_146.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-2,146,test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_133.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-1,133,test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_123.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-3,123,test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_152.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,152,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_140.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,140,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_108.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,108,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_116.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,116,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_143.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,143,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_148.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,148,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_134.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-4,134,test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_141.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-1,141,test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_121.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,121,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_128.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,128,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_119.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,119,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_109.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,109,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_103.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-3,103,test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_108.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-4,108,test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_138.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-1,138,test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_109.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-3,109,test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-2_113.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-2,113,test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-2_140.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-2,140,test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_160.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-1,160,test

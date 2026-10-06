@@ -1,0 +1,81 @@
+AUDIT REPORT FOR ALZHEIMER'S DISEASE STAGING PROJECT
+
+A. Current pipeline
+- Uses locked V1 dataset (final_400.csv) and subject-level split (splits/)
+- Preprocessing: grayscale, resize, per-image z-score normalization
+- Augmentation: horizontal flip, rotation ±10° (train only)
+- Models: CNN2D, DenseNet2D, ViT2D (2D equivalents)
+- UQ: MC Dropout, Deep Ensembles, BEDL
+- Training: AdamW, class-weighted CE, val macro-F1 for checkpointing, early stopping
+- Evaluation: accuracy, macro F1, per-class metrics, ROC-AUC, ECE, Brier, entropy, variance, risk-coverage, confusion matrix
+- Comparative evaluation: trains 3x3=9 combinations, evaluates on test set, selects best by test performance
+
+B. Current models
+- All output 4-class logits
+- CNN2D: 4 conv blocks, global avg pool, dropout
+- DenseNet2D: 3 dense blocks (3 layers each), growth rate 8
+- ViT2D: patch embedding, CLS token, interpolated positional encoding, transformer encoder
+
+C. Current UQ methods
+- MC Dropout: stochastic forward passes with dropout enabled
+- Deep Ensembles: M independent models with different seeds
+- BEDL: Dirichlet evidence-based uncertainty
+
+D. Current evaluation
+- Computes standard metrics on test set for each combination
+- Uses validation set for early stopping/checkpoint selection (macro-F1)
+
+E. Verified bugs
+1. Model defaults: CNN2D, DenseNet2D, ViT2D, deep_ensembles.py have default num_classes=3 (should be 4)
+2. Checkpoint reuse: comparative_evaluation.py reuses checkpoints without metadata validation
+3. Test-set model selection: comparative_evaluation.py selects best combo using test set (violates critical rule)
+4. Overwritten training_history.json: fixed path causes overwrites in comparative study
+
+F. Methodological risks
+1. Test-set model selection -> overoptimistic, non-reproducible
+2. Moderate class: only 2 subjects -> 0 in validation, high variance
+3. Small ensemble size (M=3) limits UQ quality
+4. Multiple testing on test set without correction
+
+G. Files needing modification
+1. src/models/cnn2d.py: default num_classes=3 -> 4
+2. src/models/densenet2d.py: default num_classes=3 -> 4
+3. src/models/vit2d.py: default num_classes=3 -> 4
+4. src/uncertainty/deep_ensembles.py: default num_classes in model_fn=3 -> 4
+5. src/comparative_evaluation.py: 
+   - Add checkpoint validation via checkpoint_utils.is_checkpoint_valid
+   - Change model selection to use validation performance (not test)
+   - Save training history per model (avoid overwriting)
+6. src/train.py: 
+   - Save training history alongside checkpoint (e.g., checkpoint_path.with_suffix('.history.json'))
+   - Return history (already done) for use in comparative_evaluation.py
+7. src/checkpoint_utils.py: ensure used in comparative_evaluation.py
+
+H. Files that must remain untouched (V1 locked)
+- outputs/final_400/final_400.csv
+- outputs/splits/ (split_assignments.csv, etc.)
+- Any V1 experiment definition files
+
+I. Proposed V2 experiment plan
+Phase 1: Fix verified bugs (E1-E4)
+Phase 2: Smoke tests (data loading, shapes, forward/backward pass)
+Phase 3: Single-model baseline (CNN2D)
+Phase 4: Three-backbone baseline (same settings, val-based selection)
+Phase 5: Controlled experiments (one at a time):
+   - Pretrained DenseNet
+   - Image resolution (96, 128, 160)
+   - Normalization (per-image vs global)
+   - Augmentation (current vs stronger vs none)
+   - Class balancing (weighted loss vs sampler)
+   - Optimizer/LR
+   - Regularization
+   - Architecture capacity
+   - Subject-level aggregation
+Phase 6: UQ benchmark (MC Dropout, Deep Ensembles, BEDL on best backbone)
+Phase 7: Final frozen test eval (validation-selected model on test set once)
+Phase 8: Subject-level evaluation
+Phase 9: Moderate-specific analysis (two-fold CV)
+Phase 10: Final report
+
+Each experiment: hypothesis, change, baseline, result, interpretation, decision.
+Never use test set for model selection.

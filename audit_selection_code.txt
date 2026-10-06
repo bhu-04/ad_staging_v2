@@ -1,0 +1,1560 @@
+
+
+============================================================
+FILE: archive\dataset_selection\create_candidate_pool.py
+============================================================
+
+#!/usr/bin/env python3
+"""
+OASIS Candidate Pool Builder
+============================
+
+Creates a deterministic 1,988-image CANDIDATE POOL from the already-audited
+OASIS dataset, using ONLY the metadata in
+
+    outputs/dataset_audit/image_inventory.csv
+
+THIS IS A CANDIDATE POOL, NOT THE FINAL 400-IMAGE DATASET.
+
+This script does NOT:
+  - open or process any raw MRI image
+  - copy / move / modify / delete any image
+  - perform near-duplicate (pHash pairwise) analysis  [deferred]
+  - select the final 400 images
+  - split train / validation / test
+  - train or augment anything
+
+Run as:
+
+    python src/create_candidate_pool.py
+
+Selection method (fully deterministic, no randomness is actually consumed)
+--------------------------------------------------------------------------
+Hierarchy: class -> subject -> (session, scan) -> slice.
+
+1. Subject quotas.  Each class target is spread as evenly as possible over
+   the class's subjects (capped by how many images a subject has).  When the
+   target does not divide evenly, the extra images go to the subjects with
+   the highest mean normalized quality (ties: subject_id).
+2. Scan quotas.  Every subject quota is spread as evenly as possible over
+   that subject's available (session, scan) groups.  Remainders go first to
+   the (session, scan) label that is currently least represented in the
+   class, then to the higher-quality group, then by label.
+3. Slice picks.  Picks are made round-robin across subjects (round r = every
+   subject's r-th pick) so early subjects do not get first choice of slice
+   regions.  Inside the chosen (subject, session, scan) group each candidate
+   is scored:
+
+       score =  0.50 * normalized_quality           (percentile rank in class)
+              + 0.20 * slice_diversity              (slice-region coverage)
+              + 0.15 * scan_diversity               (1 / (1 + picks already
+                                                     taken in this scan))
+              + 0.15 * subject_balance              (1 - picked/quota)
+              - neighbor_penalty                    (0.30 * max(0, 1 - d/10),
+                                                     d = slice distance to the
+                                                     nearest already-picked
+                                                     slice of the same scan)
+
+   slice_diversity = 0.5 / (1 + picks in the same region within this scan)
+                   + 0.5 * class-level region deficit (0 when a region already
+                     holds >= 2x its uniform share of the class's picks).
+   Ties are broken by filepath (ascending).
+4. The exact class counts always take priority: quotas are computed first and
+   the score only decides WHICH slices fill them.
+
+quality_flag is ranking information only; flagged images are never excluded
+(and all 488 Moderate Demented images are mandatory).
+"""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import sys
+from collections import Counter
+from pathlib import Path
+from typing import Dict, List, Optional, Tuple
+
+import numpy as np
+import pandas as pd
+
+# This script is run as `python src/create_candidate_pool.py`, so (like
+# src/dataset_quality.py) it imports config directly.
+import config
+
+
+# ---------------------------------------------------------------------
+# Constants
+# ---------------------------------------------------------------------
+
+RANDOM_SEED = config.RANDOM_SEED
+CLASS_NAMES: List[str] = list(config.CLASS_NAMES)
+CLASS_TO_IDX: Dict[str, int] = dict(config.CLASS_TO_IDX)
+
+TARGET_COUNTS: Dict[str, int] = {
+    "Non Demented": 500,
+    "Very Mild Demented": 500,
+    "Mild Demented": 500,
+    "Moderate Demented": 488,
+}
+TOTAL_TARGET = 1988
+MANDATORY_ALL_CLASSES = {"Moderate Demented"}
+EXPECTED_MODERATE_SUBJECTS = 2
+
+INVENTORY_REL = Path("outputs") / "dataset_audit" / "image_inventory.csv"
+OUTPUT_REL = Path("outputs") / "candidate_pool"
+
+REQUIRED_COLUMNS = [
+    "filepath", "abs_filepath", "raw_folder", "filename", "class_name",
+    "class_id", "subject_id", "session", "scan", "slice_idx", "is_readable",
+    "quality_flag", "quality_reasons", "quality_score", "sha256",
+    "exact_duplicate_group", "phash",
+]
+
+W_QUALITY = 0.50
+W_SLICE = 0.20
+W_SCAN = 0.15
+W_SUBJECT = 0.15
+NEIGHBOR_PENALTY_MAX = 0.30
+NEIGHBOR_PENALTY_RADIUS = 10
+
+# (label, low, high) inclusive
+SLICE_REGIONS: List[Tuple[str, int, int]] = [
+    ("100-109", 100, 109),
+    ("110-119", 110, 119),
+    ("120-129", 120, 129),
+    ("130-139", 130, 139),
+    ("140-149", 140, 149),
+    ("150-160", 150, 160),
+]
+REGION_LABELS = [r[0] for r in SLICE_REGIONS] + ["outside-100-160"]
+N_CORE_REGIONS = len(SLICE_REGIONS)
+
+DISCLAIMER_CANDIDATE = "This is a candidate pool, not the final 400-image dataset."
+DISCLAIMER_NEARDUP = (
+    "Near-duplicate analysis is intentionally deferred until the "
+    "candidate-pool stage."
+)
+
+
+class CandidatePoolError(RuntimeError):
+    """Raised when inputs or the produced pool violate a mandatory rule."""
+
+
+# ---------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------
+
+def slice_region_index(slice_idx: int) -> int:
+    for i, (_, lo, hi) in enumerate(SLICE_REGIONS):
+        if lo <= slice_idx <= hi:
+            return i
+    return N_CORE_REGIONS  # outside-100-160
+
+
+def to_bool(series: pd.Series) -> pd.Series:
+    if series.dtype == bool:
+        return series
+    return (
+        series.astype(str).str.strip().str.lower()
+        .isin({"true", "1", "yes", "t"})
+    )
+
+
+def sha256_file(path: Path) -> str:
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1 << 20), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def allocate_even(total: int, caps: Dict, priority: List) -> Dict:
+    """Spread `total` over keys as evenly as possible without exceeding caps.
+
+    `priority` orders the keys; it decides who receives the leftover units.
+    Fully deterministic. Raises if sum(caps) < total.
+    """
+    if sum(caps.values()) < total:
+        raise CandidatePoolError(
+            f"Cannot allocate {total} items: only {sum(caps.values())} available."
+        )
+    alloc = {k: 0 for k in priority}
+    remaining = total
+    while remaining > 0:
+        open_keys = [k for k in priority if alloc[k] < caps[k]]
+        base = remaining // len(open_keys)
+        if base == 0:
+            for k in open_keys[:remaining]:
+                alloc[k] += 1
+            remaining = 0
+        else:
+            for k in open_keys:
+                add = min(base, caps[k] - alloc[k])
+                alloc[k] += add
+                remaining -= add
+    return alloc
+
+
+def md_table(df: pd.DataFrame) -> str:
+    cols = list(df.columns)
+    lines = ["| " + " | ".join(str(c) for c in cols) + " |",
+             "|" + "|".join("---" for _ in cols) + "|"]
+    for _, row in df.iterrows():
+        cells = []
+        for c in cols:
+            v = row[c]
+            if isinstance(v, (float, np.floating)):
+                cells.append(f"{v:.4f}")
+            else:
+                cells.append(str(v))
+        lines.append("| " + " | ".join(cells) + " |")
+    return "\n".join(lines)
+
+
+def _json_default(o):
+    if isinstance(o, (np.integer,)):
+        return int(o)
+    if isinstance(o, (np.floating,)):
+        return float(o)
+    if isinstance(o, (np.bool_,)):
+        return bool(o)
+    if isinstance(o, np.ndarray):
+        return o.tolist()
+    raise TypeError(f"Not JSON serializable: {type(o)}")
+
+
+# ---------------------------------------------------------------------
+# Load / validate / eligibility
+# ---------------------------------------------------------------------
+
+def load_inventory(path: Path) -> pd.DataFrame:
+    if not path.is_file():
+        raise CandidatePoolError(
+            f"Inventory not found: {path}\n"
+            "Run `python src/dataset_quality.py` first to create it."
+        )
+    df = pd.read_csv(
+        path, low_memory=False,
+        dtype={"session": str, "scan": str, "subject_id": str,
+               "filepath": str, "class_name": str},
+    )
+    missing = [c for c in REQUIRED_COLUMNS if c not in df.columns]
+    if missing:
+        raise CandidatePoolError(
+            f"Inventory is missing required column(s): {missing}. "
+            f"Columns present: {list(df.columns)}"
+        )
+    return df
+
+
+def apply_eligibility(df: pd.DataFrame) -> Tuple[pd.DataFrame, Dict[str, Dict[str, int]]]:
+    """Drop only genuinely unusable records. Returns (eligible, exclusions)."""
+    df = df.copy()
+    df["is_readable"] = to_bool(df["is_readable"])
+    df["quality_flag"] = to_bool(df["quality_flag"])
+    df["quality_reasons"] = df["quality_reasons"].fillna("")
+    df["slice_idx_num"] = pd.to_numeric(df["slice_idx"], errors="coerce")
+
+    unknown_class = ~df["class_name"].isin(CLASS_NAMES)
+    if unknown_class.any():
+        bad = sorted(df.loc[unknown_class, "class_name"].astype(str).unique())
+        raise CandidatePoolError(f"Inventory contains unexpected class names: {bad}")
+    exp_id = df["class_name"].map(CLASS_TO_IDX)
+    if not (pd.to_numeric(df["class_id"], errors="coerce") == exp_id).all():
+        raise CandidatePoolError("class_id in inventory disagrees with config.CLASS_TO_IDX.")
+
+    def bad_text(col: str) -> pd.Series:
+        s = df[col].astype(str).str.strip()
+        return df[col].isna() | s.isin(["", "UNKNOWN", "nan", "None"])
+
+    reasons = {
+        "not_readable": ~df["is_readable"],
+        "subject_unknown": bad_text("subject_id"),
+        "session_or_scan_unparsed": bad_text("session") | bad_text("scan"),
+        "slice_idx_invalid": df["slice_idx_num"].isna() | (df["slice_idx_num"] < 0),
+        "filepath_missing": bad_text("filepath"),
+    }
+
+    exclusions: Dict[str, Dict[str, int]] = {c: {} for c in CLASS_NAMES}
+    drop = pd.Series(False, index=df.index)
+    for name, mask in reasons.items():
+        newly = mask & ~drop
+        for cls, n in df.loc[newly, "class_name"].value_counts().items():
+            exclusions[cls][name] = int(n)
+        drop |= mask
+    eligible = df.loc[~drop].copy()
+    eligible["slice_idx"] = eligible["slice_idx_num"].astype(int)
+    eligible = eligible.drop(columns=["slice_idx_num"])
+
+    # Exact duplicates: audit says none. If present, keep one representative
+    # per group for the large classes; for mandatory-all classes fail loudly.
+    dup = eligible["exact_duplicate_group"].notna() & (
+        eligible["exact_duplicate_group"].astype(str).str.strip() != "")
+    if dup.any():
+        mand = dup & eligible["class_name"].isin(MANDATORY_ALL_CLASSES)
+        if mand.any():
+            raise CandidatePoolError(
+                "Exact duplicate records found in a mandatory-all class "
+                f"({sorted(eligible.loc[mand, 'class_name'].unique())}); "
+                "cannot include all images without duplicates."
+            )
+        d = eligible.loc[dup].sort_values("filepath")
+        extras = d[d.duplicated(["class_name", "exact_duplicate_group"], keep="first")]
+        for cls, n in extras["class_name"].value_counts().items():
+            exclusions[cls]["exact_duplicate_non_representative"] = int(n)
+        eligible = eligible.drop(index=extras.index)
+    return eligible, exclusions
+
+
+# ---------------------------------------------------------------------
+# Selection
+# ---------------------------------------------------------------------
+
+def select_for_class(
+    df_c: pd.DataFrame, class_name: str, target: int, mandatory_all: bool
+) -> pd.DataFrame:
+    df_c = df_c.sort_values("filepath").reset_index(drop=True)
+    n_avail = len(df_c)
+
+    if mandatory_all:
+        if n_avail != target:
+            raise CandidatePoolError(
+                f"{class_name}: all {target} images are mandatory but only "
+                f"{n_avail} eligible images are available."
+            )
+        target = n_avail
+    elif n_avail < target:
+        raise CandidatePoolError(
+            f"{class_name}: need {target} images but only {n_avail} eligible."
+        )
+
+    # normalized quality = percentile rank inside class (ranking signal only)
+    q = pd.to_numeric(df_c["quality_score"], errors="coerce")
+    q_filled = q.fillna(q.min() if q.notna().any() else 0.0)
+    df_c["normalized_quality"] = q_filled.rank(pct=True, method="average").astype(float)
+
+    df_c["_region"] = df_c["slice_idx"].map(slice_region_index).astype(int)
+
+    # ---- subject quotas ----
+    subjects = sorted(df_c["subject_id"].unique())
+    avail = df_c.groupby("subject_id").size().to_dict()
+    subj_mq = df_c.groupby("subject_id")["normalized_quality"].mean().to_dict()
+    subj_priority = sorted(subjects, key=lambda s: (-subj_mq[s], s))
+    subject_quota = allocate_even(target, {s: int(avail[s]) for s in subjects},
+                                  subj_priority)
+
+    # ---- scan quotas + slot sequence ----
+    class_scan_count: Counter = Counter()
+    scan_quota: Dict[Tuple, int] = {}          # (subject, session, scan) -> quota
+    slots: Dict[str, List[Tuple[str, str]]] = {}
+    groups: Dict[Tuple, dict] = {}
+
+    for s in subjects:
+        sub = df_c[df_c["subject_id"] == s]
+        gdict = {}
+        for (sess, scan), g in sub.groupby(["session", "scan"], sort=True):
+            gdict[(sess, scan)] = g
+        caps = {k: len(g) for k, g in gdict.items()}
+        gq = {k: float(g["normalized_quality"].mean()) for k, g in gdict.items()}
+        prio = sorted(gdict, key=lambda k: (class_scan_count[k], -gq[k], k))
+        alloc = allocate_even(subject_quota[s], caps, prio)
+        for k, n in alloc.items():
+            class_scan_count[k] += n
+            scan_quota[(s, *k)] = n
+        # interleave groups round-robin for the slot sequence
+        remaining = dict(alloc)
+        seq: List[Tuple[str, str]] = []
+        while any(v > 0 for v in remaining.values()):
+            for k in prio:
+                if remaining[k] > 0:
+                    seq.append(k)
+                    remaining[k] -= 1
+        slots[s] = seq
+        for k, g in gdict.items():
+            groups[(s, *k)] = {
+                "rows": g.index.to_numpy(),
+                "slices": g["slice_idx"].to_numpy(),
+                "region": g["_region"].to_numpy(),
+                "q": g["normalized_quality"].to_numpy(),
+                "taken": np.zeros(len(g), dtype=bool),
+                "picked_slices": [],
+                "region_counts": np.zeros(N_CORE_REGIONS + 1, dtype=int),
+            }
+
+    # ---- round-robin picking ----
+    class_region_counts = np.zeros(N_CORE_REGIONS + 1, dtype=int)
+    picks_so_far: Dict[str, int] = {s: 0 for s in subjects}
+    chosen: List[Tuple[int, float, str]] = []
+    n_picked_class = 0
+    uniform_share = 1.0 / N_CORE_REGIONS
+
+    for r in range(max(subject_quota.values())):
+        for s in subjects:
+            if r >= subject_quota[s]:
+                continue
+            key = (s, *slots[s][r])
+            st = groups[key]
+            region = st["region"]
+
+            # slice diversity
+            n_grp_reg = st["region_counts"][region]
+            share = class_region_counts[region] / max(1, n_picked_class)
+            class_term = np.clip(1.0 - share / (2.0 * uniform_share), 0.0, 1.0)
+            class_term = np.where(region == N_CORE_REGIONS, 0.0, class_term)
+            slice_div = 0.5 / (1.0 + n_grp_reg) + 0.5 * class_term
+
+            n_in_scan = len(st["picked_slices"])
+            scan_div = 1.0 / (1.0 + n_in_scan)
+            subj_bal = 1.0 - picks_so_far[s] / subject_quota[s]
+
+            if st["picked_slices"]:
+                ps = np.asarray(st["picked_slices"])
+                dist = np.abs(st["slices"][:, None] - ps[None, :]).min(axis=1)
+                pen = NEIGHBOR_PENALTY_MAX * np.clip(
+                    1.0 - dist / NEIGHBOR_PENALTY_RADIUS, 0.0, 1.0)
+            else:
+                pen = np.zeros(len(st["slices"]))
+
+            score = (W_QUALITY * st["q"] + W_SLICE * slice_div
+                     + W_SCAN * scan_div + W_SUBJECT * subj_bal - pen)
+            score = np.round(score, 12)
+            score[st["taken"]] = -np.inf
+            best = int(np.argmax(score))  # first max => lowest filepath
+            if not np.isfinite(score[best]):
+                raise CandidatePoolError(
+                    f"{class_name}: ran out of candidates in group {key}.")
+
+            row = int(st["rows"][best])
+            reg = int(region[best])
+            st["taken"][best] = True
+            st["picked_slices"].append(int(st["slices"][best]))
+            st["region_counts"][reg] += 1
+            class_region_counts[reg] += 1
+            n_picked_class += 1
+            picks_so_far[s] += 1
+
+            reason = (
+                ("mandatory: all images of this class included; " if mandatory_all else "")
+                + f"subject_quota={subject_quota[s]}; "
+                  f"scan_quota={scan_quota[key]} ({key[1]}/{key[2]}); "
+                  f"slice_region={REGION_LABELS[reg]}; "
+                  f"norm_quality={st['q'][best]:.3f}; "
+                  f"pick_round={r + 1}"
+            )
+            chosen.append((row, float(score[best]), reason))
+
+    idx = [c[0] for c in chosen]
+    out = df_c.loc[idx].copy()
+    out["selection_score"] = [c[1] for c in chosen]
+    out["selection_reason"] = [c[2] for c in chosen]
+    out["subject_quota"] = out["subject_id"].map(subject_quota).astype(int)
+    out["scan_quota"] = [
+        scan_quota[(s, a, b)] for s, a, b in
+        zip(out["subject_id"], out["session"], out["scan"])
+    ]
+    out["slice_region"] = [REGION_LABELS[i] for i in out["_region"]]
+    out = out.drop(columns=["_region"])
+    if len(out) != target:
+        raise CandidatePoolError(
+            f"{class_name}: selected {len(out)} but target is {target}.")
+    return out
+
+
+def build_pool(eligible: pd.DataFrame) -> pd.DataFrame:
+    np.random.seed(RANDOM_SEED)  # explicit; selection itself is deterministic
+    parts = []
+    for cls in CLASS_NAMES:
+        df_c = eligible[eligible["class_name"] == cls]
+        if df_c.empty:
+            raise CandidatePoolError(f"No eligible images for class '{cls}'.")
+        parts.append(select_for_class(
+            df_c, cls, TARGET_COUNTS[cls], cls in MANDATORY_ALL_CLASSES))
+    pool = pd.concat(parts, ignore_index=True)
+    pool = pool.sort_values(
+        ["class_id", "subject_id", "session", "scan", "slice_idx", "filepath"]
+    ).reset_index(drop=True)
+    return pool
+
+
+# ---------------------------------------------------------------------
+# Validation
+# ---------------------------------------------------------------------
+
+def validate_pool(pool: pd.DataFrame, eligible: pd.DataFrame) -> Dict[str, bool]:
+    checks: Dict[str, bool] = {}
+    checks[f"total == {TOTAL_TARGET}"] = len(pool) == TOTAL_TARGET
+    counts = pool["class_name"].value_counts()
+    for cls in CLASS_NAMES:
+        checks[f"{cls} == {TARGET_COUNTS[cls]}"] = int(counts.get(cls, 0)) == TARGET_COUNTS[cls]
+    checks["no duplicate filepath"] = not pool["filepath"].duplicated().any()
+    checks["no missing filepath"] = bool(
+        pool["filepath"].notna().all()
+        and (pool["filepath"].astype(str).str.strip() != "").all())
+    checks["all records readable"] = bool(to_bool(pool["is_readable"]).all())
+    checks["no UNKNOWN subject_id"] = not (
+        pool["subject_id"].astype(str).str.upper() == "UNKNOWN").any()
+    checks["no filename parse failures"] = bool(
+        (~pool[["session", "scan"]].astype(str).apply(
+            lambda c: c.str.upper() == "UNKNOWN").any(axis=1)).all()
+        and (pool["slice_idx"] >= 0).all())
+    dup = pool["exact_duplicate_group"].notna() & (
+        pool["exact_duplicate_group"].astype(str).str.strip() != "")
+    checks["no exact duplicate groups"] = not dup.any()
+    checks["all four classes represented"] = set(pool["class_name"]) == set(CLASS_NAMES)
+    mod_pool = set(pool.loc[pool["class_name"] == "Moderate Demented", "subject_id"])
+    mod_avail = set(eligible.loc[eligible["class_name"] == "Moderate Demented", "subject_id"])
+    checks["all Moderate Demented subjects represented"] = (
+        mod_pool == mod_avail and len(mod_pool) >= 1)
+    checks[f"Moderate Demented has {EXPECTED_MODERATE_SUBJECTS} subjects (audit)"] = (
+        len(mod_pool) == EXPECTED_MODERATE_SUBJECTS)
+    checks["no duplicate (class, subject, session, scan, slice_idx)"] = not pool.duplicated(
+        ["class_name", "subject_id", "session", "scan", "slice_idx"]).any()
+    mod_all = set(eligible.loc[eligible["class_name"] == "Moderate Demented", "filepath"])
+    checks["all eligible Moderate Demented files included"] = mod_all == set(
+        pool.loc[pool["class_name"] == "Moderate Demented", "filepath"])
+    return checks
+
+
+# ---------------------------------------------------------------------
+# Tables
+# ---------------------------------------------------------------------
+
+def make_summary(pool: pd.DataFrame) -> pd.DataFrame:
+    rows = []
+    for cls in CLASS_NAMES:
+        g = pool[pool["class_name"] == cls]
+        qs = pd.to_numeric(g["quality_score"], errors="coerce")
+        rows.append({
+            "class_name": cls,
+            "class_id": CLASS_TO_IDX[cls],
+            "target_count": TARGET_COUNTS[cls],
+            "selected_count": len(g),
+            "unique_subjects": g["subject_id"].nunique(),
+            "unique_sessions": g["session"].nunique(),
+            "unique_scans": g["scan"].nunique(),
+            "unique_subject_sessions": g[["subject_id", "session"]].drop_duplicates().shape[0],
+            "unique_subject_scans": g[["subject_id", "session", "scan"]].drop_duplicates().shape[0],
+            "unique_slice_positions": g["slice_idx"].nunique(),
+            "quality_flagged_count": int(g["quality_flag"].sum()),
+            "mean_quality_score": qs.mean(),
+            "median_quality_score": qs.median(),
+            "min_quality_score": qs.min(),
+            "max_quality_score": qs.max(),
+        })
+    return pd.DataFrame(rows)
+
+
+def make_subject_distribution(pool: pd.DataFrame, eligible: pd.DataFrame) -> pd.DataFrame:
+    avail = (eligible.groupby(["class_name", "subject_id"]).size()
+             .rename("available_count").reset_index())
+    sel = (pool.groupby(["class_name", "class_id", "subject_id"])
+           .agg(selected_count=("filepath", "size"),
+                subject_quota=("subject_quota", "first")).reset_index())
+    out = sel.merge(avail, on=["class_name", "subject_id"], how="left")
+    out = out[["class_name", "class_id", "subject_id", "selected_count",
+               "available_count", "subject_quota"]]
+    return out.sort_values(["class_id", "subject_id"]).reset_index(drop=True)
+
+
+def make_slice_distribution(pool: pd.DataFrame) -> pd.DataFrame:
+    out = (pool.groupby(["class_name", "class_id", "slice_region", "slice_idx"])
+           .size().rename("selected_count").reset_index())
+    out = out.sort_values(["class_id", "slice_idx"]).drop(columns="class_id")
+    return out.reset_index(drop=True)
+
+
+def make_scan_distribution(pool: pd.DataFrame) -> pd.DataFrame:
+    out = (pool.groupby(["class_name", "class_id", "session", "scan"])
+           .size().rename("selected_count").reset_index())
+    out = out.sort_values(["class_id", "session", "scan"]).drop(columns="class_id")
+    return out.reset_index(drop=True)
+
+
+# ---------------------------------------------------------------------
+# Reports
+# ---------------------------------------------------------------------
+
+def build_report(pool, eligible, inventory_df, inventory_path, exclusions,
+                 checks, summary, subj_dist, slice_dist, scan_dist) -> dict:
+    warnings: List[str] = []
+    for cls in CLASS_NAMES:
+        n = int((eligible["class_name"] == cls).sum())
+        tot = int((inventory_df["class_name"] == cls).sum())
+        if n != tot:
+            warnings.append(f"{cls}: {tot - n} inventory record(s) excluded as unusable.")
+    mod = pool[pool["class_name"] == "Moderate Demented"]
+    warnings.append(
+        f"Moderate Demented comes from only {mod['subject_id'].nunique()} subject(s); "
+        "the pool necessarily contains every slice of those subjects, many of "
+        "them adjacent. A subject-level train/val/test split cannot place this "
+        "class in all three partitions, which is a data limitation to resolve "
+        "at the final-selection/splitting stage.")
+    warnings.append(
+        "Quality flags are ranking information only: "
+        f"{int(pool['quality_flag'].sum())} quality-flagged image(s) are in the pool "
+        "(all kept for Moderate Demented; down-weighted by score elsewhere).")
+    warnings.append(
+        "Exact-duplicate status relies on the audit's SHA-256 results; "
+        "perceptual near-duplicates have NOT been checked.")
+    for cls in CLASS_NAMES:
+        outside = int((pool.loc[pool["class_name"] == cls, "slice_region"]
+                       == "outside-100-160").sum())
+        if outside:
+            warnings.append(f"{cls}: {outside} selected slice(s) lie outside 100-160.")
+
+    region_tbl = (pool.groupby(["class_name", "slice_region"]).size()
+                  .unstack(fill_value=0).reindex(CLASS_NAMES))
+    per_subject = subj_dist.groupby("class_name")["selected_count"].agg(["min", "median", "max"])
+    return {
+        "title": "OASIS Candidate Pool Report",
+        "statements": [DISCLAIMER_CANDIDATE, DISCLAIMER_NEARDUP],
+        "input_inventory": {
+            "path": str(inventory_path),
+            "sha256": sha256_file(inventory_path),
+            "total_records": int(len(inventory_df)),
+            "eligible_records": int(len(eligible)),
+        },
+        "dataset_source": "data/oasis_subset (audited 2D OASIS axial JPEG slices; "
+                          "raw files are not read or copied by this stage)",
+        "target_counts": TARGET_COUNTS,
+        "actual_counts": {c: int((pool["class_name"] == c).sum()) for c in CLASS_NAMES},
+        "total_selected": int(len(pool)),
+        "exclusions": exclusions,
+        "random_seed": RANDOM_SEED,
+        "selection_methodology": {
+            "hierarchy": "class > subject > session > scan > slice",
+            "score": {"normalized_quality": W_QUALITY, "slice_diversity": W_SLICE,
+                      "scan_diversity": W_SCAN, "subject_balance": W_SUBJECT,
+                      "neighbor_penalty_max": NEIGHBOR_PENALTY_MAX,
+                      "neighbor_penalty_radius_slices": NEIGHBOR_PENALTY_RADIUS},
+            "slice_regions": [r[0] for r in SLICE_REGIONS],
+            "notes": "Subject quotas (even split, capped) -> scan quotas (even split, "
+                     "class-level scan balancing) -> round-robin slice picks scored by "
+                     "the weighted formula; ties broken by filepath. Quality flags "
+                     "never exclude images. Exact class counts take priority over score.",
+        },
+        "subject_diversity": {
+            "images_per_subject": per_subject.reset_index().to_dict(orient="records"),
+            "subject_distribution_file": "candidate_subject_distribution.csv",
+        },
+        "scan_session_diversity": scan_dist.to_dict(orient="records"),
+        "slice_diversity": {
+            "region_counts": region_tbl.reset_index().to_dict(orient="records"),
+            "slice_distribution_file": "candidate_slice_distribution.csv",
+        },
+        "quality_statistics": summary[[
+            "class_name", "mean_quality_score", "median_quality_score",
+            "min_quality_score", "max_quality_score"]].to_dict(orient="records"),
+        "quality_flag_counts": {c: int(pool.loc[pool["class_name"] == c, "quality_flag"].sum())
+                                for c in CLASS_NAMES},
+        "summary": summary.to_dict(orient="records"),
+        "validation": {k: bool(v) for k, v in checks.items()},
+        "validation_passed": bool(all(checks.values())),
+        "warnings": warnings,
+        "_region_table": region_tbl,
+        "_per_subject": per_subject,
+    }
+
+
+def write_markdown(rep: dict, summary, scan_dist, path: Path) -> None:
+    L: List[str] = []
+    L.append(f"# {rep['title']}\n")
+    L.append(f"> **{DISCLAIMER_CANDIDATE}**  ")
+    L.append(f"> **{DISCLAIMER_NEARDUP}**\n")
+    inv = rep["input_inventory"]
+    L.append("## Input inventory\n")
+    L.append(f"- File: `{inv['path']}`")
+    L.append(f"- SHA-256: `{inv['sha256']}`")
+    L.append(f"- Total records: **{inv['total_records']:,}**")
+    L.append(f"- Eligible records: **{inv['eligible_records']:,}**")
+    L.append(f"- Dataset source: {rep['dataset_source']}\n")
+    L.append("## Target vs actual counts\n")
+    t = pd.DataFrame({"class_name": CLASS_NAMES,
+                      "target": [rep["target_counts"][c] for c in CLASS_NAMES],
+                      "actual": [rep["actual_counts"][c] for c in CLASS_NAMES]})
+    L.append(md_table(t))
+    L.append(f"\nTotal selected: **{rep['total_selected']:,}** (target {TOTAL_TARGET:,})\n")
+    L.append("## Exclusions\n")
+    any_ex = False
+    for cls, d in rep["exclusions"].items():
+        for reason, n in d.items():
+            any_ex = True
+            L.append(f"- {cls}: {n} x `{reason}`")
+    if not any_ex:
+        L.append("- None (no unusable records found in the inventory).")
+    L.append("")
+    L.append("## Subject diversity\n")
+    ps = rep["_per_subject"].reset_index()
+    ps.insert(1, "unique_subjects", summary["unique_subjects"].to_numpy())
+    ps = ps.rename(columns={"min": "min_per_subject", "median": "median_per_subject",
+                            "max": "max_per_subject"})
+    L.append(md_table(ps))
+    L.append("\n## Scan / session diversity\n")
+    L.append(md_table(summary[["class_name", "unique_sessions", "unique_scans",
+                               "unique_subject_sessions", "unique_subject_scans"]]))
+    L.append("\nSelected images per session/scan:\n")
+    L.append(md_table(scan_dist))
+    L.append("\n## Slice diversity\n")
+    L.append(md_table(rep["_region_table"].reset_index()))
+    L.append("")
+    L.append(md_table(summary[["class_name", "unique_slice_positions"]]))
+    L.append("\n## Quality statistics\n")
+    L.append(md_table(summary[["class_name", "quality_flagged_count", "mean_quality_score",
+                               "median_quality_score", "min_quality_score",
+                               "max_quality_score"]]))
+    L.append("\n## Selection methodology\n")
+    m = rep["selection_methodology"]
+    L.append(f"- Hierarchy: {m['hierarchy']}")
+    s = m["score"]
+    L.append(f"- Score = {s['normalized_quality']} x normalized_quality + "
+             f"{s['slice_diversity']} x slice_diversity + {s['scan_diversity']} x "
+             f"scan_diversity + {s['subject_balance']} x subject_balance - neighbor_penalty "
+             f"(max {s['neighbor_penalty_max']}, radius {s['neighbor_penalty_radius_slices']} slices)")
+    L.append(f"- Slice regions: {', '.join(m['slice_regions'])}")
+    L.append(f"- {m['notes']}")
+    L.append(f"- Random seed: **{rep['random_seed']}** (no randomness is consumed; ties "
+             "are broken by filepath, so repeated runs are identical)\n")
+    L.append("## Validation\n")
+    for k, v in rep["validation"].items():
+        L.append(f"- {'PASS' if v else 'FAIL'}: {k}")
+    L.append(f"\nOverall: **{'PASSED' if rep['validation_passed'] else 'FAILED'}**\n")
+    L.append("## Warnings / limitations\n")
+    for w in rep["warnings"]:
+        L.append(f"- {w}")
+    L.append("")
+    path.write_text("\n".join(L), encoding="utf-8")
+
+
+# ---------------------------------------------------------------------
+# Main
+# ---------------------------------------------------------------------
+
+def main(argv: Optional[List[str]] = None) -> int:
+    ap = argparse.ArgumentParser(description="Create the 1,988-image OASIS candidate pool.")
+    ap.add_argument("--inventory", type=Path, default=config.PROJECT_ROOT / INVENTORY_REL)
+    ap.add_argument("--output-dir", type=Path, default=config.PROJECT_ROOT / OUTPUT_REL)
+    args = ap.parse_args(argv)
+
+    print(f"Reading inventory: {args.inventory}")
+    inventory = load_inventory(args.inventory)
+    print(f"  {len(inventory):,} records")
+
+    eligible, exclusions = apply_eligibility(inventory)
+    print(f"  {len(eligible):,} eligible records")
+
+    pool = build_pool(eligible)
+
+    checks = validate_pool(pool, eligible)
+    failed = [k for k, v in checks.items() if not v]
+    if failed:
+        raise CandidatePoolError("Validation FAILED: " + "; ".join(failed))
+
+    summary = make_summary(pool)
+    subj_dist = make_subject_distribution(pool, eligible)
+    slice_dist = make_slice_distribution(pool)
+    scan_dist = make_scan_distribution(pool)
+    report = build_report(pool, eligible, inventory, args.inventory, exclusions,
+                          checks, summary, subj_dist, slice_dist, scan_dist)
+
+    out = args.output_dir
+    out.mkdir(parents=True, exist_ok=True)
+
+    front = [c for c in REQUIRED_COLUMNS if c in pool.columns]
+    added = ["selection_score", "selection_reason", "subject_quota", "scan_quota",
+             "slice_region", "normalized_quality"]
+    rest = [c for c in pool.columns if c not in front + added]
+    pool[front + added + rest].to_csv(out / "candidate_pool.csv", index=False)
+    summary.to_csv(out / "candidate_pool_summary.csv", index=False)
+    subj_dist.to_csv(out / "candidate_subject_distribution.csv", index=False)
+    slice_dist.to_csv(out / "candidate_slice_distribution.csv", index=False)
+    scan_dist.to_csv(out / "candidate_scan_distribution.csv", index=False)
+    write_markdown(report, summary, scan_dist, out / "candidate_pool_report.md")
+    json_rep = {k: v for k, v in report.items() if not k.startswith("_")}
+    (out / "candidate_pool_report.json").write_text(
+        json.dumps(json_rep, indent=2, default=_json_default), encoding="utf-8")
+
+    # ---- console report ----
+    print("\n" + "=" * 70)
+    print("CANDIDATE POOL CREATED (not the final 400-image dataset)")
+    print("=" * 70)
+    print(f"Total selected: {len(pool):,}")
+    print(summary[["class_name", "target_count", "selected_count", "unique_subjects",
+                   "unique_sessions", "unique_scans", "unique_slice_positions",
+                   "quality_flagged_count"]].to_string(index=False))
+    print("\nQuality statistics:")
+    print(summary[["class_name", "mean_quality_score", "median_quality_score",
+                   "min_quality_score", "max_quality_score"]].round(4).to_string(index=False))
+    print("\nSlice-region counts:")
+    print(report["_region_table"].to_string())
+    print("\nScan/session distribution:")
+    print(scan_dist.to_string(index=False))
+    print("\nValidation:")
+    for k, v in checks.items():
+        print(f"  [{'PASS' if v else 'FAIL'}] {k}")
+    print("\nWarnings:")
+    for w in report["warnings"]:
+        print(f"  - {w}")
+    print(f"\nOutputs written to: {out}")
+    return 0
+
+
+if __name__ == "__main__":
+    try:
+        sys.exit(main())
+    except CandidatePoolError as e:
+        print(f"\nERROR: {e}", file=sys.stderr)
+        sys.exit(1)
+
+
+============================================================
+FILE: archive\dataset_selection\analyze_candidate_redundancy.py
+============================================================
+
+#!/usr/bin/env python3
+"""pHash redundancy analysis of the 1,988-image candidate pool (read-only).
+
+Reads ONLY outputs/candidate_pool/candidate_pool.csv. Does not select the
+final 400, split, train, or touch raw images / the candidate pool.
+
+Conventions
+-----------
+same_session = same subject AND same session label
+same_scan    = same subject AND same session AND same scan label
+slice_distance = |slice_a - slice_b| (always computed; most meaningful when
+                 same_scan is True)
+Proximity classes (exclusive): adjacent <=1, very_close ==2, nearby 3-4,
+separated >4.
+Direct pairwise similarity = an edge (distance <= t). Connected components
+are transitive groups; each group is labelled clique (all members mutually
+within t) or transitive_chain (some members farther apart than t).
+"""
+from __future__ import annotations
+
+import hashlib
+import json
+import sys
+import time
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+from scipy.sparse import csr_matrix
+from scipy.sparse.csgraph import connected_components
+
+ROOT = Path(__file__).resolve().parent.parent
+POOL = ROOT / "outputs" / "candidate_pool" / "candidate_pool.csv"
+OUT = ROOT / "outputs" / "candidate_redundancy"
+
+EXPECTED_ROWS = 1988
+BINS = [("0-2", 0, 2), ("3-4", 3, 4), ("5-6", 5, 6), ("7-8", 7, 8),
+        ("9-10", 9, 10), ("11-15", 11, 15), ("16+", 16, 10**6)]
+BIN_LABELS = [b[0] for b in BINS]
+PAIR_CSV_MAX = 10                 # pairs with distance <= this are written to CSV
+REPORT_T = [2, 4, 6, 8, 10]       # cumulative thresholds for groups / entity tables
+PROX_LABELS = ["adjacent(<=1)", "very_close(2)", "nearby(3-4)", "separated(>4)"]
+
+
+def sha256(path: Path) -> str:
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1 << 20), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def bin_of(d: np.ndarray) -> np.ndarray:
+    out = np.empty(d.shape, dtype=object)
+    for lab, lo, hi in BINS:
+        out[(d >= lo) & (d <= hi)] = lab
+    return out
+
+
+def prox_of(sd: np.ndarray) -> np.ndarray:
+    return np.select([sd <= 1, sd == 2, sd <= 4], PROX_LABELS[:3], default=PROX_LABELS[3])
+
+
+def md_table(df: pd.DataFrame) -> str:
+    cols = list(df.columns)
+    lines = ["| " + " | ".join(map(str, cols)) + " |",
+             "|" + "|".join(["---"] * len(cols)) + "|"]
+    for _, r in df.iterrows():
+        lines.append("| " + " | ".join(
+            f"{v:.4g}" if isinstance(v, float) else str(v) for v in r) + " |")
+    return "\n".join(lines)
+
+
+def entity_table(keys: pd.Series, extra: pd.DataFrame, i, j, d, same_mask) -> pd.DataFrame:
+    """Per-entity redundancy: images involved in >=1 pair <= t, within/cross pair counts."""
+    codes, uniques = pd.factorize(keys)
+    n = len(keys)
+    base = pd.DataFrame({"code": codes})
+    for c in extra.columns:
+        base[c] = extra[c].values
+    g = base.groupby("code").first()
+    g["n_images"] = np.bincount(codes, minlength=len(uniques))
+    g.insert(0, "entity", uniques)
+    for t in REPORT_T:
+        m = d <= t
+        deg_all = np.bincount(i[m], minlength=n) + np.bincount(j[m], minlength=n)
+        ms = m & same_mask
+        deg_same = np.bincount(i[ms], minlength=n) + np.bincount(j[ms], minlength=n)
+        per_ent_inv = np.bincount(codes, weights=(deg_all > 0).astype(float), minlength=len(uniques))
+        per_ent_same = np.bincount(codes, weights=deg_same, minlength=len(uniques)) / 2
+        per_ent_cross = np.bincount(codes, weights=deg_all - deg_same, minlength=len(uniques))
+        g[f"imgs_involved_le{t}"] = per_ent_inv.astype(int)
+        g[f"within_pairs_le{t}"] = per_ent_same.astype(int)
+        g[f"cross_pairs_le{t}"] = per_ent_cross.astype(int)
+    return g.reset_index(drop=True)
+
+
+def main() -> int:
+    t0 = time.time()
+    warnings: list[str] = []
+    OUT.mkdir(parents=True, exist_ok=True)
+
+    # ---------------- validation (input) ----------------
+    if not POOL.exists():
+        print(f"FAILURE: missing {POOL}")
+        return 1
+    sha_before = sha256(POOL)
+    df = pd.read_csv(POOL)
+    n_rows = len(df)
+    row_ok = n_rows == EXPECTED_ROWS
+    if not row_ok:
+        warnings.append(f"row count {n_rows} != expected {EXPECTED_ROWS}")
+
+    ph = df["phash"].astype("string")
+    valid = ph.notna() & ph.str.fullmatch(r"[0-9a-fA-F]{1,16}").fillna(False)
+    missing = int((~valid).sum())
+    if missing:
+        warnings.append(f"{missing} candidates with missing/invalid pHash excluded")
+    v = df[valid].reset_index(drop=True)
+    n = len(v)
+
+    # ---------------- Hamming distances ----------------
+    h = np.array([int(x, 16) for x in v["phash"]], dtype=np.uint64)
+    shifts = np.arange(63, -1, -1, dtype=np.uint64)
+    bits = ((h[:, None] >> shifts[None, :]) & np.uint64(1)).astype(np.float32)
+    ones = bits.sum(1)
+    D = np.rint(ones[:, None] + ones[None, :] - 2.0 * (bits @ bits.T)).astype(np.int16)
+    iu, ju = np.triu_indices(n, 1)
+    d = D[iu, ju].astype(np.int16)
+    n_pairs = len(d)
+
+    dist_counts = np.bincount(d, minlength=65)
+    dist_dist = pd.DataFrame({"hamming_distance": np.arange(65), "pairs": dist_counts})
+    dist_dist["fraction"] = dist_dist["pairs"] / n_pairs
+    dist_dist["cumulative_pairs"] = dist_dist["pairs"].cumsum()
+    dist_stats = {
+        "min": int(d.min()), "p1": float(np.percentile(d, 1)), "p5": float(np.percentile(d, 5)),
+        "p25": float(np.percentile(d, 25)), "median": float(np.median(d)),
+        "mean": float(d.mean()), "p75": float(np.percentile(d, 75)), "max": int(d.max()),
+    }
+
+    # ---------------- pair attributes (vectorised, all pairs) ----------------
+    cls = v["class_name"].astype(str).values
+    subj = v["subject_id"].astype(str).values
+    sess = v["session"].astype(str).values
+    scan = v["scan"].astype(str).values
+    sl = v["slice_idx"].astype(int).values
+    same_class = cls[iu] == cls[ju]
+    same_subject = subj[iu] == subj[ju]
+    same_session = same_subject & (sess[iu] == sess[ju])
+    same_scan = same_session & (scan[iu] == scan[ju])
+    slice_dist = np.abs(sl[iu] - sl[ju])
+    bin_arr = bin_of(d)
+    prox_arr = prox_of(slice_dist)
+
+    # ---------------- redundancy_summary.csv ----------------
+    rows = []
+    for lab, lo, hi in BINS:
+        m = bin_arr == lab
+        r = {"distance_bin": lab, "pairs": int(m.sum()),
+             "fraction_of_all_pairs": float(m.sum() / n_pairs),
+             "cumulative_pairs_le_hi": int((d <= min(hi, 64)).sum()),
+             "same_subject": int((m & same_subject).sum()),
+             "cross_subject": int((m & ~same_subject).sum()),
+             "same_session": int((m & same_session).sum()),
+             "same_scan": int((m & same_scan).sum()),
+             "cross_scan": int((m & ~same_scan).sum()),
+             "same_class": int((m & same_class).sum()),
+             "cross_class": int((m & ~same_class).sum()),
+             "same_subject_cross_scan": int((m & same_subject & ~same_scan).sum())}
+        for p in PROX_LABELS:
+            r[f"prox_{p}"] = int((m & (prox_arr == p)).sum())
+        rows.append(r)
+    summary = pd.DataFrame(rows)
+    summary.to_csv(OUT / "redundancy_summary.csv", index=False)
+    dist_dist.to_csv(OUT / "hamming_distance_distribution.csv", index=False)
+
+    # ---------------- phash_pairwise_near_duplicates.csv ----------------
+    sel = d <= PAIR_CSV_MAX
+    a, b = iu[sel], ju[sel]
+    pairs = pd.DataFrame({
+        "filepath_a": v["filepath"].values[a], "filepath_b": v["filepath"].values[b],
+        "class_a": cls[a], "class_b": cls[b],
+        "subject_a": subj[a], "subject_b": subj[b],
+        "session_a": sess[a], "session_b": sess[b],
+        "scan_a": scan[a], "scan_b": scan[b],
+        "slice_a": sl[a], "slice_b": sl[b],
+        "hamming_distance": d[sel].astype(int),
+        "same_class": same_class[sel], "same_subject": same_subject[sel],
+        "same_session": same_session[sel], "same_scan": same_scan[sel],
+        "slice_distance": slice_dist[sel],
+        "distance_bin": bin_arr[sel], "slice_proximity": prox_arr[sel],
+    }).sort_values(["hamming_distance", "filepath_a", "filepath_b"])
+    pairs.to_csv(OUT / "phash_pairwise_near_duplicates.csv", index=False)
+
+    # ---------------- groups (direct vs transitive) ----------------
+    grp_rows, grp_meta = [], {}
+    for t in REPORT_T:
+        m = d <= t
+        ei, ej = iu[m], ju[m]
+        g = csr_matrix((np.ones(len(ei), dtype=np.int8), (ei, ej)), shape=(n, n))
+        ncomp, lab = connected_components(g, directed=False)
+        sizes = np.bincount(lab, minlength=ncomp)
+        edges_per = np.bincount(lab[ei], minlength=ncomp)
+        multi = np.where(sizes >= 2)[0]
+        for gid in multi:
+            idx = np.where(lab == gid)[0]
+            s = len(idx)
+            poss = s * (s - 1) // 2
+            dm = int(D[np.ix_(idx, idx)].max())
+            grp_rows.append({
+                "threshold": t, "group_id": int(gid), "size": s,
+                "n_subjects": len(set(subj[idx])), "n_scans": len(set(zip(subj[idx], sess[idx], scan[idx]))),
+                "n_classes": len(set(cls[idx])),
+                "direct_pairs": int(edges_per[gid]), "possible_pairs": poss,
+                "density": float(edges_per[gid] / poss),
+                "max_internal_distance": dm,
+                "group_type": "clique_all_direct" if edges_per[gid] == poss else "transitive_chain",
+                "members": ";".join(v["filepath"].values[idx]),
+            })
+        in_groups = int(sizes[multi].sum())
+        grp_meta[t] = {
+            "groups_ge2": int(len(multi)), "images_in_groups": in_groups,
+            "largest_group": int(sizes.max()), "singleton_images": int((sizes == 1).sum()),
+            "direct_pairs": int(m.sum()),
+            "transitive_chain_groups": int(sum(1 for r in grp_rows if r["threshold"] == t and r["group_type"] == "transitive_chain")),
+            "clique_groups": int(sum(1 for r in grp_rows if r["threshold"] == t and r["group_type"] == "clique_all_direct")),
+        }
+    groups = pd.DataFrame(grp_rows)
+    groups.to_csv(OUT / "near_duplicate_groups.csv", index=False)
+
+    # ---------------- subject / scan tables ----------------
+    subj_tbl = entity_table(v["subject_id"], v[["class_name"]], iu, ju, d, same_subject)
+    subj_tbl.to_csv(OUT / "subject_redundancy.csv", index=False)
+    scan_key = v["subject_id"].astype(str) + "|" + v["session"].astype(str) + "|" + v["scan"].astype(str)
+    scan_tbl = entity_table(scan_key, v[["class_name", "subject_id", "session", "scan"]], iu, ju, d, same_scan)
+    scan_tbl.to_csv(OUT / "scan_redundancy.csv", index=False)
+
+    # ---------------- slice redundancy ----------------
+    sl_rows = []
+    for scope, smask in (("all_pairs", np.ones(n_pairs, bool)), ("same_scan_pairs", same_scan)):
+        for gtype, vals, labels in (
+            ("slice_distance", np.minimum(slice_dist, 11).astype(int), list(range(0, 12))),
+            ("proximity", prox_arr, PROX_LABELS),
+        ):
+            for lbl in labels:
+                m = smask & (vals == lbl)
+                row = {"scope": scope, "group_type": gtype,
+                       "group": ("11+" if gtype == "slice_distance" and lbl == 11 else lbl),
+                       "total_pairs": int(m.sum())}
+                for bl in BIN_LABELS:
+                    row[f"bin_{bl}"] = int((m & (bin_arr == bl)).sum())
+                row["pairs_le10"] = int((m & (d <= 10)).sum())
+                sl_rows.append(row)
+    slice_tbl = pd.DataFrame(sl_rows)
+    slice_tbl.to_csv(OUT / "slice_redundancy.csv", index=False)
+
+    # ---------------- near-dup (<=10) split tables for report ----------------
+    nd = d <= 10
+    split = {
+        "same_subject": int((nd & same_subject).sum()), "cross_subject": int((nd & ~same_subject).sum()),
+        "same_scan": int((nd & same_scan).sum()), "cross_scan": int((nd & ~same_scan).sum()),
+        "same_class": int((nd & same_class).sum()), "cross_class": int((nd & ~same_class).sum()),
+    }
+
+    # ---------------- validation (output) ----------------
+    sha_after = sha256(POOL)
+    unmodified = sha_before == sha_after
+    if not unmodified:
+        warnings.append("candidate_pool.csv hash changed during run!")
+
+    validation = {
+        "candidate_rows": n_rows, "expected_rows": EXPECTED_ROWS, "row_count_ok": row_ok,
+        "analyzed": n, "missing_or_invalid_phash": missing,
+        "candidate_pool_sha256_before": sha_before, "candidate_pool_sha256_after": sha_after,
+        "candidate_pool_unmodified": unmodified,
+        "total_pairs": int(n_pairs),
+    }
+    report = {
+        "validation": validation, "warnings": warnings,
+        "distance_stats": dist_stats,
+        "distance_distribution": {int(k): int(c) for k, c in zip(range(65), dist_counts) if c},
+        "bin_summary": summary.to_dict(orient="records"),
+        "near_duplicate_le10_splits": split,
+        "pair_csv_max_distance": PAIR_CSV_MAX,
+        "pairs_written": int(sel.sum()),
+        "group_summary_by_threshold": grp_meta,
+        "note": "No near-duplicate threshold has been chosen; all bins/thresholds are reported descriptively.",
+        "runtime_sec": round(time.time() - t0, 1),
+    }
+    with open(OUT / "redundancy_report.json", "w", encoding="utf-8") as f:
+        json.dump(report, f, indent=2)
+
+    gm = pd.DataFrame([{"threshold": t, **m} for t, m in grp_meta.items()])
+    md = ["# Candidate Pool pHash Redundancy Report", "",
+          "No near-duplicate threshold was pre-selected; results are descriptive.", "",
+          "## Validation", "",
+          f"- Rows: {n_rows:,} (expected {EXPECTED_ROWS:,}, ok={row_ok})",
+          f"- Analyzed: {n:,}; missing/invalid pHash: {missing}",
+          f"- Pairs compared: {n_pairs:,}",
+          f"- candidate_pool.csv unmodified: {unmodified}", "",
+          "## Hamming-distance distribution (all pairs)", "",
+          "Stats: " + ", ".join(f"{k}={val:.4g}" for k, val in dist_stats.items()), "",
+          md_table(dist_dist[dist_dist["pairs"] > 0][["hamming_distance", "pairs", "fraction", "cumulative_pairs"]]), "",
+          "## Distance bins", "", md_table(summary), "",
+          f"## Pairs with distance <= 10 ({int(nd.sum()):,})", "",
+          md_table(pd.DataFrame([split])), "",
+          "## Groups (direct vs transitive) by threshold", "", md_table(gm), "",
+          "Clique = every member pair directly within threshold; transitive_chain = connected only via intermediate images.", "",
+          "## Slice proximity (all pairs)", "",
+          md_table(slice_tbl[(slice_tbl.scope == "all_pairs") & (slice_tbl.group_type == "proximity")]), "",
+          "## Slice proximity (same-scan pairs)", "",
+          md_table(slice_tbl[(slice_tbl.scope == "same_scan_pairs") & (slice_tbl.group_type == "proximity")]), "",
+          "## Warnings", ""] + ([f"- {w}" for w in warnings] or ["- none"])
+    (OUT / "redundancy_report.md").write_text("\n".join(md), encoding="utf-8")
+
+    # ---------------- compact console summary ----------------
+    print(f"SUCCESS | rows={n_rows} analyzed={n} missing_phash={missing} pairs={n_pairs:,} "
+          f"pool_unmodified={unmodified} ({time.time()-t0:.1f}s)")
+    print("Distance stats:", {k: round(val, 2) for k, val in dist_stats.items()})
+    print("Distribution (dist:pairs, nonzero <=24):",
+          " ".join(f"{k}:{c}" for k, c in zip(range(25), dist_counts[:25]) if c))
+    cols = ["distance_bin", "pairs", "same_subject", "cross_subject", "same_scan", "cross_scan", "same_class", "cross_class"]
+    print(summary[cols].to_string(index=False))
+    print("Proximity per bin:")
+    print(summary[["distance_bin"] + [f"prox_{p}" for p in PROX_LABELS]].to_string(index=False))
+    print("Groups:", json.dumps(grp_meta))
+    print("Warnings:", warnings or "none")
+    print("Outputs:", OUT)
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+
+
+============================================================
+FILE: archive\dataset_selection\create_400.py
+============================================================
+
+#!/usr/bin/env python3
+"""Create the final 400-image subset (100 per class) from the candidate pool.
+
+Reads ONLY outputs/candidate_pool/candidate_pool.csv (never modified).
+No split, no augmentation, no training, no raw-image access.
+
+Method: deterministic greedy, diversity-aware selection run independently
+inside each class. At every step each remaining candidate gets
+
+  score = W_SUBJ  * subject_gain        1/(1+n_selected_from_same_subject)
+        + W_SCAN  * scan_gain           0.6/(1+n_selected_from_same_subject-scan)
+                                        + 0.4*(1 - share of class picks with same session/scan label)
+        + W_SLICE * slice_gain          1/(1+sum_selected exp(-(dSlice/2)^2))   (position coverage)
+        + W_QUAL  * quality_pct         within-class percentile of quality_score
+        - W_QFLAG * quality_flag
+        - W_RED   * redundancy_penalty  max_selected w(pHash Hamming distance)   (soft, never a hard cut)
+        - W_ADJ   * adjacency_penalty   max_selected same-subject slice-proximity penalty
+
+w(d) = 1/(1+exp((d-3.5)/1.0)): ~0.97 at d=0, 0.82 at 2 (strong), 0.62/0.38 at 3/4
+(moderate), 0.18/0.08 at 5/6 (mild), <0.03 from 7 up (negligible).
+Chosen from the empirical all-pairs distribution: <=2 is ~1.1% of pairs,
+<=4 ~6.3%, <=6 ~21%, median distance 9 -- so d<=4 is genuinely unusual while
+>=7 is ordinary MRI-slice similarity and must not be penalised.
+
+Hard rules (only): exact class quota of 100; per-subject cap (stops one subject
+dominating); byte-identical files (same sha256) never selected twice.
+Determinism: candidates sorted by filepath, RANDOM_SEED=42 -> fixed 1e-9 tie-break jitter.
+"""
+from __future__ import annotations
+
+import hashlib
+import json
+import sys
+import time
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+
+ROOT = Path(__file__).resolve().parent.parent
+POOL = ROOT / "outputs" / "candidate_pool" / "candidate_pool.csv"
+OUT = ROOT / "outputs" / "final_400"
+
+RANDOM_SEED = 42
+PER_CLASS = 100
+CLASS_ORDER = ["Non Demented", "Very Mild Demented", "Mild Demented", "Moderate Demented"]
+
+W_SUBJ, W_SCAN, W_SLICE, W_QUAL, W_QFLAG, W_RED, W_ADJ = 4.0, 2.0, 1.5, 1.0, 0.3, 1.2, 1.5
+SLICE_KERNEL_SIGMA = 2.0
+PHASH_W = 1.0 / (1.0 + np.exp((np.arange(65) - 3.5) / 1.0))
+
+BINS = [("0-2", 0, 2), ("3-4", 3, 4), ("5-6", 5, 6), ("7-8", 7, 8),
+        ("9-10", 9, 10), ("11-15", 11, 15), ("16+", 16, 10**6)]
+
+
+def sha256(path: Path) -> str:
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1 << 20), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def hamming_matrix(phash: pd.Series) -> np.ndarray:
+    h = np.array([int(x, 16) for x in phash], dtype=np.uint64)
+    shifts = np.arange(63, -1, -1, dtype=np.uint64)
+    bits = ((h[:, None] >> shifts[None, :]) & np.uint64(1)).astype(np.float32)
+    ones = bits.sum(1)
+    return np.rint(ones[:, None] + ones[None, :] - 2.0 * (bits @ bits.T)).astype(np.int16)
+
+
+def subject_cap(n_subjects: int) -> int:
+    factor = 1.5 if n_subjects >= 5 else 1.2
+    return int(np.ceil(factor * PER_CLASS / n_subjects))
+
+
+def select_class(g: pd.DataFrame, warnings: list[str]) -> pd.DataFrame:
+    """g: one class's candidates, sorted by filepath, reset index."""
+    n = len(g)
+    cname = g["class_name"].iloc[0]
+    if n < PER_CLASS:
+        raise RuntimeError(f"{cname}: only {n} candidates, need {PER_CLASS}")
+
+    D = hamming_matrix(g["phash"])
+    subj, subj_names = pd.factorize(g["subject_id"].astype(str))
+    scan_key = g["subject_id"].astype(str) + "|" + g["session"].astype(str) + "|" + g["scan"].astype(str)
+    scan, _ = pd.factorize(scan_key)
+    label, label_names = pd.factorize(g["session"].astype(str) + "|" + g["scan"].astype(str))
+    sha, _ = pd.factorize(g["sha256"].astype("string"))      # -1 for missing
+    sl = g["slice_idx"].astype(int).values
+    qpct = g["quality_score"].rank(pct=True, method="average").values
+    qflag = g["quality_flag"].astype(bool).values.astype(float)
+    jitter = np.random.default_rng(RANDOM_SEED).random(n) * 1e-9
+
+    cap = subject_cap(len(subj_names))
+    subj_cnt = np.zeros(len(subj_names)); scan_cnt = np.zeros(scan.max() + 1)
+    label_cnt = np.zeros(len(label_names))
+    slice_density = np.zeros(n); red_max = np.zeros(n); adj_max = np.zeros(n)
+    avail = np.ones(n, bool)
+    cap_relaxed = False
+    rows = []
+
+    for step in range(PER_CLASS):
+        subj_gain = 1.0 / (1.0 + subj_cnt[subj])
+        share = label_cnt[label] / (step + 1.0)
+        scan_gain = 0.6 / (1.0 + scan_cnt[scan]) + 0.4 * (1.0 - share)
+        slice_gain = 1.0 / (1.0 + slice_density)
+        score = (W_SUBJ * subj_gain + W_SCAN * scan_gain + W_SLICE * slice_gain
+                 + W_QUAL * qpct - W_QFLAG * qflag - W_RED * red_max - W_ADJ * adj_max + jitter)
+        elig = avail & (subj_cnt[subj] < cap)
+        if not elig.any():
+            elig = avail
+            if not cap_relaxed:
+                warnings.append(f"{cname}: subject cap {cap} relaxed at step {step}")
+                cap_relaxed = True
+        score = np.where(elig, score, -np.inf)
+        k = int(np.argmax(score))
+        rows.append({
+            "idx": k, "selection_order": step + 1, "selection_score": float(score[k]),
+            "subject_gain": float(subj_gain[k]), "scan_gain": float(scan_gain[k]),
+            "slice_gain": float(slice_gain[k]), "quality_pct": float(qpct[k]),
+            "redundancy_penalty": float(red_max[k]), "adjacency_penalty": float(adj_max[k]),
+            "nearest_selected_phash_dist": int(D[k, [r["idx"] for r in rows]].min()) if rows else -1,
+        })
+        # update state
+        avail[k] = False
+        if sha[k] >= 0:
+            avail &= ~(sha == sha[k])
+        subj_cnt[subj[k]] += 1; scan_cnt[scan[k]] += 1; label_cnt[label[k]] += 1
+        red_max = np.maximum(red_max, PHASH_W[D[k].astype(int)])
+        dsl = np.abs(sl - sl[k])
+        slice_density += np.exp(-(dsl / SLICE_KERNEL_SIGMA) ** 2)
+        base = np.select([dsl <= 1, dsl == 2, dsl <= 4], [1.0, 0.6, 0.3], default=0.0)
+        pen = base * np.where(scan == scan[k], 1.0, 0.5) * (subj == subj[k])
+        adj_max = np.maximum(adj_max, pen)
+
+    sel = pd.DataFrame(rows)
+    out = g.iloc[sel["idx"].values].copy().reset_index(drop=True)
+    for c in sel.columns.drop("idx"):
+        out[c] = sel[c].values
+    out["class_rank"] = out["selection_order"]
+    return out
+
+
+def run_selection(pool: pd.DataFrame) -> tuple[pd.DataFrame, list[str]]:
+    """Pure/deterministic: same pool -> same selection (independent of input row order)."""
+    warnings: list[str] = []
+    pool = pool.sort_values(["class_id", "filepath"]).reset_index(drop=True)
+    parts = []
+    for cname in CLASS_ORDER:
+        g = pool[pool["class_name"] == cname].reset_index(drop=True)
+        parts.append(select_class(g, warnings))
+    return pd.concat(parts, ignore_index=True), warnings
+
+
+# ----------------------------------------------------------------------
+def pair_stats(df: pd.DataFrame, dataset: str, scope: str) -> dict:
+    n = len(df)
+    D = hamming_matrix(df["phash"])
+    iu, ju = np.triu_indices(n, 1)
+    d = D[iu, ju]
+    subj = df["subject_id"].astype(str).values
+    scan_key = (df["subject_id"].astype(str) + "|" + df["session"].astype(str) + "|" + df["scan"].astype(str)).values
+    sl = df["slice_idx"].astype(int).values
+    same_subj = subj[iu] == subj[ju]
+    same_scan = scan_key[iu] == scan_key[ju]
+    adj = same_scan & (np.abs(sl[iu] - sl[ju]) <= 1)
+    Dn = D.astype(np.int16).copy(); np.fill_diagonal(Dn, 99)
+    nn = Dn.min(1)
+    r = {"dataset": dataset, "scope": scope, "n_images": n, "n_pairs": int(len(d)),
+         "mean_distance": float(d.mean()), "median_distance": float(np.median(d)),
+         "nn_mean": float(nn.mean()), "nn_median": float(np.median(nn)), "nn_min": int(nn.min())}
+    for t in (2, 4, 6):
+        r[f"pairs_le{t}"] = int((d <= t).sum())
+        r[f"frac_le{t}"] = float((d <= t).mean())
+        r[f"same_subject_pairs_le{t}"] = int(((d <= t) & same_subj).sum())
+    for lab, lo, hi in BINS:
+        r[f"bin_{lab}"] = int(((d >= lo) & (d <= hi)).sum())
+    r["adjacent_same_scan_pairs"] = int(adj.sum())
+    r["adjacent_same_scan_pairs_le4"] = int((adj & (d <= 4)).sum())
+    return r
+
+
+def md_table(df: pd.DataFrame) -> str:
+    cols = list(df.columns)
+    lines = ["| " + " | ".join(map(str, cols)) + " |", "|" + "|".join(["---"] * len(cols)) + "|"]
+    for _, r in df.iterrows():
+        lines.append("| " + " | ".join(f"{v:.4g}" if isinstance(v, float) else str(v) for v in r) + " |")
+    return "\n".join(lines)
+
+
+def main() -> int:
+    t0 = time.time()
+    OUT.mkdir(parents=True, exist_ok=True)
+    if not POOL.exists():
+        print(f"FAILURE: missing {POOL}"); return 1
+    sha_before = sha256(POOL)
+    pool = pd.read_csv(POOL)
+    warnings: list[str] = []
+    if len(pool) != 1988:
+        warnings.append(f"pool rows {len(pool)} != 1988")
+    if pool["phash"].isna().any():
+        print("FAILURE: missing pHash in pool"); return 1
+
+    final, w = run_selection(pool)
+    warnings += w
+    final.to_csv(OUT / "final_400.csv", index=False)
+
+    pool_s = pool.sort_values(["class_id", "filepath"]).reset_index(drop=True)
+    pool_s["scan_key"] = pool_s["subject_id"].astype(str) + "|" + pool_s["session"].astype(str) + "|" + pool_s["scan"].astype(str)
+    final["scan_key"] = final["subject_id"].astype(str) + "|" + final["session"].astype(str) + "|" + final["scan"].astype(str)
+
+    # ---- per-class summary + redundancy (within class) ----
+    red_rows = [pair_stats(pool_s, "candidate_pool", "ALL"), pair_stats(final, "final_400", "ALL")]
+    summ = []
+    for cname in CLASS_ORDER:
+        p = pool_s[pool_s.class_name == cname]; f = final[final.class_name == cname]
+        rp = pair_stats(p.reset_index(drop=True), "candidate_pool", cname)
+        rf = pair_stats(f.reset_index(drop=True), "final_400", cname)
+        red_rows += [rp, rf]
+        per_subj = f.groupby("subject_id").size()
+        summ.append({
+            "class_name": cname, "class_id": int(f.class_id.iloc[0]),
+            "pool_images": len(p), "selected": len(f),
+            "pool_subjects": p.subject_id.nunique(), "selected_subjects": f.subject_id.nunique(),
+            "min_imgs_per_subject": int(per_subj.min()), "median_imgs_per_subject": float(per_subj.median()),
+            "max_imgs_per_subject": int(per_subj.max()),
+            "pool_scans": p.scan_key.nunique(), "selected_scans": f.scan_key.nunique(),
+            "selected_scan_labels": f[["session", "scan"]].drop_duplicates().shape[0],
+            "pool_unique_slices": p.slice_idx.nunique(), "selected_unique_slices": f.slice_idx.nunique(),
+            "mean_quality": float(f.quality_score.mean()), "median_quality": float(f.quality_score.median()),
+            "pool_mean_quality": float(p.quality_score.mean()),
+            "quality_flagged_selected": int(f.quality_flag.sum()),
+            "pairs_le2": rf["pairs_le2"], "pairs_le4": rf["pairs_le4"], "pairs_le6": rf["pairs_le6"],
+            "pool_pairs_le2": rp["pairs_le2"], "pool_pairs_le4": rp["pairs_le4"], "pool_pairs_le6": rp["pairs_le6"],
+            "adjacent_same_scan_pairs": rf["adjacent_same_scan_pairs"],
+        })
+    summary = pd.DataFrame(summ)
+    summary.to_csv(OUT / "final_400_summary.csv", index=False)
+    redundancy = pd.DataFrame(red_rows)
+    redundancy.to_csv(OUT / "final_400_redundancy.csv", index=False)
+
+    # ---- distributions ----
+    subj_tbl = (final.groupby(["class_name", "class_id", "subject_id"]).size().rename("final_count").reset_index()
+                .merge(pool_s.groupby(["class_name", "subject_id"]).size().rename("pool_count").reset_index(),
+                       on=["class_name", "subject_id"], how="outer").fillna({"final_count": 0})
+                .sort_values(["class_name", "subject_id"]))
+    subj_tbl["final_count"] = subj_tbl["final_count"].astype(int)
+    subj_tbl.drop(columns="class_id").to_csv(OUT / "final_400_subject_distribution.csv", index=False)
+
+    slc = (pool_s.groupby(["class_name", "slice_idx"]).size().rename("pool_count").reset_index()
+           .merge(final.groupby(["class_name", "slice_idx"]).size().rename("final_count").reset_index(),
+                  on=["class_name", "slice_idx"], how="left").fillna({"final_count": 0}))
+    slc["final_count"] = slc["final_count"].astype(int)
+    slc.to_csv(OUT / "final_400_slice_distribution.csv", index=False)
+
+    sc = (pool_s.groupby(["class_name", "subject_id", "session", "scan"]).size().rename("pool_count").reset_index()
+          .merge(final.groupby(["class_name", "subject_id", "session", "scan"]).size().rename("final_count").reset_index(),
+                 on=["class_name", "subject_id", "session", "scan"], how="left").fillna({"final_count": 0}))
+    sc["final_count"] = sc["final_count"].astype(int)
+    sc.to_csv(OUT / "final_400_scan_distribution.csv", index=False)
+
+    sha_after = sha256(POOL)
+    if sha_before != sha_after:
+        warnings.append("candidate_pool.csv changed during run!")
+
+    # ---- reports ----
+    allp = pair_stats(pool_s, "candidate_pool", "ALL")  # ECDF anchors
+    mod_subj = final[final.class_name == "Moderate Demented"].groupby("subject_id").size().to_dict()
+    report = {
+        "seed": RANDOM_SEED, "per_class": PER_CLASS, "final_rows": len(final),
+        "weights": {"subject": W_SUBJ, "scan": W_SCAN, "slice": W_SLICE, "quality": W_QUAL,
+                    "quality_flag": W_QFLAG, "phash_redundancy": W_RED, "adjacency": W_ADJ},
+        "phash_penalty_w": {str(d): round(float(PHASH_W[d]), 4) for d in (0, 1, 2, 3, 4, 5, 6, 7, 8, 10)},
+        "subject_caps": {c: subject_cap(int(pool_s[pool_s.class_name == c].subject_id.nunique())) for c in CLASS_ORDER},
+        "empirical_pool_all_pairs": {k: allp[k] for k in ("frac_le2", "frac_le4", "frac_le6", "median_distance")},
+        "moderate_subject_counts": mod_subj,
+        "class_summary": summary.to_dict(orient="records"),
+        "redundancy": redundancy.to_dict(orient="records"),
+        "candidate_pool_sha256_before": sha_before, "candidate_pool_sha256_after": sha_after,
+        "warnings": warnings, "runtime_sec": round(time.time() - t0, 1),
+    }
+    (OUT / "final_400_report.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
+
+    red_show = redundancy[["dataset", "scope", "n_images", "n_pairs", "pairs_le2", "pairs_le4", "pairs_le6",
+                           "frac_le2", "frac_le4", "frac_le6", "nn_median", "same_subject_pairs_le4",
+                           "adjacent_same_scan_pairs"]]
+    region = (final.groupby(["class_name", "slice_region"]).size().unstack(fill_value=0).reset_index()
+              if "slice_region" in final.columns else pd.DataFrame())
+    md = ["# Final 400-image Selection Report", "",
+          f"Deterministic greedy per-class selection, RANDOM_SEED={RANDOM_SEED}; exactly {PER_CLASS} per class. "
+          "No split, augmentation or training performed. Candidate pool unmodified.", "",
+          "## Scoring", "",
+          "`score = %.1f*subject_gain + %.1f*scan_gain + %.1f*slice_gain + %.1f*quality_pct - %.1f*quality_flag "
+          "- %.1f*phash_penalty - %.1f*adjacency_penalty`" % (W_SUBJ, W_SCAN, W_SLICE, W_QUAL, W_QFLAG, W_RED, W_ADJ), "",
+          "- subject_gain = 1/(1+images already picked from that subject)",
+          "- scan_gain = 0.6/(1+picked from same subject-session-scan) + 0.4*(1 - share of picks with same session/scan label)",
+          "- slice_gain = 1/(1+sum exp(-(dSlice/2)^2) over picked) -> spreads picks over slice positions",
+          "- quality_pct = within-class percentile of quality_score (not top-N)",
+          "- phash_penalty = max over picked of w(d), w(d)=1/(1+exp((d-3.5)/1)): soft, no hard threshold",
+          "- adjacency_penalty = same-subject slice proximity vs picked (<=1:1.0, 2:0.6, 3-4:0.3; x0.5 if different scan)",
+          "- Hard rules only: class quota, per-subject cap, no byte-identical (sha256) duplicate.", "",
+          "pHash penalty w(d): " + ", ".join(f"d={d}:{PHASH_W[d]:.2f}" for d in (0, 2, 3, 4, 5, 6, 8)), "",
+          "Justification (candidate pool, all pairs): <=2 = %.2f%%, <=4 = %.2f%%, <=6 = %.2f%% of pairs, median distance %.0f; "
+          "components merge fully at <=8, so distances >=7 are ordinary MRI similarity and are not penalised."
+          % (100 * allp["frac_le2"], 100 * allp["frac_le4"], 100 * allp["frac_le6"], allp["median_distance"]), "",
+          "Per-subject caps: " + ", ".join(f"{k}={v}" for k, v in report["subject_caps"].items()), "",
+          "## Class summary", "", md_table(summary), "",
+          "## Redundancy: final 400 vs candidate pool (ALL = across classes; class rows = within class)", "",
+          md_table(red_show), "",
+          "## Moderate Demented subject counts", "", str(mod_subj), ""]
+    if not region.empty:
+        md += ["## Slice-region distribution (final)", "", md_table(region), ""]
+    md += ["## Warnings", ""] + ([f"- {x}" for x in warnings] or ["- none"])
+    (OUT / "final_400_report.md").write_text("\n".join(md), encoding="utf-8")
+
+    # ---- compact console ----
+    print(f"SUCCESS | rows={len(final)} | {time.time()-t0:.1f}s | pool_unmodified={sha_before == sha_after}")
+    print(summary[["class_name", "selected", "selected_subjects", "selected_unique_slices", "selected_scans",
+                   "pairs_le2", "pairs_le4", "pairs_le6"]].to_string(index=False))
+    fa = redundancy[(redundancy.dataset == "final_400") & (redundancy.scope == "ALL")].iloc[0]
+    print(f"Final ALL pairs: <=2:{fa.pairs_le2} <=4:{fa.pairs_le4} <=6:{fa.pairs_le6}")
+    print("Warnings:", warnings or "none"); print("Outputs:", OUT)
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+
+
+============================================================
+FILE: archive\dataset_selection\validate_400.py
+============================================================
+
+#!/usr/bin/env python3
+"""Validate outputs/final_400/final_400.csv (read-only)."""
+from __future__ import annotations
+
+import json
+import sys
+from pathlib import Path
+
+import pandas as pd
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import create_400 as sel  # noqa: E402
+
+ROOT = sel.ROOT
+FINAL = sel.OUT / "final_400.csv"
+REDUND_JSON = ROOT / "outputs" / "candidate_redundancy" / "redundancy_report.json"
+KEY = ["class_name", "subject_id", "session", "scan", "slice_idx"]
+
+
+def main() -> int:
+    checks: dict[str, bool] = {}
+    details: dict = {}
+    pool = pd.read_csv(sel.POOL)
+    fin = pd.read_csv(FINAL)
+
+    checks["rows_400"] = len(fin) == 400
+    counts = fin["class_name"].value_counts().to_dict()
+    details["class_counts"] = counts
+    checks["100_per_class"] = all(counts.get(c, 0) == 100 for c in sel.CLASS_ORDER)
+    checks["all_4_classes"] = set(fin["class_name"]) == set(sel.CLASS_ORDER)
+    checks["no_duplicate_filepath"] = not fin["filepath"].duplicated().any()
+    checks["no_duplicate_sha256"] = not fin["sha256"].duplicated().any()
+    checks["no_unknown_subject"] = not (fin["subject_id"].astype(str).str.upper().eq("UNKNOWN").any()
+                                        or fin["subject_id"].isna().any())
+    checks["no_duplicate_class_subject_session_scan_slice"] = not fin.duplicated(KEY).any()
+
+    in_pool = fin["filepath"].isin(pool["filepath"])
+    checks["all_in_candidate_pool"] = bool(in_pool.all())
+    rd = pool.set_index("filepath")["is_readable"]
+    checks["all_readable_per_pool_info"] = bool(fin["filepath"].map(rd).fillna(False).astype(bool).all())
+
+    mod_pool = set(pool.loc[pool.class_name == "Moderate Demented", "subject_id"])
+    mod_fin = set(fin.loc[fin.class_name == "Moderate Demented", "subject_id"])
+    details["moderate_pool_subjects"] = sorted(mod_pool)
+    details["moderate_final_subject_counts"] = fin[fin.class_name == "Moderate Demented"].groupby("subject_id").size().to_dict()
+    checks["all_moderate_subjects_represented"] = mod_pool == mod_fin and len(mod_pool) == 2
+
+    sha_now = sel.sha256(sel.POOL)
+    ref = [sha_now]
+    if REDUND_JSON.exists():
+        ref.append(json.loads(REDUND_JSON.read_text())["validation"]["candidate_pool_sha256_before"])
+    sel_json = sel.OUT / "final_400_report.json"
+    if sel_json.exists():
+        ref.append(json.loads(sel_json.read_text())["candidate_pool_sha256_before"])
+    checks["candidate_pool_unchanged"] = len(set(ref)) == 1 and len(pool) == 1988
+    details["pool_sha256_sources_agree"] = len(set(ref)) == 1
+
+    rerun, _ = sel.run_selection(pool)
+    checks["deterministic_rerun_identical"] = (rerun["filepath"].tolist() == fin["filepath"].tolist())
+
+    ok = all(checks.values())
+    details["checks"] = checks
+    details["PASS"] = ok
+    (sel.OUT / "final_400_validation.json").write_text(json.dumps(details, indent=2, default=str), encoding="utf-8")
+    for k, v in checks.items():
+        print(f"{'PASS' if v else 'FAIL'}  {k}")
+    print("OVERALL:", "PASS" if ok else "FAIL")
+    return 0 if ok else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

@@ -1,0 +1,69 @@
+{
+  "dataset_root": "C:\\Users\\bhuva\\OneDrive\\Documents\\AD_staging-main\\data\\oasis_subset",
+  "total_images": 86437,
+  "readable_images": 86437,
+  "unreadable_images": 0,
+  "filename_parse_failures": 0,
+  "unique_subjects": 347,
+  "quality_flagged_images": 3014,
+  "exact_duplicate_groups": 0,
+  "near_duplicate_analysis": "Deferred until candidate-pool stage.",
+  "class_summary": [
+    {
+      "class_id": 0,
+      "class_name": "Non Demented",
+      "total_images": 67222,
+      "readable_images": 67222,
+      "unreadable_images": 0,
+      "quality_flagged_images": 2324,
+      "unique_subjects": 266,
+      "median_quality": 0.4910816104618208,
+      "mean_quality": 0.4858898994291426,
+      "median_sharpness": 212.03866577148438,
+      "median_contrast": 45.25460624694824,
+      "median_foreground_ratio": 0.594871878251821
+    },
+    {
+      "class_id": 1,
+      "class_name": "Very Mild Demented",
+      "total_images": 13725,
+      "readable_images": 13725,
+      "unreadable_images": 0,
+      "quality_flagged_images": 453,
+      "unique_subjects": 58,
+      "median_quality": 0.48284879313171647,
+      "mean_quality": 0.4850506657765272,
+      "median_sharpness": 222.5599822998047,
+      "median_contrast": 44.566986083984375,
+      "median_foreground_ratio": 0.5892055801248699
+    },
+    {
+      "class_id": 2,
+      "class_name": "Mild Demented",
+      "total_images": 5002,
+      "readable_images": 5002,
+      "unreadable_images": 0,
+      "quality_flagged_images": 216,
+      "unique_subjects": 21,
+      "median_quality": 0.4966763114743161,
+      "mean_quality": 0.4915601636895345,
+      "median_sharpness": 225.99300384521484,
+      "median_contrast": 44.57497024536133,
+      "median_foreground_ratio": 0.5901973855359002
+    },
+    {
+      "class_id": 3,
+      "class_name": "Moderate Demented",
+      "total_images": 488,
+      "readable_images": 488,
+      "unreadable_images": 0,
+      "quality_flagged_images": 21,
+      "unique_subjects": 2,
+      "median_quality": 0.5211343780930136,
+      "mean_quality": 0.5154484851613721,
+      "median_sharpness": 237.72393798828125,
+      "median_contrast": 44.71309852600098,
+      "median_foreground_ratio": 0.5967010275754423
+    }
+  ]
+}

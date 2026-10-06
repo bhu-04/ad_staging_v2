@@ -1,0 +1,1924 @@
+
+
+============================================================
+FILE: outputs\candidate_pool\candidate_pool_report.json
+============================================================
+
+{
+  "title": "OASIS Candidate Pool Report",
+  "statements": [
+    "This is a candidate pool, not the final 400-image dataset.",
+    "Near-duplicate analysis is intentionally deferred until the candidate-pool stage."
+  ],
+  "input_inventory": {
+    "path": "C:\\Users\\bhuva\\OneDrive\\Documents\\AD_staging-main\\outputs\\dataset_audit\\image_inventory.csv",
+    "sha256": "bed822c4d6d91b064f5641444dc270c0f41d3d036e9312a13eb0a306450e346a",
+    "total_records": 86437,
+    "eligible_records": 86437
+  },
+  "dataset_source": "data/oasis_subset (audited 2D OASIS axial JPEG slices; raw files are not read or copied by this stage)",
+  "target_counts": {
+    "Non Demented": 500,
+    "Very Mild Demented": 500,
+    "Mild Demented": 500,
+    "Moderate Demented": 488
+  },
+  "actual_counts": {
+    "Non Demented": 500,
+    "Very Mild Demented": 500,
+    "Mild Demented": 500,
+    "Moderate Demented": 488
+  },
+  "total_selected": 1988,
+  "exclusions": {
+    "Non Demented": {},
+    "Very Mild Demented": {},
+    "Mild Demented": {},
+    "Moderate Demented": {}
+  },
+  "random_seed": 42,
+  "selection_methodology": {
+    "hierarchy": "class > subject > session > scan > slice",
+    "score": {
+      "normalized_quality": 0.5,
+      "slice_diversity": 0.2,
+      "scan_diversity": 0.15,
+      "subject_balance": 0.15,
+      "neighbor_penalty_max": 0.3,
+      "neighbor_penalty_radius_slices": 10
+    },
+    "slice_regions": [
+      "100-109",
+      "110-119",
+      "120-129",
+      "130-139",
+      "140-149",
+      "150-160"
+    ],
+    "notes": "Subject quotas (even split, capped) -> scan quotas (even split, class-level scan balancing) -> round-robin slice picks scored by the weighted formula; ties broken by filepath. Quality flags never exclude images. Exact class counts take priority over score."
+  },
+  "subject_diversity": {
+    "images_per_subject": [
+      {
+        "class_name": "Mild Demented",
+        "min": 23,
+        "median": 24.0,
+        "max": 24
+      },
+      {
+        "class_name": "Moderate Demented",
+        "min": 244,
+        "median": 244.0,
+        "max": 244
+      },
+      {
+        "class_name": "Non Demented",
+        "min": 1,
+        "median": 2.0,
+        "max": 2
+      },
+      {
+        "class_name": "Very Mild Demented",
+        "min": 8,
+        "median": 9.0,
+        "max": 9
+      }
+    ],
+    "subject_distribution_file": "candidate_subject_distribution.csv"
+  },
+  "scan_session_diversity": [
+    {
+      "class_name": "Non Demented",
+      "session": "MR1",
+      "scan": "mpr-1",
+      "selected_count": 116
+    },
+    {
+      "class_name": "Non Demented",
+      "session": "MR1",
+      "scan": "mpr-2",
+      "selected_count": 116
+    },
+    {
+      "class_name": "Non Demented",
+      "session": "MR1",
+      "scan": "mpr-3",
+      "selected_count": 115
+    },
+    {
+      "class_name": "Non Demented",
+      "session": "MR1",
+      "scan": "mpr-4",
+      "selected_count": 115
+    },
+    {
+      "class_name": "Non Demented",
+      "session": "MR1",
+      "scan": "mpr-5",
+      "selected_count": 1
+    },
+    {
+      "class_name": "Non Demented",
+      "session": "MR1",
+      "scan": "mpr-6",
+      "selected_count": 1
+    },
+    {
+      "class_name": "Non Demented",
+      "session": "MR2",
+      "scan": "mpr-1",
+      "selected_count": 9
+    },
+    {
+      "class_name": "Non Demented",
+      "session": "MR2",
+      "scan": "mpr-2",
+      "selected_count": 9
+    },
+    {
+      "class_name": "Non Demented",
+      "session": "MR2",
+      "scan": "mpr-3",
+      "selected_count": 9
+    },
+    {
+      "class_name": "Non Demented",
+      "session": "MR2",
+      "scan": "mpr-4",
+      "selected_count": 9
+    },
+    {
+      "class_name": "Very Mild Demented",
+      "session": "MR1",
+      "scan": "mpr-1",
+      "selected_count": 125
+    },
+    {
+      "class_name": "Very Mild Demented",
+      "session": "MR1",
+      "scan": "mpr-2",
+      "selected_count": 125
+    },
+    {
+      "class_name": "Very Mild Demented",
+      "session": "MR1",
+      "scan": "mpr-3",
+      "selected_count": 125
+    },
+    {
+      "class_name": "Very Mild Demented",
+      "session": "MR1",
+      "scan": "mpr-4",
+      "selected_count": 125
+    },
+    {
+      "class_name": "Mild Demented",
+      "session": "MR1",
+      "scan": "mpr-1",
+      "selected_count": 129
+    },
+    {
+      "class_name": "Mild Demented",
+      "session": "MR1",
+      "scan": "mpr-2",
+      "selected_count": 129
+    },
+    {
+      "class_name": "Mild Demented",
+      "session": "MR1",
+      "scan": "mpr-3",
+      "selected_count": 129
+    },
+    {
+      "class_name": "Mild Demented",
+      "session": "MR1",
+      "scan": "mpr-4",
+      "selected_count": 113
+    },
+    {
+      "class_name": "Moderate Demented",
+      "session": "MR1",
+      "scan": "mpr-1",
+      "selected_count": 122
+    },
+    {
+      "class_name": "Moderate Demented",
+      "session": "MR1",
+      "scan": "mpr-2",
+      "selected_count": 122
+    },
+    {
+      "class_name": "Moderate Demented",
+      "session": "MR1",
+      "scan": "mpr-3",
+      "selected_count": 122
+    },
+    {
+      "class_name": "Moderate Demented",
+      "session": "MR1",
+      "scan": "mpr-4",
+      "selected_count": 122
+    }
+  ],
+  "slice_diversity": {
+    "region_counts": [
+      {
+        "class_name": "Non Demented",
+        "100-109": 92,
+        "110-119": 84,
+        "120-129": 83,
+        "130-139": 83,
+        "140-149": 80,
+        "150-160": 78
+      },
+      {
+        "class_name": "Very Mild Demented",
+        "100-109": 98,
+        "110-119": 97,
+        "120-129": 99,
+        "130-139": 77,
+        "140-149": 74,
+        "150-160": 55
+      },
+      {
+        "class_name": "Mild Demented",
+        "100-109": 94,
+        "110-119": 95,
+        "120-129": 92,
+        "130-139": 75,
+        "140-149": 78,
+        "150-160": 66
+      },
+      {
+        "class_name": "Moderate Demented",
+        "100-109": 80,
+        "110-119": 80,
+        "120-129": 80,
+        "130-139": 80,
+        "140-149": 80,
+        "150-160": 88
+      }
+    ],
+    "slice_distribution_file": "candidate_slice_distribution.csv"
+  },
+  "quality_statistics": [
+    {
+      "class_name": "Non Demented",
+      "mean_quality_score": 0.6789242097466174,
+      "median_quality_score": 0.6678605101024033,
+      "min_quality_score": 0.4705579933202122,
+      "max_quality_score": 0.990159272807234
+    },
+    {
+      "class_name": "Very Mild Demented",
+      "mean_quality_score": 0.6215945818346523,
+      "median_quality_score": 0.6157465045517252,
+      "min_quality_score": 0.4327323117252165,
+      "max_quality_score": 0.873149105718606
+    },
+    {
+      "class_name": "Mild Demented",
+      "mean_quality_score": 0.5797614266102277,
+      "median_quality_score": 0.5853400288899684,
+      "min_quality_score": 0.3368311062752464,
+      "max_quality_score": 0.8619106522634514
+    },
+    {
+      "class_name": "Moderate Demented",
+      "mean_quality_score": 0.5154484851613721,
+      "median_quality_score": 0.5211343780930136,
+      "min_quality_score": 0.1960393880261802,
+      "max_quality_score": 0.8060592266625874
+    }
+  ],
+  "quality_flag_counts": {
+    "Non Demented": 48,
+    "Very Mild Demented": 16,
+    "Mild Demented": 23,
+    "Moderate Demented": 21
+  },
+  "summary": [
+    {
+      "class_name": "Non Demented",
+      "class_id": 0,
+      "target_count": 500,
+      "selected_count": 500,
+      "unique_subjects": 266,
+      "unique_sessions": 2,
+      "unique_scans": 6,
+      "unique_subject_sessions": 266,
+      "unique_subject_scans": 500,
+      "unique_slice_positions": 61,
+      "quality_flagged_count": 48,
+      "mean_quality_score": 0.6789242097466174,
+      "median_quality_score": 0.6678605101024033,
+      "min_quality_score": 0.4705579933202122,
+      "max_quality_score": 0.990159272807234
+    },
+    {
+      "class_name": "Very Mild Demented",
+      "class_id": 1,
+      "target_count": 500,
+      "selected_count": 500,
+      "unique_subjects": 58,
+      "unique_sessions": 1,
+      "unique_scans": 4,
+      "unique_subject_sessions": 58,
+      "unique_subject_scans": 225,
+      "unique_slice_positions": 61,
+      "quality_flagged_count": 16,
+      "mean_quality_score": 0.6215945818346523,
+      "median_quality_score": 0.6157465045517252,
+      "min_quality_score": 0.4327323117252165,
+      "max_quality_score": 0.873149105718606
+    },
+    {
+      "class_name": "Mild Demented",
+      "class_id": 2,
+      "target_count": 500,
+      "selected_count": 500,
+      "unique_subjects": 21,
+      "unique_sessions": 1,
+      "unique_scans": 4,
+      "unique_subject_sessions": 21,
+      "unique_subject_scans": 82,
+      "unique_slice_positions": 61,
+      "quality_flagged_count": 23,
+      "mean_quality_score": 0.5797614266102277,
+      "median_quality_score": 0.5853400288899684,
+      "min_quality_score": 0.3368311062752464,
+      "max_quality_score": 0.8619106522634514
+    },
+    {
+      "class_name": "Moderate Demented",
+      "class_id": 3,
+      "target_count": 488,
+      "selected_count": 488,
+      "unique_subjects": 2,
+      "unique_sessions": 1,
+      "unique_scans": 4,
+      "unique_subject_sessions": 2,
+      "unique_subject_scans": 8,
+      "unique_slice_positions": 61,
+      "quality_flagged_count": 21,
+      "mean_quality_score": 0.5154484851613721,
+      "median_quality_score": 0.5211343780930136,
+      "min_quality_score": 0.1960393880261802,
+      "max_quality_score": 0.8060592266625874
+    }
+  ],
+  "validation": {
+    "total == 1988": true,
+    "Non Demented == 500": true,
+    "Very Mild Demented == 500": true,
+    "Mild Demented == 500": true,
+    "Moderate Demented == 488": true,
+    "no duplicate filepath": true,
+    "no missing filepath": true,
+    "all records readable": true,
+    "no UNKNOWN subject_id": true,
+    "no filename parse failures": true,
+    "no exact duplicate groups": true,
+    "all four classes represented": true,
+    "all Moderate Demented subjects represented": true,
+    "Moderate Demented has 2 subjects (audit)": true,
+    "no duplicate (class, subject, session, scan, slice_idx)": true,
+    "all eligible Moderate Demented files included": true
+  },
+  "validation_passed": true,
+  "warnings": [
+    "Moderate Demented comes from only 2 subject(s); the pool necessarily contains every slice of those subjects, many of them adjacent. A subject-level train/val/test split cannot place this class in all three partitions, which is a data limitation to resolve at the final-selection/splitting stage.",
+    "Quality flags are ranking information only: 108 quality-flagged image(s) are in the pool (all kept for Moderate Demented; down-weighted by score elsewhere).",
+    "Exact-duplicate status relies on the audit's SHA-256 results; perceptual near-duplicates have NOT been checked."
+  ]
+}
+
+
+============================================================
+FILE: outputs\candidate_pool\candidate_pool_report.md
+============================================================
+
+# OASIS Candidate Pool Report
+
+> **This is a candidate pool, not the final 400-image dataset.**  
+> **Near-duplicate analysis is intentionally deferred until the candidate-pool stage.**
+
+## Input inventory
+
+- File: `C:\Users\bhuva\OneDrive\Documents\AD_staging-main\outputs\dataset_audit\image_inventory.csv`
+- SHA-256: `bed822c4d6d91b064f5641444dc270c0f41d3d036e9312a13eb0a306450e346a`
+- Total records: **86,437**
+- Eligible records: **86,437**
+- Dataset source: data/oasis_subset (audited 2D OASIS axial JPEG slices; raw files are not read or copied by this stage)
+
+## Target vs actual counts
+
+| class_name | target | actual |
+|---|---|---|
+| Non Demented | 500 | 500 |
+| Very Mild Demented | 500 | 500 |
+| Mild Demented | 500 | 500 |
+| Moderate Demented | 488 | 488 |
+
+Total selected: **1,988** (target 1,988)
+
+## Exclusions
+
+- None (no unusable records found in the inventory).
+
+## Subject diversity
+
+| class_name | unique_subjects | min_per_subject | median_per_subject | max_per_subject |
+|---|---|---|---|---|
+| Mild Demented | 266 | 23 | 24.0000 | 24 |
+| Moderate Demented | 58 | 244 | 244.0000 | 244 |
+| Non Demented | 21 | 1 | 2.0000 | 2 |
+| Very Mild Demented | 2 | 8 | 9.0000 | 9 |
+
+## Scan / session diversity
+
+| class_name | unique_sessions | unique_scans | unique_subject_sessions | unique_subject_scans |
+|---|---|---|---|---|
+| Non Demented | 2 | 6 | 266 | 500 |
+| Very Mild Demented | 1 | 4 | 58 | 225 |
+| Mild Demented | 1 | 4 | 21 | 82 |
+| Moderate Demented | 1 | 4 | 2 | 8 |
+
+Selected images per session/scan:
+
+| class_name | session | scan | selected_count |
+|---|---|---|---|
+| Non Demented | MR1 | mpr-1 | 116 |
+| Non Demented | MR1 | mpr-2 | 116 |
+| Non Demented | MR1 | mpr-3 | 115 |
+| Non Demented | MR1 | mpr-4 | 115 |
+| Non Demented | MR1 | mpr-5 | 1 |
+| Non Demented | MR1 | mpr-6 | 1 |
+| Non Demented | MR2 | mpr-1 | 9 |
+| Non Demented | MR2 | mpr-2 | 9 |
+| Non Demented | MR2 | mpr-3 | 9 |
+| Non Demented | MR2 | mpr-4 | 9 |
+| Very Mild Demented | MR1 | mpr-1 | 125 |
+| Very Mild Demented | MR1 | mpr-2 | 125 |
+| Very Mild Demented | MR1 | mpr-3 | 125 |
+| Very Mild Demented | MR1 | mpr-4 | 125 |
+| Mild Demented | MR1 | mpr-1 | 129 |
+| Mild Demented | MR1 | mpr-2 | 129 |
+| Mild Demented | MR1 | mpr-3 | 129 |
+| Mild Demented | MR1 | mpr-4 | 113 |
+| Moderate Demented | MR1 | mpr-1 | 122 |
+| Moderate Demented | MR1 | mpr-2 | 122 |
+| Moderate Demented | MR1 | mpr-3 | 122 |
+| Moderate Demented | MR1 | mpr-4 | 122 |
+
+## Slice diversity
+
+| class_name | 100-109 | 110-119 | 120-129 | 130-139 | 140-149 | 150-160 |
+|---|---|---|---|---|---|---|
+| Non Demented | 92 | 84 | 83 | 83 | 80 | 78 |
+| Very Mild Demented | 98 | 97 | 99 | 77 | 74 | 55 |
+| Mild Demented | 94 | 95 | 92 | 75 | 78 | 66 |
+| Moderate Demented | 80 | 80 | 80 | 80 | 80 | 88 |
+
+| class_name | unique_slice_positions |
+|---|---|
+| Non Demented | 61 |
+| Very Mild Demented | 61 |
+| Mild Demented | 61 |
+| Moderate Demented | 61 |
+
+## Quality statistics
+
+| class_name | quality_flagged_count | mean_quality_score | median_quality_score | min_quality_score | max_quality_score |
+|---|---|---|---|---|---|
+| Non Demented | 48 | 0.6789 | 0.6679 | 0.4706 | 0.9902 |
+| Very Mild Demented | 16 | 0.6216 | 0.6157 | 0.4327 | 0.8731 |
+| Mild Demented | 23 | 0.5798 | 0.5853 | 0.3368 | 0.8619 |
+| Moderate Demented | 21 | 0.5154 | 0.5211 | 0.1960 | 0.8061 |
+
+## Selection methodology
+
+- Hierarchy: class > subject > session > scan > slice
+- Score = 0.5 x normalized_quality + 0.2 x slice_diversity + 0.15 x scan_diversity + 0.15 x subject_balance - neighbor_penalty (max 0.3, radius 10 slices)
+- Slice regions: 100-109, 110-119, 120-129, 130-139, 140-149, 150-160
+- Subject quotas (even split, capped) -> scan quotas (even split, class-level scan balancing) -> round-robin slice picks scored by the weighted formula; ties broken by filepath. Quality flags never exclude images. Exact class counts take priority over score.
+- Random seed: **42** (no randomness is consumed; ties are broken by filepath, so repeated runs are identical)
+
+## Validation
+
+- PASS: total == 1988
+- PASS: Non Demented == 500
+- PASS: Very Mild Demented == 500
+- PASS: Mild Demented == 500
+- PASS: Moderate Demented == 488
+- PASS: no duplicate filepath
+- PASS: no missing filepath
+- PASS: all records readable
+- PASS: no UNKNOWN subject_id
+- PASS: no filename parse failures
+- PASS: no exact duplicate groups
+- PASS: all four classes represented
+- PASS: all Moderate Demented subjects represented
+- PASS: Moderate Demented has 2 subjects (audit)
+- PASS: no duplicate (class, subject, session, scan, slice_idx)
+- PASS: all eligible Moderate Demented files included
+
+Overall: **PASSED**
+
+## Warnings / limitations
+
+- Moderate Demented comes from only 2 subject(s); the pool necessarily contains every slice of those subjects, many of them adjacent. A subject-level train/val/test split cannot place this class in all three partitions, which is a data limitation to resolve at the final-selection/splitting stage.
+- Quality flags are ranking information only: 108 quality-flagged image(s) are in the pool (all kept for Moderate Demented; down-weighted by score elsewhere).
+- Exact-duplicate status relies on the audit's SHA-256 results; perceptual near-duplicates have NOT been checked.
+
+
+============================================================
+FILE: outputs\candidate_redundancy\redundancy_report.json
+============================================================
+
+{
+  "validation": {
+    "candidate_rows": 1988,
+    "expected_rows": 1988,
+    "row_count_ok": true,
+    "analyzed": 1988,
+    "missing_or_invalid_phash": 0,
+    "candidate_pool_sha256_before": "bfda3de7de00bab63f64ae73a9fcfa45eb89e091f73bf6a8b22d58dfb7101399",
+    "candidate_pool_sha256_after": "bfda3de7de00bab63f64ae73a9fcfa45eb89e091f73bf6a8b22d58dfb7101399",
+    "candidate_pool_unmodified": true,
+    "total_pairs": 1975078
+  },
+  "warnings": [],
+  "distance_stats": {
+    "min": 0,
+    "p1": 2.0,
+    "p5": 4.0,
+    "p25": 7.0,
+    "median": 9.0,
+    "mean": 9.555560337363891,
+    "p75": 12.0,
+    "max": 28
+  },
+  "distance_distribution": {
+    "0": 2344,
+    "1": 3512,
+    "2": 16605,
+    "3": 24790,
+    "4": 78181,
+    "5": 88817,
+    "6": 201706,
+    "7": 162410,
+    "8": 293360,
+    "9": 145263,
+    "10": 247811,
+    "11": 123029,
+    "12": 194083,
+    "13": 89175,
+    "14": 128735,
+    "15": 52145,
+    "16": 65799,
+    "17": 19303,
+    "18": 21998,
+    "19": 5900,
+    "20": 5828,
+    "21": 1736,
+    "22": 1678,
+    "23": 429,
+    "24": 319,
+    "25": 80,
+    "26": 33,
+    "27": 6,
+    "28": 3
+  },
+  "bin_summary": [
+    {
+      "distance_bin": "0-2",
+      "pairs": 22461,
+      "fraction_of_all_pairs": 0.011372209097564754,
+      "cumulative_pairs_le_hi": 22461,
+      "same_subject": 5228,
+      "cross_subject": 17233,
+      "same_session": 5228,
+      "same_scan": 1110,
+      "cross_scan": 21351,
+      "same_class": 10665,
+      "cross_class": 11796,
+      "same_subject_cross_scan": 4118,
+      "prox_adjacent(<=1)": 3300,
+      "prox_very_close(2)": 1670,
+      "prox_nearby(3-4)": 2372,
+      "prox_separated(>4)": 15119
+    },
+    {
+      "distance_bin": "3-4",
+      "pairs": 102971,
+      "fraction_of_all_pairs": 0.052135156181173606,
+      "cumulative_pairs_le_hi": 125432,
+      "same_subject": 8394,
+      "cross_subject": 94577,
+      "same_session": 8394,
+      "same_scan": 1935,
+      "cross_scan": 101036,
+      "same_class": 33273,
+      "cross_class": 69698,
+      "same_subject_cross_scan": 6459,
+      "prox_adjacent(<=1)": 6410,
+      "prox_very_close(2)": 4372,
+      "prox_nearby(3-4)": 8483,
+      "prox_separated(>4)": 83706
+    },
+    {
+      "distance_bin": "5-6",
+      "pairs": 290523,
+      "fraction_of_all_pairs": 0.14709444386500178,
+      "cumulative_pairs_le_hi": 415955,
+      "same_subject": 12745,
+      "cross_subject": 277778,
+      "same_session": 12745,
+      "same_scan": 3057,
+      "cross_scan": 287466,
+      "same_class": 76516,
+      "cross_class": 214007,
+      "same_subject_cross_scan": 9688,
+      "prox_adjacent(<=1)": 14515,
+      "prox_very_close(2)": 9805,
+      "prox_nearby(3-4)": 19526,
+      "prox_separated(>4)": 246677
+    },
+    {
+      "distance_bin": "7-8",
+      "pairs": 455770,
+      "fraction_of_all_pairs": 0.2307605066736605,
+      "cumulative_pairs_le_hi": 871725,
+      "same_subject": 15718,
+      "cross_subject": 440052,
+      "same_session": 15718,
+      "same_scan": 3878,
+      "cross_scan": 451892,
+      "same_class": 109358,
+      "cross_class": 346412,
+      "same_subject_cross_scan": 11840,
+      "prox_adjacent(<=1)": 21970,
+      "prox_very_close(2)": 14648,
+      "prox_nearby(3-4)": 28453,
+      "prox_separated(>4)": 390699
+    },
+    {
+      "distance_bin": "9-10",
+      "pairs": 393074,
+      "fraction_of_all_pairs": 0.19901695021664967,
+      "cumulative_pairs_le_hi": 1264799,
+      "same_subject": 12524,
+      "cross_subject": 380550,
+      "same_session": 12524,
+      "same_scan": 3173,
+      "cross_scan": 389901,
+      "same_class": 97609,
+      "cross_class": 295465,
+      "same_subject_cross_scan": 9351,
+      "prox_adjacent(<=1)": 18810,
+      "prox_very_close(2)": 12146,
+      "prox_nearby(3-4)": 23913,
+      "prox_separated(>4)": 338205
+    },
+    {
+      "distance_bin": "11-15",
+      "pairs": 587167,
+      "fraction_of_all_pairs": 0.29728800584078197,
+      "cumulative_pairs_le_hi": 1851966,
+      "same_subject": 11898,
+      "cross_subject": 575269,
+      "same_session": 11898,
+      "same_scan": 2948,
+      "cross_scan": 584219,
+      "same_class": 138907,
+      "cross_class": 448260,
+      "same_subject_cross_scan": 8950,
+      "prox_adjacent(<=1)": 26571,
+      "prox_very_close(2)": 17254,
+      "prox_nearby(3-4)": 33784,
+      "prox_separated(>4)": 509558
+    },
+    {
+      "distance_bin": "16+",
+      "pairs": 123112,
+      "fraction_of_all_pairs": 0.06233272812516771,
+      "cumulative_pairs_le_hi": 1975078,
+      "same_subject": 635,
+      "cross_subject": 122477,
+      "same_session": 635,
+      "same_scan": 152,
+      "cross_scan": 122960,
+      "same_class": 26750,
+      "cross_class": 96362,
+      "same_subject_cross_scan": 483,
+      "prox_adjacent(<=1)": 5803,
+      "prox_very_close(2)": 3536,
+      "prox_nearby(3-4)": 6827,
+      "prox_separated(>4)": 106946
+    }
+  ],
+  "near_duplicate_le10_splits": {
+    "same_subject": 54609,
+    "cross_subject": 1210190,
+    "same_scan": 13153,
+    "cross_scan": 1251646,
+    "same_class": 327421,
+    "cross_class": 937378
+  },
+  "pair_csv_max_distance": 10,
+  "pairs_written": 1264799,
+  "group_summary_by_threshold": {
+    "2": {
+      "groups_ge2": 88,
+      "images_in_groups": 1767,
+      "largest_group": 1523,
+      "singleton_images": 221,
+      "direct_pairs": 22461,
+      "transitive_chain_groups": 18,
+      "clique_groups": 70
+    },
+    "4": {
+      "groups_ge2": 18,
+      "images_in_groups": 1952,
+      "largest_group": 1912,
+      "singleton_images": 36,
+      "direct_pairs": 125432,
+      "transitive_chain_groups": 4,
+      "clique_groups": 14
+    },
+    "6": {
+      "groups_ge2": 5,
+      "images_in_groups": 1980,
+      "largest_group": 1971,
+      "singleton_images": 8,
+      "direct_pairs": 415955,
+      "transitive_chain_groups": 1,
+      "clique_groups": 4
+    },
+    "8": {
+      "groups_ge2": 1,
+      "images_in_groups": 1988,
+      "largest_group": 1988,
+      "singleton_images": 0,
+      "direct_pairs": 871725,
+      "transitive_chain_groups": 1,
+      "clique_groups": 0
+    },
+    "10": {
+      "groups_ge2": 1,
+      "images_in_groups": 1988,
+      "largest_group": 1988,
+      "singleton_images": 0,
+      "direct_pairs": 1264799,
+      "transitive_chain_groups": 1,
+      "clique_groups": 0
+    }
+  },
+  "note": "No near-duplicate threshold has been chosen; all bins/thresholds are reported descriptively.",
+  "runtime_sec": 13.8
+}
+
+
+============================================================
+FILE: outputs\candidate_redundancy\redundancy_report.md
+============================================================
+
+# Candidate Pool pHash Redundancy Report
+
+No near-duplicate threshold was pre-selected; results are descriptive.
+
+## Validation
+
+- Rows: 1,988 (expected 1,988, ok=True)
+- Analyzed: 1,988; missing/invalid pHash: 0
+- Pairs compared: 1,975,078
+- candidate_pool.csv unmodified: True
+
+## Hamming-distance distribution (all pairs)
+
+Stats: min=0, p1=2, p5=4, p25=7, median=9, mean=9.556, p75=12, max=28
+
+| hamming_distance | pairs | fraction | cumulative_pairs |
+|---|---|---|---|
+| 0 | 2344 | 0.001187 | 2344 |
+| 1 | 3512 | 0.001778 | 5856 |
+| 2 | 1.66e+04 | 0.008407 | 2.246e+04 |
+| 3 | 2.479e+04 | 0.01255 | 4.725e+04 |
+| 4 | 7.818e+04 | 0.03958 | 1.254e+05 |
+| 5 | 8.882e+04 | 0.04497 | 2.142e+05 |
+| 6 | 2.017e+05 | 0.1021 | 4.16e+05 |
+| 7 | 1.624e+05 | 0.08223 | 5.784e+05 |
+| 8 | 2.934e+05 | 0.1485 | 8.717e+05 |
+| 9 | 1.453e+05 | 0.07355 | 1.017e+06 |
+| 10 | 2.478e+05 | 0.1255 | 1.265e+06 |
+| 11 | 1.23e+05 | 0.06229 | 1.388e+06 |
+| 12 | 1.941e+05 | 0.09827 | 1.582e+06 |
+| 13 | 8.918e+04 | 0.04515 | 1.671e+06 |
+| 14 | 1.287e+05 | 0.06518 | 1.8e+06 |
+| 15 | 5.214e+04 | 0.0264 | 1.852e+06 |
+| 16 | 6.58e+04 | 0.03331 | 1.918e+06 |
+| 17 | 1.93e+04 | 0.009773 | 1.937e+06 |
+| 18 | 2.2e+04 | 0.01114 | 1.959e+06 |
+| 19 | 5900 | 0.002987 | 1.965e+06 |
+| 20 | 5828 | 0.002951 | 1.971e+06 |
+| 21 | 1736 | 0.000879 | 1.973e+06 |
+| 22 | 1678 | 0.0008496 | 1.974e+06 |
+| 23 | 429 | 0.0002172 | 1.975e+06 |
+| 24 | 319 | 0.0001615 | 1.975e+06 |
+| 25 | 80 | 4.05e-05 | 1.975e+06 |
+| 26 | 33 | 1.671e-05 | 1.975e+06 |
+| 27 | 6 | 3.038e-06 | 1.975e+06 |
+| 28 | 3 | 1.519e-06 | 1.975e+06 |
+
+## Distance bins
+
+| distance_bin | pairs | fraction_of_all_pairs | cumulative_pairs_le_hi | same_subject | cross_subject | same_session | same_scan | cross_scan | same_class | cross_class | same_subject_cross_scan | prox_adjacent(<=1) | prox_very_close(2) | prox_nearby(3-4) | prox_separated(>4) |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 0-2 | 22461 | 0.01137 | 22461 | 5228 | 17233 | 5228 | 1110 | 21351 | 10665 | 11796 | 4118 | 3300 | 1670 | 2372 | 15119 |
+| 3-4 | 102971 | 0.05214 | 125432 | 8394 | 94577 | 8394 | 1935 | 101036 | 33273 | 69698 | 6459 | 6410 | 4372 | 8483 | 83706 |
+| 5-6 | 290523 | 0.1471 | 415955 | 12745 | 277778 | 12745 | 3057 | 287466 | 76516 | 214007 | 9688 | 14515 | 9805 | 19526 | 246677 |
+| 7-8 | 455770 | 0.2308 | 871725 | 15718 | 440052 | 15718 | 3878 | 451892 | 109358 | 346412 | 11840 | 21970 | 14648 | 28453 | 390699 |
+| 9-10 | 393074 | 0.199 | 1264799 | 12524 | 380550 | 12524 | 3173 | 389901 | 97609 | 295465 | 9351 | 18810 | 12146 | 23913 | 338205 |
+| 11-15 | 587167 | 0.2973 | 1851966 | 11898 | 575269 | 11898 | 2948 | 584219 | 138907 | 448260 | 8950 | 26571 | 17254 | 33784 | 509558 |
+| 16+ | 123112 | 0.06233 | 1975078 | 635 | 122477 | 635 | 152 | 122960 | 26750 | 96362 | 483 | 5803 | 3536 | 6827 | 106946 |
+
+## Pairs with distance <= 10 (1,264,799)
+
+| same_subject | cross_subject | same_scan | cross_scan | same_class | cross_class |
+|---|---|---|---|---|---|
+| 54609 | 1210190 | 13153 | 1251646 | 327421 | 937378 |
+
+## Groups (direct vs transitive) by threshold
+
+| threshold | groups_ge2 | images_in_groups | largest_group | singleton_images | direct_pairs | transitive_chain_groups | clique_groups |
+|---|---|---|---|---|---|---|---|
+| 2 | 88 | 1767 | 1523 | 221 | 22461 | 18 | 70 |
+| 4 | 18 | 1952 | 1912 | 36 | 125432 | 4 | 14 |
+| 6 | 5 | 1980 | 1971 | 8 | 415955 | 1 | 4 |
+| 8 | 1 | 1988 | 1988 | 0 | 871725 | 1 | 0 |
+| 10 | 1 | 1988 | 1988 | 0 | 1264799 | 1 | 0 |
+
+Clique = every member pair directly within threshold; transitive_chain = connected only via intermediate images.
+
+## Slice proximity (all pairs)
+
+| scope | group_type | group | total_pairs | bin_0-2 | bin_3-4 | bin_5-6 | bin_7-8 | bin_9-10 | bin_11-15 | bin_16+ | pairs_le10 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| all_pairs | proximity | adjacent(<=1) | 97379 | 3300 | 6410 | 14515 | 21970 | 18810 | 26571 | 5803 | 65005 |
+| all_pairs | proximity | very_close(2) | 63431 | 1670 | 4372 | 9805 | 14648 | 12146 | 17254 | 3536 | 42641 |
+| all_pairs | proximity | nearby(3-4) | 123358 | 2372 | 8483 | 19526 | 28453 | 23913 | 33784 | 6827 | 82747 |
+| all_pairs | proximity | separated(>4) | 1690910 | 15119 | 83706 | 246677 | 390699 | 338205 | 509558 | 106946 | 1074406 |
+
+## Slice proximity (same-scan pairs)
+
+| scope | group_type | group | total_pairs | bin_0-2 | bin_3-4 | bin_5-6 | bin_7-8 | bin_9-10 | bin_11-15 | bin_16+ | pairs_le10 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| same_scan_pairs | proximity | adjacent(<=1) | 480 | 398 | 78 | 4 | 0 | 0 | 0 | 0 | 480 |
+| same_scan_pairs | proximity | very_close(2) | 473 | 239 | 184 | 45 | 5 | 0 | 0 | 0 | 473 |
+| same_scan_pairs | proximity | nearby(3-4) | 951 | 246 | 400 | 228 | 61 | 15 | 1 | 0 | 950 |
+| same_scan_pairs | proximity | separated(>4) | 14349 | 227 | 1273 | 2780 | 3812 | 3158 | 2947 | 152 | 11250 |
+
+## Warnings
+
+- none
+
+
+============================================================
+FILE: outputs\final_400\final_400_report.json
+============================================================
+
+{
+  "seed": 42,
+  "per_class": 100,
+  "final_rows": 400,
+  "weights": {
+    "subject": 4.0,
+    "scan": 2.0,
+    "slice": 1.5,
+    "quality": 1.0,
+    "quality_flag": 0.3,
+    "phash_redundancy": 1.2,
+    "adjacency": 1.5
+  },
+  "phash_penalty_w": {
+    "0": 0.9707,
+    "1": 0.9241,
+    "2": 0.8176,
+    "3": 0.6225,
+    "4": 0.3775,
+    "5": 0.1824,
+    "6": 0.0759,
+    "7": 0.0293,
+    "8": 0.011,
+    "10": 0.0015
+  },
+  "subject_caps": {
+    "Non Demented": 1,
+    "Very Mild Demented": 3,
+    "Mild Demented": 8,
+    "Moderate Demented": 60
+  },
+  "empirical_pool_all_pairs": {
+    "frac_le2": 0.011372209097564754,
+    "frac_le4": 0.06350736527873836,
+    "frac_le6": 0.21060180914374016,
+    "median_distance": 9.0
+  },
+  "moderate_subject_counts": {
+    "OAS1_0308": 40,
+    "OAS1_0351": 60
+  },
+  "class_summary": [
+    {
+      "class_name": "Non Demented",
+      "class_id": 0,
+      "pool_images": 500,
+      "selected": 100,
+      "pool_subjects": 266,
+      "selected_subjects": 100,
+      "min_imgs_per_subject": 1,
+      "median_imgs_per_subject": 1.0,
+      "max_imgs_per_subject": 1,
+      "pool_scans": 500,
+      "selected_scans": 100,
+      "selected_scan_labels": 8,
+      "pool_unique_slices": 61,
+      "selected_unique_slices": 53,
+      "mean_quality": 0.741421159804725,
+      "median_quality": 0.7330181497045378,
+      "pool_mean_quality": 0.6789242097466174,
+      "quality_flagged_selected": 5,
+      "pairs_le2": 0,
+      "pairs_le4": 54,
+      "pairs_le6": 298,
+      "pool_pairs_le2": 3563,
+      "pool_pairs_le4": 15487,
+      "pool_pairs_le6": 37230,
+      "adjacent_same_scan_pairs": 0
+    },
+    {
+      "class_name": "Very Mild Demented",
+      "class_id": 1,
+      "pool_images": 500,
+      "selected": 100,
+      "pool_subjects": 58,
+      "selected_subjects": 58,
+      "min_imgs_per_subject": 1,
+      "median_imgs_per_subject": 2.0,
+      "max_imgs_per_subject": 3,
+      "pool_scans": 225,
+      "selected_scans": 100,
+      "selected_scan_labels": 4,
+      "pool_unique_slices": 61,
+      "selected_unique_slices": 54,
+      "mean_quality": 0.655948081779519,
+      "median_quality": 0.6455911493823785,
+      "pool_mean_quality": 0.6215945818346523,
+      "quality_flagged_selected": 2,
+      "pairs_le2": 1,
+      "pairs_le4": 69,
+      "pairs_le6": 393,
+      "pool_pairs_le2": 1176,
+      "pool_pairs_le4": 6605,
+      "pool_pairs_le6": 24392,
+      "adjacent_same_scan_pairs": 0
+    },
+    {
+      "class_name": "Mild Demented",
+      "class_id": 2,
+      "pool_images": 500,
+      "selected": 100,
+      "pool_subjects": 21,
+      "selected_subjects": 21,
+      "min_imgs_per_subject": 3,
+      "median_imgs_per_subject": 5.0,
+      "max_imgs_per_subject": 6,
+      "pool_scans": 82,
+      "selected_scans": 80,
+      "selected_scan_labels": 4,
+      "pool_unique_slices": 61,
+      "selected_unique_slices": 51,
+      "mean_quality": 0.6138411711203403,
+      "median_quality": 0.6181312358241233,
+      "pool_mean_quality": 0.5797614266102277,
+      "quality_flagged_selected": 3,
+      "pairs_le2": 4,
+      "pairs_le4": 75,
+      "pairs_le6": 369,
+      "pool_pairs_le2": 1510,
+      "pool_pairs_le4": 7205,
+      "pool_pairs_le6": 21554,
+      "adjacent_same_scan_pairs": 0
+    },
+    {
+      "class_name": "Moderate Demented",
+      "class_id": 3,
+      "pool_images": 488,
+      "selected": 100,
+      "pool_subjects": 2,
+      "selected_subjects": 2,
+      "min_imgs_per_subject": 40,
+      "median_imgs_per_subject": 50.0,
+      "max_imgs_per_subject": 60,
+      "pool_scans": 8,
+      "selected_scans": 8,
+      "selected_scan_labels": 4,
+      "pool_unique_slices": 61,
+      "selected_unique_slices": 56,
+      "mean_quality": 0.5724592091555553,
+      "median_quality": 0.5798437253492001,
+      "pool_mean_quality": 0.5154484851613721,
+      "quality_flagged_selected": 0,
+      "pairs_le2": 98,
+      "pairs_le4": 463,
+      "pairs_le6": 1195,
+      "pool_pairs_le2": 4416,
+      "pool_pairs_le4": 14641,
+      "pool_pairs_le6": 37278,
+      "adjacent_same_scan_pairs": 0
+    }
+  ],
+  "redundancy": [
+    {
+      "dataset": "candidate_pool",
+      "scope": "ALL",
+      "n_images": 1988,
+      "n_pairs": 1975078,
+      "mean_distance": 9.555560337363891,
+      "median_distance": 9.0,
+      "nn_mean": 1.0543259557344065,
+      "nn_median": 1.0,
+      "nn_min": 0,
+      "pairs_le2": 22461,
+      "frac_le2": 0.011372209097564754,
+      "same_subject_pairs_le2": 5228,
+      "pairs_le4": 125432,
+      "frac_le4": 0.06350736527873836,
+      "same_subject_pairs_le4": 13622,
+      "pairs_le6": 415955,
+      "frac_le6": 0.21060180914374016,
+      "same_subject_pairs_le6": 26367,
+      "bin_0-2": 22461,
+      "bin_3-4": 102971,
+      "bin_5-6": 290523,
+      "bin_7-8": 455770,
+      "bin_9-10": 393074,
+      "bin_11-15": 587167,
+      "bin_16+": 123112,
+      "adjacent_same_scan_pairs": 480,
+      "adjacent_same_scan_pairs_le4": 476
+    },
+    {
+      "dataset": "final_400",
+      "scope": "ALL",
+      "n_images": 400,
+      "n_pairs": 79800,
+      "mean_distance": 11.243408521303259,
+      "median_distance": 11.0,
+      "nn_mean": 3.335,
+      "nn_median": 3.0,
+      "nn_min": 0,
+      "pairs_le2": 209,
+      "frac_le2": 0.002619047619047619,
+      "same_subject_pairs_le2": 97,
+      "pairs_le4": 1712,
+      "frac_le4": 0.021453634085213034,
+      "same_subject_pairs_le4": 418,
+      "pairs_le6": 7280,
+      "frac_le6": 0.0912280701754386,
+      "same_subject_pairs_le6": 894,
+      "bin_0-2": 209,
+      "bin_3-4": 1503,
+      "bin_5-6": 5568,
+      "bin_7-8": 12331,
+      "bin_9-10": 16492,
+      "bin_11-15": 33282,
+      "bin_16+": 10415,
+      "adjacent_same_scan_pairs": 0,
+      "adjacent_same_scan_pairs_le4": 0
+    },
+    {
+      "dataset": "candidate_pool",
+      "scope": "Non Demented",
+      "n_images": 500,
+      "n_pairs": 124750,
+      "mean_distance": 8.889018036072144,
+      "median_distance": 8.0,
+      "nn_mean": 1.598,
+      "nn_median": 1.0,
+      "nn_min": 0,
+      "pairs_le2": 3563,
+      "frac_le2": 0.02856112224448898,
+      "same_subject_pairs_le2": 111,
+      "pairs_le4": 15487,
+      "frac_le4": 0.1241442885771543,
+      "same_subject_pairs_le4": 167,
+      "pairs_le6": 37230,
+      "frac_le6": 0.298436873747495,
+      "same_subject_pairs_le6": 191,
+      "bin_0-2": 3563,
+      "bin_3-4": 11924,
+      "bin_5-6": 21743,
+      "bin_7-8": 26893,
+      "bin_9-10": 22394,
+      "bin_11-15": 31180,
+      "bin_16+": 7053,
+      "adjacent_same_scan_pairs": 0,
+      "adjacent_same_scan_pairs_le4": 0
+    },
+    {
+      "dataset": "final_400",
+      "scope": "Non Demented",
+      "n_images": 100,
+      "n_pairs": 4950,
+      "mean_distance": 11.936969696969697,
+      "median_distance": 12.0,
+      "nn_mean": 5.21,
+      "nn_median": 5.0,
+      "nn_min": 3,
+      "pairs_le2": 0,
+      "frac_le2": 0.0,
+      "same_subject_pairs_le2": 0,
+      "pairs_le4": 54,
+      "frac_le4": 0.01090909090909091,
+      "same_subject_pairs_le4": 0,
+      "pairs_le6": 298,
+      "frac_le6": 0.0602020202020202,
+      "same_subject_pairs_le6": 0,
+      "bin_0-2": 0,
+      "bin_3-4": 54,
+      "bin_5-6": 244,
+      "bin_7-8": 600,
+      "bin_9-10": 980,
+      "bin_11-15": 2214,
+      "bin_16+": 858,
+      "adjacent_same_scan_pairs": 0,
+      "adjacent_same_scan_pairs_le4": 0
+    },
+    {
+      "dataset": "candidate_pool",
+      "scope": "Very Mild Demented",
+      "n_images": 500,
+      "n_pairs": 124750,
+      "mean_distance": 9.543783567134268,
+      "median_distance": 9.0,
+      "nn_mean": 1.564,
+      "nn_median": 1.0,
+      "nn_min": 0,
+      "pairs_le2": 1176,
+      "frac_le2": 0.00942685370741483,
+      "same_subject_pairs_le2": 373,
+      "pairs_le4": 6605,
+      "frac_le4": 0.05294589178356714,
+      "same_subject_pairs_le4": 688,
+      "pairs_le6": 24392,
+      "frac_le6": 0.19552705410821644,
+      "same_subject_pairs_le6": 1071,
+      "bin_0-2": 1176,
+      "bin_3-4": 5429,
+      "bin_5-6": 17787,
+      "bin_7-8": 30464,
+      "bin_9-10": 26448,
+      "bin_11-15": 36348,
+      "bin_16+": 7098,
+      "adjacent_same_scan_pairs": 0,
+      "adjacent_same_scan_pairs_le4": 0
+    },
+    {
+      "dataset": "final_400",
+      "scope": "Very Mild Demented",
+      "n_images": 100,
+      "n_pairs": 4950,
+      "mean_distance": 11.329494949494949,
+      "median_distance": 11.0,
+      "nn_mean": 5.23,
+      "nn_median": 5.0,
+      "nn_min": 2,
+      "pairs_le2": 1,
+      "frac_le2": 0.00020202020202020202,
+      "same_subject_pairs_le2": 0,
+      "pairs_le4": 69,
+      "frac_le4": 0.013939393939393939,
+      "same_subject_pairs_le4": 2,
+      "pairs_le6": 393,
+      "frac_le6": 0.07939393939393939,
+      "same_subject_pairs_le6": 8,
+      "bin_0-2": 1,
+      "bin_3-4": 68,
+      "bin_5-6": 324,
+      "bin_7-8": 795,
+      "bin_9-10": 1082,
+      "bin_11-15": 2013,
+      "bin_16+": 667,
+      "adjacent_same_scan_pairs": 0,
+      "adjacent_same_scan_pairs_le4": 0
+    },
+    {
+      "dataset": "candidate_pool",
+      "scope": "Mild Demented",
+      "n_images": 500,
+      "n_pairs": 124750,
+      "mean_distance": 10.269811623246493,
+      "median_distance": 10.0,
+      "nn_mean": 1.238,
+      "nn_median": 1.0,
+      "nn_min": 0,
+      "pairs_le2": 1510,
+      "frac_le2": 0.012104208416833667,
+      "same_subject_pairs_le2": 633,
+      "pairs_le4": 7205,
+      "frac_le4": 0.05775551102204409,
+      "same_subject_pairs_le4": 1479,
+      "pairs_le6": 21554,
+      "frac_le6": 0.17277755511022044,
+      "same_subject_pairs_le6": 2524,
+      "bin_0-2": 1510,
+      "bin_3-4": 5695,
+      "bin_5-6": 14349,
+      "bin_7-8": 21327,
+      "bin_9-10": 25794,
+      "bin_11-15": 44951,
+      "bin_16+": 11124,
+      "adjacent_same_scan_pairs": 0,
+      "adjacent_same_scan_pairs_le4": 0
+    },
+    {
+      "dataset": "final_400",
+      "scope": "Mild Demented",
+      "n_images": 100,
+      "n_pairs": 4950,
+      "mean_distance": 11.574949494949495,
+      "median_distance": 12.0,
+      "nn_mean": 4.81,
+      "nn_median": 5.0,
+      "nn_min": 1,
+      "pairs_le2": 4,
+      "frac_le2": 0.0008080808080808081,
+      "same_subject_pairs_le2": 2,
+      "pairs_le4": 75,
+      "frac_le4": 0.015151515151515152,
+      "same_subject_pairs_le4": 17,
+      "pairs_le6": 369,
+      "frac_le6": 0.07454545454545454,
+      "same_subject_pairs_le6": 55,
+      "bin_0-2": 4,
+      "bin_3-4": 71,
+      "bin_5-6": 294,
+      "bin_7-8": 592,
+      "bin_9-10": 1057,
+      "bin_11-15": 2241,
+      "bin_16+": 691,
+      "adjacent_same_scan_pairs": 0,
+      "adjacent_same_scan_pairs_le4": 0
+    },
+    {
+      "dataset": "candidate_pool",
+      "scope": "Moderate Demented",
+      "n_images": 488,
+      "n_pairs": 118828,
+      "mean_distance": 8.225637055239506,
+      "median_distance": 8.0,
+      "nn_mean": 0.42008196721311475,
+      "nn_median": 0.0,
+      "nn_min": 0,
+      "pairs_le2": 4416,
+      "frac_le2": 0.037162958225334095,
+      "same_subject_pairs_le2": 4111,
+      "pairs_le4": 14641,
+      "frac_le4": 0.123211700945905,
+      "same_subject_pairs_le4": 11288,
+      "pairs_le6": 37278,
+      "frac_le6": 0.3137139394755445,
+      "same_subject_pairs_le6": 22581,
+      "bin_0-2": 4416,
+      "bin_3-4": 10225,
+      "bin_5-6": 22637,
+      "bin_7-8": 30674,
+      "bin_9-10": 22973,
+      "bin_11-15": 26428,
+      "bin_16+": 1475,
+      "adjacent_same_scan_pairs": 480,
+      "adjacent_same_scan_pairs_le4": 476
+    },
+    {
+      "dataset": "final_400",
+      "scope": "Moderate Demented",
+      "n_images": 100,
+      "n_pairs": 4950,
+      "mean_distance": 8.939595959595959,
+      "median_distance": 9.0,
+      "nn_mean": 2.3,
+      "nn_median": 2.0,
+      "nn_min": 0,
+      "pairs_le2": 98,
+      "frac_le2": 0.019797979797979797,
+      "same_subject_pairs_le2": 95,
+      "pairs_le4": 463,
+      "frac_le4": 0.09353535353535354,
+      "same_subject_pairs_le4": 399,
+      "pairs_le6": 1195,
+      "frac_le6": 0.24141414141414141,
+      "same_subject_pairs_le6": 831,
+      "bin_0-2": 98,
+      "bin_3-4": 365,
+      "bin_5-6": 732,
+      "bin_7-8": 1131,
+      "bin_9-10": 1086,
+      "bin_11-15": 1448,
+      "bin_16+": 90,
+      "adjacent_same_scan_pairs": 0,
+      "adjacent_same_scan_pairs_le4": 0
+    }
+  ],
+  "candidate_pool_sha256_before": "bfda3de7de00bab63f64ae73a9fcfa45eb89e091f73bf6a8b22d58dfb7101399",
+  "candidate_pool_sha256_after": "bfda3de7de00bab63f64ae73a9fcfa45eb89e091f73bf6a8b22d58dfb7101399",
+  "warnings": [],
+  "runtime_sec": 0.8
+}
+
+
+============================================================
+FILE: outputs\final_400\final_400_report.md
+============================================================
+
+# Final 400-image Selection Report
+
+Deterministic greedy per-class selection, RANDOM_SEED=42; exactly 100 per class. No split, augmentation or training performed. Candidate pool unmodified.
+
+## Scoring
+
+`score = 4.0*subject_gain + 2.0*scan_gain + 1.5*slice_gain + 1.0*quality_pct - 0.3*quality_flag - 1.2*phash_penalty - 1.5*adjacency_penalty`
+
+- subject_gain = 1/(1+images already picked from that subject)
+- scan_gain = 0.6/(1+picked from same subject-session-scan) + 0.4*(1 - share of picks with same session/scan label)
+- slice_gain = 1/(1+sum exp(-(dSlice/2)^2) over picked) -> spreads picks over slice positions
+- quality_pct = within-class percentile of quality_score (not top-N)
+- phash_penalty = max over picked of w(d), w(d)=1/(1+exp((d-3.5)/1)): soft, no hard threshold
+- adjacency_penalty = same-subject slice proximity vs picked (<=1:1.0, 2:0.6, 3-4:0.3; x0.5 if different scan)
+- Hard rules only: class quota, per-subject cap, no byte-identical (sha256) duplicate.
+
+pHash penalty w(d): d=0:0.97, d=2:0.82, d=3:0.62, d=4:0.38, d=5:0.18, d=6:0.08, d=8:0.01
+
+Justification (candidate pool, all pairs): <=2 = 1.14%, <=4 = 6.35%, <=6 = 21.06% of pairs, median distance 9; components merge fully at <=8, so distances >=7 are ordinary MRI similarity and are not penalised.
+
+Per-subject caps: Non Demented=1, Very Mild Demented=3, Mild Demented=8, Moderate Demented=60
+
+## Class summary
+
+| class_name | class_id | pool_images | selected | pool_subjects | selected_subjects | min_imgs_per_subject | median_imgs_per_subject | max_imgs_per_subject | pool_scans | selected_scans | selected_scan_labels | pool_unique_slices | selected_unique_slices | mean_quality | median_quality | pool_mean_quality | quality_flagged_selected | pairs_le2 | pairs_le4 | pairs_le6 | pool_pairs_le2 | pool_pairs_le4 | pool_pairs_le6 | adjacent_same_scan_pairs |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Non Demented | 0 | 500 | 100 | 266 | 100 | 1 | 1 | 1 | 500 | 100 | 8 | 61 | 53 | 0.7414 | 0.733 | 0.6789 | 5 | 0 | 54 | 298 | 3563 | 15487 | 37230 | 0 |
+| Very Mild Demented | 1 | 500 | 100 | 58 | 58 | 1 | 2 | 3 | 225 | 100 | 4 | 61 | 54 | 0.6559 | 0.6456 | 0.6216 | 2 | 1 | 69 | 393 | 1176 | 6605 | 24392 | 0 |
+| Mild Demented | 2 | 500 | 100 | 21 | 21 | 3 | 5 | 6 | 82 | 80 | 4 | 61 | 51 | 0.6138 | 0.6181 | 0.5798 | 3 | 4 | 75 | 369 | 1510 | 7205 | 21554 | 0 |
+| Moderate Demented | 3 | 488 | 100 | 2 | 2 | 40 | 50 | 60 | 8 | 8 | 4 | 61 | 56 | 0.5725 | 0.5798 | 0.5154 | 0 | 98 | 463 | 1195 | 4416 | 14641 | 37278 | 0 |
+
+## Redundancy: final 400 vs candidate pool (ALL = across classes; class rows = within class)
+
+| dataset | scope | n_images | n_pairs | pairs_le2 | pairs_le4 | pairs_le6 | frac_le2 | frac_le4 | frac_le6 | nn_median | same_subject_pairs_le4 | adjacent_same_scan_pairs |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| candidate_pool | ALL | 1988 | 1975078 | 22461 | 125432 | 415955 | 0.01137 | 0.06351 | 0.2106 | 1 | 13622 | 480 |
+| final_400 | ALL | 400 | 79800 | 209 | 1712 | 7280 | 0.002619 | 0.02145 | 0.09123 | 3 | 418 | 0 |
+| candidate_pool | Non Demented | 500 | 124750 | 3563 | 15487 | 37230 | 0.02856 | 0.1241 | 0.2984 | 1 | 167 | 0 |
+| final_400 | Non Demented | 100 | 4950 | 0 | 54 | 298 | 0 | 0.01091 | 0.0602 | 5 | 0 | 0 |
+| candidate_pool | Very Mild Demented | 500 | 124750 | 1176 | 6605 | 24392 | 0.009427 | 0.05295 | 0.1955 | 1 | 688 | 0 |
+| final_400 | Very Mild Demented | 100 | 4950 | 1 | 69 | 393 | 0.000202 | 0.01394 | 0.07939 | 5 | 2 | 0 |
+| candidate_pool | Mild Demented | 500 | 124750 | 1510 | 7205 | 21554 | 0.0121 | 0.05776 | 0.1728 | 1 | 1479 | 0 |
+| final_400 | Mild Demented | 100 | 4950 | 4 | 75 | 369 | 0.0008081 | 0.01515 | 0.07455 | 5 | 17 | 0 |
+| candidate_pool | Moderate Demented | 488 | 118828 | 4416 | 14641 | 37278 | 0.03716 | 0.1232 | 0.3137 | 0 | 11288 | 480 |
+| final_400 | Moderate Demented | 100 | 4950 | 98 | 463 | 1195 | 0.0198 | 0.09354 | 0.2414 | 2 | 399 | 0 |
+
+## Moderate Demented subject counts
+
+{'OAS1_0308': 40, 'OAS1_0351': 60}
+
+## Slice-region distribution (final)
+
+| class_name | 100-109 | 110-119 | 120-129 | 130-139 | 140-149 | 150-160 |
+|---|---|---|---|---|---|---|
+| Mild Demented | 25 | 18 | 22 | 14 | 12 | 9 |
+| Moderate Demented | 21 | 16 | 16 | 17 | 18 | 12 |
+| Non Demented | 28 | 18 | 15 | 14 | 11 | 14 |
+| Very Mild Demented | 21 | 25 | 16 | 17 | 9 | 12 |
+
+## Warnings
+
+- none
+
+
+============================================================
+FILE: outputs\final_400\final_400_validation.json
+============================================================
+
+{
+  "class_counts": {
+    "Non Demented": 100,
+    "Very Mild Demented": 100,
+    "Mild Demented": 100,
+    "Moderate Demented": 100
+  },
+  "moderate_pool_subjects": [
+    "OAS1_0308",
+    "OAS1_0351"
+  ],
+  "moderate_final_subject_counts": {
+    "OAS1_0308": 40,
+    "OAS1_0351": 60
+  },
+  "pool_sha256_sources_agree": true,
+  "checks": {
+    "rows_400": true,
+    "100_per_class": true,
+    "all_4_classes": true,
+    "no_duplicate_filepath": true,
+    "no_duplicate_sha256": true,
+    "no_unknown_subject": true,
+    "no_duplicate_class_subject_session_scan_slice": true,
+    "all_in_candidate_pool": true,
+    "all_readable_per_pool_info": true,
+    "all_moderate_subjects_represented": true,
+    "candidate_pool_unchanged": true,
+    "deterministic_rerun_identical": true
+  },
+  "PASS": true
+}
+
+
+============================================================
+FILE: outputs\splits\split_report.json
+============================================================
+
+{
+  "strategy": "subject-level, class-stratified (seeded shuffle, seed=42); Moderate assigned deterministically (more-image subject->train, other->test)",
+  "seed": 42,
+  "image_counts": {
+    "Non Demented": {
+      "train": 70,
+      "val": 15,
+      "test": 15
+    },
+    "Very Mild Demented": {
+      "train": 70,
+      "val": 15,
+      "test": 15
+    },
+    "Mild Demented": {
+      "train": 73,
+      "val": 14,
+      "test": 13
+    },
+    "Moderate Demented": {
+      "train": 60,
+      "val": 0,
+      "test": 40
+    }
+  },
+  "subject_counts": {
+    "Non Demented": {
+      "train": 70,
+      "val": 15,
+      "test": 15
+    },
+    "Very Mild Demented": {
+      "train": 40,
+      "val": 9,
+      "test": 9
+    },
+    "Mild Demented": {
+      "train": 15,
+      "val": 3,
+      "test": 3
+    },
+    "Moderate Demented": {
+      "train": 1,
+      "val": 0,
+      "test": 1
+    }
+  },
+  "totals_images": {
+    "train": 273,
+    "val": 44,
+    "test": 83
+  },
+  "totals_subjects": {
+    "train": 126,
+    "val": 27,
+    "test": 28
+  },
+  "moderate_assignment": {
+    "OAS1_0308": "test",
+    "OAS1_0351": "train"
+  },
+  "moderate_image_counts": {
+    "OAS1_0308": 40,
+    "OAS1_0351": 60
+  },
+  "moderate_cv": {
+    "fold1": {
+      "heldout": "OAS1_0308",
+      "train": [
+        "OAS1_0351"
+      ]
+    },
+    "fold2": {
+      "heldout": "OAS1_0351",
+      "train": [
+        "OAS1_0308"
+      ]
+    }
+  },
+  "validation": {
+    "n_images_400": true,
+    "100_per_class": true,
+    "all_filepaths_once": true,
+    "no_duplicate_filepath": true,
+    "no_duplicate_class_subject_session_scan_slice": true,
+    "no_subject_in_multiple_partitions": true,
+    "all_four_classes_present": true,
+    "split_values_valid": true,
+    "moderate_subjects_exactly_once": true,
+    "ALL_PASSED": true,
+    "deterministic_rerun_identical": true,
+    "final_400_unchanged": true
+  },
+  "limitations": [
+    "Moderate Demented has only 2 subjects: no conventional 3-way subject-independent split exists for it.",
+    "Validation contains NO Moderate images; test Moderate comes from a single subject (OAS1_0308), so Moderate test metrics are single-subject and high-variance.",
+    "Moderate train comes from a single subject: the model sees little Moderate anatomical variability.",
+    "Val-based model selection/early stopping/calibration cannot assess Moderate.",
+    "Image ratios deviate from 70/15/15; subject independence prioritised.",
+    "Moderate 2-fold CV is supplementary; each fold tests on one subject only. Other classes keep main-split assignments."
+  ]
+}
+
+
+============================================================
+FILE: outputs\splits\split_report.md
+============================================================
+
+# Split report
+**Strategy:** subject-level, class-stratified (seeded shuffle, seed=42); Moderate assigned deterministically (more-image subject->train, other->test)
+
+## Counts
+| class_name         |   train_images |   val_images |   test_images |   train_subjects |   val_subjects |   test_subjects |
+|:-------------------|---------------:|-------------:|--------------:|-----------------:|---------------:|----------------:|
+| Non Demented       |             70 |           15 |            15 |               70 |             15 |              15 |
+| Very Mild Demented |             70 |           15 |            15 |               40 |              9 |               9 |
+| Mild Demented      |             73 |           14 |            13 |               15 |              3 |               3 |
+| Moderate Demented  |             60 |            0 |            40 |                1 |              0 |               1 |
+| TOTAL              |            273 |           44 |            83 |              126 |             27 |              28 |
+
+## Moderate Demented
+- OAS1_0308: test (40 images)
+- OAS1_0351: train (60 images)
+- fold1: held out OAS1_0308, train ['OAS1_0351']
+- fold2: held out OAS1_0351, train ['OAS1_0308']
+
+## Validation
+- n_images_400: True
+- 100_per_class: True
+- all_filepaths_once: True
+- no_duplicate_filepath: True
+- no_duplicate_class_subject_session_scan_slice: True
+- no_subject_in_multiple_partitions: True
+- all_four_classes_present: True
+- split_values_valid: True
+- moderate_subjects_exactly_once: True
+- ALL_PASSED: True
+- deterministic_rerun_identical: True
+- final_400_unchanged: True
+
+## Limitations
+- Moderate Demented has only 2 subjects: no conventional 3-way subject-independent split exists for it.
+- Validation contains NO Moderate images; test Moderate comes from a single subject (OAS1_0308), so Moderate test metrics are single-subject and high-variance.
+- Moderate train comes from a single subject: the model sees little Moderate anatomical variability.
+- Val-based model selection/early stopping/calibration cannot assess Moderate.
+- Image ratios deviate from 70/15/15; subject independence prioritised.
+- Moderate 2-fold CV is supplementary; each fold tests on one subject only. Other classes keep main-split assignments.
+
+
+============================================================
+FILE: outputs\splits\moderate_subject_cv.csv
+============================================================
+
+filepath,class_name,class_id,subject_id,session,scan,slice_idx,fold,heldout_subject,role
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_102.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,102,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-2_134.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-2,134,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_117.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,117,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_140.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-3,140,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_127.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,127,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_107.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,107,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_145.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-1,145,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_151.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-4,151,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_113.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-3,113,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_122.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,122,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_137.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,137,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_155.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,155,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_110.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,110,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_129.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-1,129,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_148.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,148,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_159.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-4,159,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_132.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,132,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_143.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,143,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_105.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-4,105,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_100.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,100,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-2_119.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-2,119,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_114.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,114,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_160.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,160,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_137.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-3,137,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_125.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,125,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_109.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-1,109,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_147.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-4,147,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_151.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,151,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_120.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,120,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-2_102.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-2,102,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_104.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,104,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_134.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,134,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_132.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-3,132,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_155.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-1,155,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_140.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,140,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_146.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,146,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_123.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-1,123,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_142.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-4,142,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_128.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,128,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_112.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,112,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_116.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-1,116,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_105.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,105,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_130.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,130,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-2_137.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-2,137,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_101.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,101,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_158.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,158,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_149.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,149,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-2_144.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-2,144,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_122.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,122,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_118.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,118,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_100.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,100,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_149.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-3,149,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_108.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,108,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_136.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-1,136,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_121.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-4,121,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_126.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-3,126,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_115.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,115,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_106.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,106,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_119.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,119,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_100.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-4,100,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-2_157.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-2,157,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_125.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,125,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_153.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-3,153,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_121.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,121,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_113.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,113,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_102.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,102,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_135.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,135,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_111.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,111,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_130.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,130,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_105.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,105,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_137.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-4,137,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_152.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,152,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_143.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,143,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_102.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,102,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_139.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,139,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_117.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,117,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_130.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,130,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_125.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,125,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-2_146.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-2,146,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_133.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-1,133,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_123.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-3,123,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_152.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,152,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_140.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,140,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_108.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,108,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_116.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,116,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_143.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,143,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_148.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,148,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_134.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-4,134,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_141.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-1,141,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_121.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,121,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_128.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,128,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_119.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,119,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_109.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,109,1,OAS1_0308,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_103.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-3,103,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_108.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-4,108,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_138.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-1,138,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_109.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-3,109,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-2_113.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-2,113,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-2_140.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-2,140,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_160.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-1,160,1,OAS1_0308,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_102.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,102,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-2_134.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-2,134,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_117.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,117,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_140.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-3,140,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_127.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,127,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_107.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,107,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_145.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-1,145,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_151.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-4,151,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_113.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-3,113,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_122.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,122,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_137.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,137,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_155.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,155,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_110.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,110,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_129.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-1,129,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_148.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,148,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_159.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-4,159,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_132.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,132,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_143.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,143,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_105.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-4,105,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_100.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,100,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-2_119.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-2,119,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_114.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,114,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_160.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,160,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_137.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-3,137,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_125.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,125,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_109.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-1,109,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_147.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-4,147,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_151.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,151,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_120.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,120,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-2_102.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-2,102,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_104.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,104,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_134.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,134,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_132.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-3,132,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_155.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-1,155,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_140.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,140,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_146.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,146,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_123.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-1,123,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_142.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-4,142,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_128.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,128,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_112.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,112,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_116.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-1,116,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_105.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,105,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_130.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,130,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-2_137.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-2,137,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_101.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,101,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_158.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,158,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_149.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,149,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-2_144.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-2,144,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_122.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,122,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_118.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,118,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_100.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,100,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_149.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-3,149,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_108.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,108,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_136.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-1,136,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_121.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-4,121,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_126.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-3,126,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_115.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,115,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_106.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,106,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_119.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,119,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_100.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-4,100,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-2_157.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-2,157,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_125.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,125,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_153.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-3,153,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_121.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,121,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_113.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,113,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_102.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,102,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_135.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,135,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_111.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,111,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_130.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,130,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_105.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,105,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_137.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-4,137,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_152.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,152,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_143.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,143,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_102.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,102,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_139.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,139,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_117.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,117,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_130.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,130,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_125.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,125,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-2_146.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-2,146,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_133.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-1,133,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_123.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-3,123,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_152.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,152,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_140.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,140,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_108.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,108,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_116.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,116,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_143.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,143,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-2_148.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-2,148,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_134.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-4,134,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_141.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-1,141,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_121.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,121,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-1_128.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-1,128,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-4_119.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-4,119,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0351_MR1_mpr-3_109.jpg,Moderate Demented,3,OAS1_0351,MR1,mpr-3,109,2,OAS1_0351,heldout_test
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_103.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-3,103,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_108.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-4,108,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_138.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-1,138,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_109.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-3,109,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-2_113.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-2,113,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-2_140.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-2,140,2,OAS1_0351,train
+oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_160.jpg,Moderate Demented,3,OAS1_0308,MR1,mpr-1,160,2,OAS1_0351,train
+
+
+============================================================
+FILE: outputs\metrics\training_history.json
+============================================================
+
+{
+  "train_loss": [
+    1.4661691289244991,
+    1.4694014224377308,
+    1.4315716652643113,
+    1.3714810863082663,
+    1.4203661614721947,
+    1.3836422800581096,
+    1.3836023135062976,
+    1.3834282094305688
+  ],
+  "train_acc": [
+    0.27106227106227104,
+    0.26373626373626374,
+    0.22344322344322345,
+    0.31135531135531136,
+    0.23809523809523808,
+    0.32234432234432236,
+    0.31868131868131866,
+    0.32234432234432236
+  ],
+  "val_loss": [
+    1.317245689305392,
+    1.293706102804704,
+    1.4543831023302944,
+    1.411443125117909,
+    1.3682047887281938,
+    1.3479700738733464,
+    1.3758387023752385,
+    1.4160615422508933
+  ],
+  "val_acc": [
+    0.3409090909090909,
+    0.4090909090909091,
+    0.0,
+    0.3409090909090909,
+    0.36363636363636365,
+    0.4090909090909091,
+    0.3181818181818182,
+    0.20454545454545456
+  ],
+  "val_macro_f1": [
+    0.1694915254237288,
+    0.38066378066378065,
+    0.0,
+    0.1694915254237288,
+    0.3458498023715415,
+    0.3605540499849443,
+    0.25071225071225073,
+    0.1858076563958917
+  ],
+  "best_val_acc": 0.4090909090909091,
+  "best_val_loss": 1.293706102804704,
+  "best_val_macro_f1": 0.38066378066378065,
+  "best_val_per_class": {
+    "Non Demented": {
+      "precision": 0.4,
+      "recall": 0.5333333333333333,
+      "f1": 0.45714285714285713,
+      "support": 15
+    },
+    "Very Mild Demented": {
+      "precision": 0.4444444444444444,
+      "recall": 0.5333333333333333,
+      "f1": 0.48484848484848486,
+      "support": 15
+    },
+    "Mild Demented": {
+      "precision": 0.3333333333333333,
+      "recall": 0.14285714285714285,
+      "f1": 0.2,
+      "support": 14
+    },
+    "Moderate Demented": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 0
+    }
+  },
+  "degenerate": false,
+  "seed": 43,
+  "epochs_run": 8
+}
+
+
+============================================================
+FILE: outputs\pipeline_runs\demo\demo_summary.json
+============================================================
+
+{
+  "mode": "demo",
+  "device": "cpu",
+  "image_size": [
+    96,
+    96
+  ],
+  "total_images": 400,
+  "train_images": 273,
+  "val_images": 44,
+  "test_images": 83,
+  "test_subjects": 28,
+  "batch_shape": [
+    32,
+    1,
+    96,
+    96
+  ],
+  "logits_shape": [
+    32,
+    4
+  ],
+  "num_classes": 4
+}

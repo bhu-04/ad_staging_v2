@@ -1,0 +1,278 @@
+# ============================================================
+# Alzheimer’s Disease Staging — Git Ignore
+# Local files remain on disk; this only prevents Git tracking.
+# ============================================================
+
+
+# ============================================================
+# PYTHON
+# ============================================================
+
+__pycache__/
+**/__pycache__/
+
+*.py[cod]
+*.pyo
+*.pyd
+
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.pyre/
+.hypothesis/
+
+*.egg-info/
+dist/
+build/
+
+
+# ============================================================
+# VIRTUAL ENVIRONMENTS
+# ============================================================
+
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+
+# ============================================================
+# IDE / EDITOR
+# ============================================================
+
+.vscode/
+.idea/
+*.code-workspace
+
+# Keep repository-level VS Code settings out of Git.
+# Remove this section if you later want shared workspace settings.
+
+
+# ============================================================
+# OPERATING SYSTEM
+# ============================================================
+
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.lnk
+
+
+# ============================================================
+# ENVIRONMENT VARIABLES / SECRETS
+# ============================================================
+
+.env
+.env.*
+!.env.example
+
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+
+secrets/
+credentials/
+credentials.json
+service-account*.json
+
+
+# ============================================================
+# RAW OASIS DATASET
+# ============================================================
+
+# IMPORTANT:
+# The actual MRI dataset remains on the local machine.
+# Do NOT upload the 86,437 raw images to GitHub.
+
+data/oasis_subset/
+
+# Other potential local/raw imaging directories
+data/**/images/
+data/**/raw/
+data/**/raw_data/
+
+# Medical imaging formats
+data/**/*.nii
+data/**/*.nii.gz
+data/**/*.dcm
+
+# Image files under data/
+data/**/*.jpg
+data/**/*.jpeg
+data/**/*.png
+data/**/*.bmp
+data/**/*.tif
+data/**/*.tiff
+data/**/*.webp
+
+
+# ============================================================
+# MODEL CHECKPOINTS / WEIGHTS
+# ============================================================
+
+# Never upload trained model binaries.
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.safetensors
+*.bin
+
+outputs/**/checkpoints/
+outputs/**/models/
+
+
+# ============================================================
+# PREPROCESSING / DATA CACHES
+# ============================================================
+
+.cache/
+cache/
+
+outputs/cache/
+outputs/**/cache/
+
+data/cache/
+data/**/cache/
+
+*.cache
+
+
+# ============================================================
+# OLD / LEGACY LOCAL PROJECT MATERIAL
+# ============================================================
+
+# These remain on the PC but are not part of the clean GitHub repo.
+
+src_legacy/
+archive/
+
+outputs_2/
+outputs_sub/
+outputs_trial/
+
+
+# ============================================================
+# V1 / V2 GENERATED TEMPORARY ARTIFACTS
+# ============================================================
+
+# Temporary experiment files
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# Training/runtime logs
+*.log
+
+# Temporary smoke-test checkpoint
+outputs/v2/smoke_tests/dummy.pt
+outputs/v2/smoke_tests/dummy.pt.meta.json
+
+
+# ============================================================
+# LARGE GENERATED FILES
+# ============================================================
+
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.7z
+*.rar
+
+# Generic large binary files
+*.bin
+
+
+# ============================================================
+# JUPYTER
+# ============================================================
+
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+
+
+# ============================================================
+# PYTHON / ML TOOLING LOCAL FILES
+# ============================================================
+
+wandb/
+.wandb/
+mlruns/
+.tensorboard/
+runs/
+
+
+# ============================================================
+# LOCAL EXPERIMENT / TEMP DIRECTORIES
+# ============================================================
+
+tmp/
+temp/
+local_tmp/
+
+
+# ============================================================
+# OS / APPLICATION GENERATED FILES
+# ============================================================
+
+*.swp
+*.swo
+*.orig
+
+# ============================================================
+# LOCAL DATASET MANIFESTS / SUBSETS
+# ============================================================
+
+data/oasis_subset_1500/
+data/oasis_subset_600/
+
+
+# ============================================================
+# OLD GENERATED OUTPUTS NOT REQUIRED BY CLAUDE
+# ============================================================
+
+outputs/metrics/
+outputs/plots/
+outputs/pipeline_runs/
+
+
+# ============================================================
+# TEMPORARY V2 SMOKE-TEST ARTIFACTS
+# ============================================================
+
+outputs/v2/smoke_tests/test_ckpt.pt
+outputs/v2/smoke_tests/test_ckpt.meta.json
+outputs/v2/smoke_tests/dummy.pt
+outputs/v2/smoke_tests/dummy.meta.json
+
+
+# ============================================================
+# LOCAL AUDIT / INSPECTION ARTIFACTS
+# ============================================================
+
+git_status.txt
+outputs_structure.txt
+project_structure.txt
+project_tree.txt
+src_structure.txt
+
+run_pipeline_backup.py
+resume_report_only.py
+# Dataset audit visualization images
+outputs/dataset_audit/visualizations/
+
+# Large exhaustive redundancy artifact
+outputs/candidate_redundancy/phash_pairwise_near_duplicates.csv
+
+# Large full-dataset inventory
+outputs/dataset_audit/image_inventory.csv
+
+# Large local inspection dumps
+project_structure.txt
+project_tree.txt

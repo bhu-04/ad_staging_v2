@@ -1,0 +1,245 @@
+class_name,slice_region,slice_idx,selected_count
+Non Demented,100-109,100,6
+Non Demented,100-109,101,14
+Non Demented,100-109,102,10
+Non Demented,100-109,103,10
+Non Demented,100-109,104,5
+Non Demented,100-109,105,11
+Non Demented,100-109,106,8
+Non Demented,100-109,107,10
+Non Demented,100-109,108,10
+Non Demented,100-109,109,8
+Non Demented,110-119,110,8
+Non Demented,110-119,111,8
+Non Demented,110-119,112,9
+Non Demented,110-119,113,7
+Non Demented,110-119,114,5
+Non Demented,110-119,115,9
+Non Demented,110-119,116,10
+Non Demented,110-119,117,11
+Non Demented,110-119,118,10
+Non Demented,110-119,119,7
+Non Demented,120-129,120,13
+Non Demented,120-129,121,7
+Non Demented,120-129,122,13
+Non Demented,120-129,123,11
+Non Demented,120-129,124,4
+Non Demented,120-129,125,6
+Non Demented,120-129,126,6
+Non Demented,120-129,127,10
+Non Demented,120-129,128,7
+Non Demented,120-129,129,6
+Non Demented,130-139,130,4
+Non Demented,130-139,131,3
+Non Demented,130-139,132,12
+Non Demented,130-139,133,11
+Non Demented,130-139,134,13
+Non Demented,130-139,135,8
+Non Demented,130-139,136,12
+Non Demented,130-139,137,8
+Non Demented,130-139,138,5
+Non Demented,130-139,139,7
+Non Demented,140-149,140,12
+Non Demented,140-149,141,10
+Non Demented,140-149,142,11
+Non Demented,140-149,143,6
+Non Demented,140-149,144,6
+Non Demented,140-149,145,10
+Non Demented,140-149,146,8
+Non Demented,140-149,147,7
+Non Demented,140-149,148,4
+Non Demented,140-149,149,6
+Non Demented,150-160,150,5
+Non Demented,150-160,151,7
+Non Demented,150-160,152,4
+Non Demented,150-160,153,4
+Non Demented,150-160,154,9
+Non Demented,150-160,155,11
+Non Demented,150-160,156,9
+Non Demented,150-160,157,9
+Non Demented,150-160,158,4
+Non Demented,150-160,159,9
+Non Demented,150-160,160,7
+Very Mild Demented,100-109,100,10
+Very Mild Demented,100-109,101,9
+Very Mild Demented,100-109,102,11
+Very Mild Demented,100-109,103,11
+Very Mild Demented,100-109,104,10
+Very Mild Demented,100-109,105,8
+Very Mild Demented,100-109,106,11
+Very Mild Demented,100-109,107,11
+Very Mild Demented,100-109,108,10
+Very Mild Demented,100-109,109,7
+Very Mild Demented,110-119,110,8
+Very Mild Demented,110-119,111,10
+Very Mild Demented,110-119,112,11
+Very Mild Demented,110-119,113,11
+Very Mild Demented,110-119,114,11
+Very Mild Demented,110-119,115,16
+Very Mild Demented,110-119,116,6
+Very Mild Demented,110-119,117,9
+Very Mild Demented,110-119,118,9
+Very Mild Demented,110-119,119,6
+Very Mild Demented,120-129,120,11
+Very Mild Demented,120-129,121,8
+Very Mild Demented,120-129,122,10
+Very Mild Demented,120-129,123,10
+Very Mild Demented,120-129,124,10
+Very Mild Demented,120-129,125,16
+Very Mild Demented,120-129,126,8
+Very Mild Demented,120-129,127,11
+Very Mild Demented,120-129,128,11
+Very Mild Demented,120-129,129,4
+Very Mild Demented,130-139,130,13
+Very Mild Demented,130-139,131,6
+Very Mild Demented,130-139,132,10
+Very Mild Demented,130-139,133,4
+Very Mild Demented,130-139,134,9
+Very Mild Demented,130-139,135,5
+Very Mild Demented,130-139,136,6
+Very Mild Demented,130-139,137,7
+Very Mild Demented,130-139,138,10
+Very Mild Demented,130-139,139,7
+Very Mild Demented,140-149,140,11
+Very Mild Demented,140-149,141,8
+Very Mild Demented,140-149,142,10
+Very Mild Demented,140-149,143,10
+Very Mild Demented,140-149,144,7
+Very Mild Demented,140-149,145,6
+Very Mild Demented,140-149,146,3
+Very Mild Demented,140-149,147,7
+Very Mild Demented,140-149,148,6
+Very Mild Demented,140-149,149,6
+Very Mild Demented,150-160,150,10
+Very Mild Demented,150-160,151,4
+Very Mild Demented,150-160,152,3
+Very Mild Demented,150-160,153,1
+Very Mild Demented,150-160,154,6
+Very Mild Demented,150-160,155,4
+Very Mild Demented,150-160,156,6
+Very Mild Demented,150-160,157,6
+Very Mild Demented,150-160,158,6
+Very Mild Demented,150-160,159,6
+Very Mild Demented,150-160,160,3
+Mild Demented,100-109,100,15
+Mild Demented,100-109,101,11
+Mild Demented,100-109,102,1
+Mild Demented,100-109,103,9
+Mild Demented,100-109,104,4
+Mild Demented,100-109,105,19
+Mild Demented,100-109,106,9
+Mild Demented,100-109,107,3
+Mild Demented,100-109,108,10
+Mild Demented,100-109,109,13
+Mild Demented,110-119,110,8
+Mild Demented,110-119,111,12
+Mild Demented,110-119,112,4
+Mild Demented,110-119,113,5
+Mild Demented,110-119,114,11
+Mild Demented,110-119,115,17
+Mild Demented,110-119,116,12
+Mild Demented,110-119,117,10
+Mild Demented,110-119,118,8
+Mild Demented,110-119,119,8
+Mild Demented,120-129,120,17
+Mild Demented,120-129,121,10
+Mild Demented,120-129,122,19
+Mild Demented,120-129,123,3
+Mild Demented,120-129,124,7
+Mild Demented,120-129,125,5
+Mild Demented,120-129,126,13
+Mild Demented,120-129,127,13
+Mild Demented,120-129,128,4
+Mild Demented,120-129,129,1
+Mild Demented,130-139,130,9
+Mild Demented,130-139,131,9
+Mild Demented,130-139,132,13
+Mild Demented,130-139,133,14
+Mild Demented,130-139,134,5
+Mild Demented,130-139,135,4
+Mild Demented,130-139,136,4
+Mild Demented,130-139,137,8
+Mild Demented,130-139,138,3
+Mild Demented,130-139,139,6
+Mild Demented,140-149,140,11
+Mild Demented,140-149,141,8
+Mild Demented,140-149,142,9
+Mild Demented,140-149,143,15
+Mild Demented,140-149,144,8
+Mild Demented,140-149,145,5
+Mild Demented,140-149,146,7
+Mild Demented,140-149,147,6
+Mild Demented,140-149,148,6
+Mild Demented,140-149,149,3
+Mild Demented,150-160,150,9
+Mild Demented,150-160,151,8
+Mild Demented,150-160,152,6
+Mild Demented,150-160,153,6
+Mild Demented,150-160,154,5
+Mild Demented,150-160,155,1
+Mild Demented,150-160,156,5
+Mild Demented,150-160,157,5
+Mild Demented,150-160,158,6
+Mild Demented,150-160,159,7
+Mild Demented,150-160,160,8
+Moderate Demented,100-109,100,8
+Moderate Demented,100-109,101,8
+Moderate Demented,100-109,102,8
+Moderate Demented,100-109,103,8
+Moderate Demented,100-109,104,8
+Moderate Demented,100-109,105,8
+Moderate Demented,100-109,106,8
+Moderate Demented,100-109,107,8
+Moderate Demented,100-109,108,8
+Moderate Demented,100-109,109,8
+Moderate Demented,110-119,110,8
+Moderate Demented,110-119,111,8
+Moderate Demented,110-119,112,8
+Moderate Demented,110-119,113,8
+Moderate Demented,110-119,114,8
+Moderate Demented,110-119,115,8
+Moderate Demented,110-119,116,8
+Moderate Demented,110-119,117,8
+Moderate Demented,110-119,118,8
+Moderate Demented,110-119,119,8
+Moderate Demented,120-129,120,8
+Moderate Demented,120-129,121,8
+Moderate Demented,120-129,122,8
+Moderate Demented,120-129,123,8
+Moderate Demented,120-129,124,8
+Moderate Demented,120-129,125,8
+Moderate Demented,120-129,126,8
+Moderate Demented,120-129,127,8
+Moderate Demented,120-129,128,8
+Moderate Demented,120-129,129,8
+Moderate Demented,130-139,130,8
+Moderate Demented,130-139,131,8
+Moderate Demented,130-139,132,8
+Moderate Demented,130-139,133,8
+Moderate Demented,130-139,134,8
+Moderate Demented,130-139,135,8
+Moderate Demented,130-139,136,8
+Moderate Demented,130-139,137,8
+Moderate Demented,130-139,138,8
+Moderate Demented,130-139,139,8
+Moderate Demented,140-149,140,8
+Moderate Demented,140-149,141,8
+Moderate Demented,140-149,142,8
+Moderate Demented,140-149,143,8
+Moderate Demented,140-149,144,8
+Moderate Demented,140-149,145,8
+Moderate Demented,140-149,146,8
+Moderate Demented,140-149,147,8
+Moderate Demented,140-149,148,8
+Moderate Demented,140-149,149,8
+Moderate Demented,150-160,150,8
+Moderate Demented,150-160,151,8
+Moderate Demented,150-160,152,8
+Moderate Demented,150-160,153,8
+Moderate Demented,150-160,154,8
+Moderate Demented,150-160,155,8
+Moderate Demented,150-160,156,8
+Moderate Demented,150-160,157,8
+Moderate Demented,150-160,158,8
+Moderate Demented,150-160,159,8
+Moderate Demented,150-160,160,8

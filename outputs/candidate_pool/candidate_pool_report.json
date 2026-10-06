@@ -1,0 +1,388 @@
+{
+  "title": "OASIS Candidate Pool Report",
+  "statements": [
+    "This is a candidate pool, not the final 400-image dataset.",
+    "Near-duplicate analysis is intentionally deferred until the candidate-pool stage."
+  ],
+  "input_inventory": {
+    "path": "C:\\Users\\bhuva\\OneDrive\\Documents\\AD_staging-main\\outputs\\dataset_audit\\image_inventory.csv",
+    "sha256": "bed822c4d6d91b064f5641444dc270c0f41d3d036e9312a13eb0a306450e346a",
+    "total_records": 86437,
+    "eligible_records": 86437
+  },
+  "dataset_source": "data/oasis_subset (audited 2D OASIS axial JPEG slices; raw files are not read or copied by this stage)",
+  "target_counts": {
+    "Non Demented": 500,
+    "Very Mild Demented": 500,
+    "Mild Demented": 500,
+    "Moderate Demented": 488
+  },
+  "actual_counts": {
+    "Non Demented": 500,
+    "Very Mild Demented": 500,
+    "Mild Demented": 500,
+    "Moderate Demented": 488
+  },
+  "total_selected": 1988,
+  "exclusions": {
+    "Non Demented": {},
+    "Very Mild Demented": {},
+    "Mild Demented": {},
+    "Moderate Demented": {}
+  },
+  "random_seed": 42,
+  "selection_methodology": {
+    "hierarchy": "class > subject > session > scan > slice",
+    "score": {
+      "normalized_quality": 0.5,
+      "slice_diversity": 0.2,
+      "scan_diversity": 0.15,
+      "subject_balance": 0.15,
+      "neighbor_penalty_max": 0.3,
+      "neighbor_penalty_radius_slices": 10
+    },
+    "slice_regions": [
+      "100-109",
+      "110-119",
+      "120-129",
+      "130-139",
+      "140-149",
+      "150-160"
+    ],
+    "notes": "Subject quotas (even split, capped) -> scan quotas (even split, class-level scan balancing) -> round-robin slice picks scored by the weighted formula; ties broken by filepath. Quality flags never exclude images. Exact class counts take priority over score."
+  },
+  "subject_diversity": {
+    "images_per_subject": [
+      {
+        "class_name": "Mild Demented",
+        "min": 23,
+        "median": 24.0,
+        "max": 24
+      },
+      {
+        "class_name": "Moderate Demented",
+        "min": 244,
+        "median": 244.0,
+        "max": 244
+      },
+      {
+        "class_name": "Non Demented",
+        "min": 1,
+        "median": 2.0,
+        "max": 2
+      },
+      {
+        "class_name": "Very Mild Demented",
+        "min": 8,
+        "median": 9.0,
+        "max": 9
+      }
+    ],
+    "subject_distribution_file": "candidate_subject_distribution.csv"
+  },
+  "scan_session_diversity": [
+    {
+      "class_name": "Non Demented",
+      "session": "MR1",
+      "scan": "mpr-1",
+      "selected_count": 116
+    },
+    {
+      "class_name": "Non Demented",
+      "session": "MR1",
+      "scan": "mpr-2",
+      "selected_count": 116
+    },
+    {
+      "class_name": "Non Demented",
+      "session": "MR1",
+      "scan": "mpr-3",
+      "selected_count": 115
+    },
+    {
+      "class_name": "Non Demented",
+      "session": "MR1",
+      "scan": "mpr-4",
+      "selected_count": 115
+    },
+    {
+      "class_name": "Non Demented",
+      "session": "MR1",
+      "scan": "mpr-5",
+      "selected_count": 1
+    },
+    {
+      "class_name": "Non Demented",
+      "session": "MR1",
+      "scan": "mpr-6",
+      "selected_count": 1
+    },
+    {
+      "class_name": "Non Demented",
+      "session": "MR2",
+      "scan": "mpr-1",
+      "selected_count": 9
+    },
+    {
+      "class_name": "Non Demented",
+      "session": "MR2",
+      "scan": "mpr-2",
+      "selected_count": 9
+    },
+    {
+      "class_name": "Non Demented",
+      "session": "MR2",
+      "scan": "mpr-3",
+      "selected_count": 9
+    },
+    {
+      "class_name": "Non Demented",
+      "session": "MR2",
+      "scan": "mpr-4",
+      "selected_count": 9
+    },
+    {
+      "class_name": "Very Mild Demented",
+      "session": "MR1",
+      "scan": "mpr-1",
+      "selected_count": 125
+    },
+    {
+      "class_name": "Very Mild Demented",
+      "session": "MR1",
+      "scan": "mpr-2",
+      "selected_count": 125
+    },
+    {
+      "class_name": "Very Mild Demented",
+      "session": "MR1",
+      "scan": "mpr-3",
+      "selected_count": 125
+    },
+    {
+      "class_name": "Very Mild Demented",
+      "session": "MR1",
+      "scan": "mpr-4",
+      "selected_count": 125
+    },
+    {
+      "class_name": "Mild Demented",
+      "session": "MR1",
+      "scan": "mpr-1",
+      "selected_count": 129
+    },
+    {
+      "class_name": "Mild Demented",
+      "session": "MR1",
+      "scan": "mpr-2",
+      "selected_count": 129
+    },
+    {
+      "class_name": "Mild Demented",
+      "session": "MR1",
+      "scan": "mpr-3",
+      "selected_count": 129
+    },
+    {
+      "class_name": "Mild Demented",
+      "session": "MR1",
+      "scan": "mpr-4",
+      "selected_count": 113
+    },
+    {
+      "class_name": "Moderate Demented",
+      "session": "MR1",
+      "scan": "mpr-1",
+      "selected_count": 122
+    },
+    {
+      "class_name": "Moderate Demented",
+      "session": "MR1",
+      "scan": "mpr-2",
+      "selected_count": 122
+    },
+    {
+      "class_name": "Moderate Demented",
+      "session": "MR1",
+      "scan": "mpr-3",
+      "selected_count": 122
+    },
+    {
+      "class_name": "Moderate Demented",
+      "session": "MR1",
+      "scan": "mpr-4",
+      "selected_count": 122
+    }
+  ],
+  "slice_diversity": {
+    "region_counts": [
+      {
+        "class_name": "Non Demented",
+        "100-109": 92,
+        "110-119": 84,
+        "120-129": 83,
+        "130-139": 83,
+        "140-149": 80,
+        "150-160": 78
+      },
+      {
+        "class_name": "Very Mild Demented",
+        "100-109": 98,
+        "110-119": 97,
+        "120-129": 99,
+        "130-139": 77,
+        "140-149": 74,
+        "150-160": 55
+      },
+      {
+        "class_name": "Mild Demented",
+        "100-109": 94,
+        "110-119": 95,
+        "120-129": 92,
+        "130-139": 75,
+        "140-149": 78,
+        "150-160": 66
+      },
+      {
+        "class_name": "Moderate Demented",
+        "100-109": 80,
+        "110-119": 80,
+        "120-129": 80,
+        "130-139": 80,
+        "140-149": 80,
+        "150-160": 88
+      }
+    ],
+    "slice_distribution_file": "candidate_slice_distribution.csv"
+  },
+  "quality_statistics": [
+    {
+      "class_name": "Non Demented",
+      "mean_quality_score": 0.6789242097466174,
+      "median_quality_score": 0.6678605101024033,
+      "min_quality_score": 0.4705579933202122,
+      "max_quality_score": 0.990159272807234
+    },
+    {
+      "class_name": "Very Mild Demented",
+      "mean_quality_score": 0.6215945818346523,
+      "median_quality_score": 0.6157465045517252,
+      "min_quality_score": 0.4327323117252165,
+      "max_quality_score": 0.873149105718606
+    },
+    {
+      "class_name": "Mild Demented",
+      "mean_quality_score": 0.5797614266102277,
+      "median_quality_score": 0.5853400288899684,
+      "min_quality_score": 0.3368311062752464,
+      "max_quality_score": 0.8619106522634514
+    },
+    {
+      "class_name": "Moderate Demented",
+      "mean_quality_score": 0.5154484851613721,
+      "median_quality_score": 0.5211343780930136,
+      "min_quality_score": 0.1960393880261802,
+      "max_quality_score": 0.8060592266625874
+    }
+  ],
+  "quality_flag_counts": {
+    "Non Demented": 48,
+    "Very Mild Demented": 16,
+    "Mild Demented": 23,
+    "Moderate Demented": 21
+  },
+  "summary": [
+    {
+      "class_name": "Non Demented",
+      "class_id": 0,
+      "target_count": 500,
+      "selected_count": 500,
+      "unique_subjects": 266,
+      "unique_sessions": 2,
+      "unique_scans": 6,
+      "unique_subject_sessions": 266,
+      "unique_subject_scans": 500,
+      "unique_slice_positions": 61,
+      "quality_flagged_count": 48,
+      "mean_quality_score": 0.6789242097466174,
+      "median_quality_score": 0.6678605101024033,
+      "min_quality_score": 0.4705579933202122,
+      "max_quality_score": 0.990159272807234
+    },
+    {
+      "class_name": "Very Mild Demented",
+      "class_id": 1,
+      "target_count": 500,
+      "selected_count": 500,
+      "unique_subjects": 58,
+      "unique_sessions": 1,
+      "unique_scans": 4,
+      "unique_subject_sessions": 58,
+      "unique_subject_scans": 225,
+      "unique_slice_positions": 61,
+      "quality_flagged_count": 16,
+      "mean_quality_score": 0.6215945818346523,
+      "median_quality_score": 0.6157465045517252,
+      "min_quality_score": 0.4327323117252165,
+      "max_quality_score": 0.873149105718606
+    },
+    {
+      "class_name": "Mild Demented",
+      "class_id": 2,
+      "target_count": 500,
+      "selected_count": 500,
+      "unique_subjects": 21,
+      "unique_sessions": 1,
+      "unique_scans": 4,
+      "unique_subject_sessions": 21,
+      "unique_subject_scans": 82,
+      "unique_slice_positions": 61,
+      "quality_flagged_count": 23,
+      "mean_quality_score": 0.5797614266102277,
+      "median_quality_score": 0.5853400288899684,
+      "min_quality_score": 0.3368311062752464,
+      "max_quality_score": 0.8619106522634514
+    },
+    {
+      "class_name": "Moderate Demented",
+      "class_id": 3,
+      "target_count": 488,
+      "selected_count": 488,
+      "unique_subjects": 2,
+      "unique_sessions": 1,
+      "unique_scans": 4,
+      "unique_subject_sessions": 2,
+      "unique_subject_scans": 8,
+      "unique_slice_positions": 61,
+      "quality_flagged_count": 21,
+      "mean_quality_score": 0.5154484851613721,
+      "median_quality_score": 0.5211343780930136,
+      "min_quality_score": 0.1960393880261802,
+      "max_quality_score": 0.8060592266625874
+    }
+  ],
+  "validation": {
+    "total == 1988": true,
+    "Non Demented == 500": true,
+    "Very Mild Demented == 500": true,
+    "Mild Demented == 500": true,
+    "Moderate Demented == 488": true,
+    "no duplicate filepath": true,
+    "no missing filepath": true,
+    "all records readable": true,
+    "no UNKNOWN subject_id": true,
+    "no filename parse failures": true,
+    "no exact duplicate groups": true,
+    "all four classes represented": true,
+    "all Moderate Demented subjects represented": true,
+    "Moderate Demented has 2 subjects (audit)": true,
+    "no duplicate (class, subject, session, scan, slice_idx)": true,
+    "all eligible Moderate Demented files included": true
+  },
+  "validation_passed": true,
+  "warnings": [
+    "Moderate Demented comes from only 2 subject(s); the pool necessarily contains every slice of those subjects, many of them adjacent. A subject-level train/val/test split cannot place this class in all three partitions, which is a data limitation to resolve at the final-selection/splitting stage.",
+    "Quality flags are ranking information only: 108 quality-flagged image(s) are in the pool (all kept for Moderate Demented; down-weighted by score elsewhere).",
+    "Exact-duplicate status relies on the audit's SHA-256 results; perceptual near-duplicates have NOT been checked."
+  ]
+}

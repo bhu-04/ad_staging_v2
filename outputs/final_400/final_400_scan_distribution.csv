@@ -1,0 +1,816 @@
+class_name,subject_id,session,scan,pool_count,final_count
+Mild Demented,OAS1_0028,MR1,mpr-1,6,2
+Mild Demented,OAS1_0028,MR1,mpr-2,6,1
+Mild Demented,OAS1_0028,MR1,mpr-3,6,2
+Mild Demented,OAS1_0028,MR1,mpr-4,6,1
+Mild Demented,OAS1_0031,MR1,mpr-1,6,1
+Mild Demented,OAS1_0031,MR1,mpr-2,6,1
+Mild Demented,OAS1_0031,MR1,mpr-3,6,1
+Mild Demented,OAS1_0031,MR1,mpr-4,5,1
+Mild Demented,OAS1_0035,MR1,mpr-1,6,1
+Mild Demented,OAS1_0035,MR1,mpr-2,6,1
+Mild Demented,OAS1_0035,MR1,mpr-3,6,1
+Mild Demented,OAS1_0035,MR1,mpr-4,6,2
+Mild Demented,OAS1_0052,MR1,mpr-1,6,2
+Mild Demented,OAS1_0052,MR1,mpr-2,6,2
+Mild Demented,OAS1_0052,MR1,mpr-3,6,1
+Mild Demented,OAS1_0052,MR1,mpr-4,6,1
+Mild Demented,OAS1_0053,MR1,mpr-1,6,1
+Mild Demented,OAS1_0053,MR1,mpr-2,6,1
+Mild Demented,OAS1_0053,MR1,mpr-3,6,2
+Mild Demented,OAS1_0053,MR1,mpr-4,6,2
+Mild Demented,OAS1_0056,MR1,mpr-1,6,1
+Mild Demented,OAS1_0056,MR1,mpr-2,6,1
+Mild Demented,OAS1_0056,MR1,mpr-3,6,1
+Mild Demented,OAS1_0056,MR1,mpr-4,6,1
+Mild Demented,OAS1_0067,MR1,mpr-1,8,2
+Mild Demented,OAS1_0067,MR1,mpr-2,8,1
+Mild Demented,OAS1_0067,MR1,mpr-3,8,2
+Mild Demented,OAS1_0073,MR1,mpr-1,6,1
+Mild Demented,OAS1_0073,MR1,mpr-2,6,1
+Mild Demented,OAS1_0073,MR1,mpr-3,6,1
+Mild Demented,OAS1_0073,MR1,mpr-4,6,2
+Mild Demented,OAS1_0122,MR1,mpr-1,6,1
+Mild Demented,OAS1_0122,MR1,mpr-2,6,1
+Mild Demented,OAS1_0122,MR1,mpr-3,5,1
+Mild Demented,OAS1_0122,MR1,mpr-4,6,1
+Mild Demented,OAS1_0134,MR1,mpr-1,6,1
+Mild Demented,OAS1_0134,MR1,mpr-2,6,1
+Mild Demented,OAS1_0134,MR1,mpr-3,6,2
+Mild Demented,OAS1_0134,MR1,mpr-4,6,2
+Mild Demented,OAS1_0137,MR1,mpr-1,5,0
+Mild Demented,OAS1_0137,MR1,mpr-2,6,2
+Mild Demented,OAS1_0137,MR1,mpr-3,6,1
+Mild Demented,OAS1_0137,MR1,mpr-4,6,1
+Mild Demented,OAS1_0184,MR1,mpr-1,6,1
+Mild Demented,OAS1_0184,MR1,mpr-2,6,1
+Mild Demented,OAS1_0184,MR1,mpr-3,6,2
+Mild Demented,OAS1_0184,MR1,mpr-4,6,1
+Mild Demented,OAS1_0185,MR1,mpr-1,6,1
+Mild Demented,OAS1_0185,MR1,mpr-2,6,2
+Mild Demented,OAS1_0185,MR1,mpr-3,6,1
+Mild Demented,OAS1_0185,MR1,mpr-4,6,1
+Mild Demented,OAS1_0223,MR1,mpr-1,8,2
+Mild Demented,OAS1_0223,MR1,mpr-2,8,2
+Mild Demented,OAS1_0223,MR1,mpr-3,8,2
+Mild Demented,OAS1_0268,MR1,mpr-1,6,2
+Mild Demented,OAS1_0268,MR1,mpr-2,6,1
+Mild Demented,OAS1_0268,MR1,mpr-3,6,1
+Mild Demented,OAS1_0268,MR1,mpr-4,6,1
+Mild Demented,OAS1_0269,MR1,mpr-1,6,1
+Mild Demented,OAS1_0269,MR1,mpr-2,6,1
+Mild Demented,OAS1_0269,MR1,mpr-3,6,1
+Mild Demented,OAS1_0269,MR1,mpr-4,6,1
+Mild Demented,OAS1_0278,MR1,mpr-1,6,1
+Mild Demented,OAS1_0278,MR1,mpr-2,6,2
+Mild Demented,OAS1_0278,MR1,mpr-3,6,1
+Mild Demented,OAS1_0278,MR1,mpr-4,6,1
+Mild Demented,OAS1_0291,MR1,mpr-1,6,1
+Mild Demented,OAS1_0291,MR1,mpr-2,6,1
+Mild Demented,OAS1_0291,MR1,mpr-3,6,1
+Mild Demented,OAS1_0291,MR1,mpr-4,6,1
+Mild Demented,OAS1_0316,MR1,mpr-1,6,1
+Mild Demented,OAS1_0316,MR1,mpr-2,5,0
+Mild Demented,OAS1_0316,MR1,mpr-3,6,1
+Mild Demented,OAS1_0316,MR1,mpr-4,6,1
+Mild Demented,OAS1_0373,MR1,mpr-1,6,1
+Mild Demented,OAS1_0373,MR1,mpr-2,6,1
+Mild Demented,OAS1_0373,MR1,mpr-3,6,1
+Mild Demented,OAS1_0373,MR1,mpr-4,6,1
+Mild Demented,OAS1_0382,MR1,mpr-1,6,1
+Mild Demented,OAS1_0382,MR1,mpr-2,6,1
+Mild Demented,OAS1_0382,MR1,mpr-3,6,1
+Mild Demented,OAS1_0382,MR1,mpr-4,6,1
+Moderate Demented,OAS1_0308,MR1,mpr-1,61,11
+Moderate Demented,OAS1_0308,MR1,mpr-2,61,9
+Moderate Demented,OAS1_0308,MR1,mpr-3,61,10
+Moderate Demented,OAS1_0308,MR1,mpr-4,61,10
+Moderate Demented,OAS1_0351,MR1,mpr-1,61,14
+Moderate Demented,OAS1_0351,MR1,mpr-2,61,15
+Moderate Demented,OAS1_0351,MR1,mpr-3,61,17
+Moderate Demented,OAS1_0351,MR1,mpr-4,61,14
+Non Demented,OAS1_0001,MR1,mpr-3,1,0
+Non Demented,OAS1_0001,MR1,mpr-4,1,1
+Non Demented,OAS1_0002,MR1,mpr-1,1,0
+Non Demented,OAS1_0002,MR1,mpr-2,1,0
+Non Demented,OAS1_0004,MR1,mpr-1,1,0
+Non Demented,OAS1_0004,MR1,mpr-2,1,0
+Non Demented,OAS1_0005,MR1,mpr-3,1,0
+Non Demented,OAS1_0005,MR1,mpr-4,1,0
+Non Demented,OAS1_0006,MR1,mpr-2,1,0
+Non Demented,OAS1_0006,MR1,mpr-4,1,0
+Non Demented,OAS1_0007,MR1,mpr-1,1,0
+Non Demented,OAS1_0007,MR1,mpr-2,1,0
+Non Demented,OAS1_0009,MR1,mpr-3,1,1
+Non Demented,OAS1_0009,MR1,mpr-4,1,0
+Non Demented,OAS1_0010,MR1,mpr-1,1,0
+Non Demented,OAS1_0010,MR1,mpr-3,1,1
+Non Demented,OAS1_0011,MR1,mpr-2,1,0
+Non Demented,OAS1_0011,MR1,mpr-4,1,0
+Non Demented,OAS1_0012,MR1,mpr-1,1,0
+Non Demented,OAS1_0012,MR1,mpr-3,1,0
+Non Demented,OAS1_0013,MR1,mpr-1,1,0
+Non Demented,OAS1_0013,MR1,mpr-2,1,0
+Non Demented,OAS1_0014,MR1,mpr-3,1,0
+Non Demented,OAS1_0014,MR1,mpr-4,1,0
+Non Demented,OAS1_0017,MR1,mpr-1,1,0
+Non Demented,OAS1_0017,MR1,mpr-3,1,1
+Non Demented,OAS1_0018,MR1,mpr-2,1,0
+Non Demented,OAS1_0018,MR1,mpr-4,1,1
+Non Demented,OAS1_0019,MR1,mpr-1,1,1
+Non Demented,OAS1_0019,MR1,mpr-2,1,0
+Non Demented,OAS1_0020,MR1,mpr-3,1,0
+Non Demented,OAS1_0025,MR1,mpr-2,1,0
+Non Demented,OAS1_0025,MR1,mpr-4,1,0
+Non Demented,OAS1_0026,MR1,mpr-1,1,0
+Non Demented,OAS1_0026,MR1,mpr-3,1,0
+Non Demented,OAS1_0027,MR1,mpr-3,1,0
+Non Demented,OAS1_0027,MR1,mpr-4,1,0
+Non Demented,OAS1_0029,MR1,mpr-2,1,0
+Non Demented,OAS1_0029,MR1,mpr-3,1,0
+Non Demented,OAS1_0030,MR1,mpr-1,1,0
+Non Demented,OAS1_0030,MR1,mpr-4,1,0
+Non Demented,OAS1_0032,MR1,mpr-4,1,0
+Non Demented,OAS1_0033,MR1,mpr-1,1,0
+Non Demented,OAS1_0033,MR1,mpr-2,1,0
+Non Demented,OAS1_0034,MR1,mpr-1,1,0
+Non Demented,OAS1_0034,MR1,mpr-2,1,0
+Non Demented,OAS1_0037,MR1,mpr-3,1,1
+Non Demented,OAS1_0037,MR1,mpr-4,1,0
+Non Demented,OAS1_0038,MR1,mpr-1,1,0
+Non Demented,OAS1_0038,MR1,mpr-3,1,0
+Non Demented,OAS1_0040,MR1,mpr-2,1,0
+Non Demented,OAS1_0040,MR1,mpr-4,1,1
+Non Demented,OAS1_0043,MR1,mpr-1,1,0
+Non Demented,OAS1_0043,MR1,mpr-2,1,1
+Non Demented,OAS1_0044,MR1,mpr-3,1,0
+Non Demented,OAS1_0044,MR1,mpr-4,1,0
+Non Demented,OAS1_0045,MR1,mpr-1,1,0
+Non Demented,OAS1_0045,MR1,mpr-3,1,0
+Non Demented,OAS1_0047,MR1,mpr-2,1,1
+Non Demented,OAS1_0047,MR1,mpr-4,1,0
+Non Demented,OAS1_0049,MR1,mpr-2,1,0
+Non Demented,OAS1_0049,MR1,mpr-4,1,0
+Non Demented,OAS1_0050,MR1,mpr-1,1,0
+Non Demented,OAS1_0050,MR1,mpr-3,1,0
+Non Demented,OAS1_0051,MR1,mpr-1,1,1
+Non Demented,OAS1_0051,MR1,mpr-2,1,0
+Non Demented,OAS1_0054,MR1,mpr-3,1,0
+Non Demented,OAS1_0054,MR1,mpr-4,1,0
+Non Demented,OAS1_0055,MR1,mpr-2,1,0
+Non Demented,OAS1_0055,MR1,mpr-3,1,0
+Non Demented,OAS1_0057,MR1,mpr-1,1,0
+Non Demented,OAS1_0058,MR1,mpr-2,1,0
+Non Demented,OAS1_0058,MR1,mpr-4,1,0
+Non Demented,OAS1_0059,MR1,mpr-3,1,0
+Non Demented,OAS1_0059,MR1,mpr-4,1,0
+Non Demented,OAS1_0061,MR2,mpr-1,1,0
+Non Demented,OAS1_0061,MR2,mpr-2,1,1
+Non Demented,OAS1_0062,MR1,mpr-1,1,0
+Non Demented,OAS1_0063,MR1,mpr-1,1,1
+Non Demented,OAS1_0063,MR1,mpr-3,1,0
+Non Demented,OAS1_0064,MR1,mpr-2,1,1
+Non Demented,OAS1_0064,MR1,mpr-4,1,0
+Non Demented,OAS1_0065,MR1,mpr-1,1,0
+Non Demented,OAS1_0065,MR1,mpr-2,1,0
+Non Demented,OAS1_0068,MR1,mpr-3,1,0
+Non Demented,OAS1_0068,MR1,mpr-4,1,0
+Non Demented,OAS1_0069,MR1,mpr-1,1,1
+Non Demented,OAS1_0069,MR1,mpr-2,1,0
+Non Demented,OAS1_0070,MR1,mpr-3,1,0
+Non Demented,OAS1_0071,MR1,mpr-1,1,0
+Non Demented,OAS1_0071,MR1,mpr-4,1,0
+Non Demented,OAS1_0072,MR1,mpr-3,1,0
+Non Demented,OAS1_0072,MR1,mpr-4,1,0
+Non Demented,OAS1_0074,MR1,mpr-2,1,0
+Non Demented,OAS1_0074,MR1,mpr-4,1,0
+Non Demented,OAS1_0075,MR1,mpr-1,1,1
+Non Demented,OAS1_0075,MR1,mpr-2,1,0
+Non Demented,OAS1_0076,MR1,mpr-1,1,0
+Non Demented,OAS1_0076,MR1,mpr-3,1,1
+Non Demented,OAS1_0077,MR1,mpr-2,1,0
+Non Demented,OAS1_0077,MR1,mpr-4,1,0
+Non Demented,OAS1_0078,MR1,mpr-2,1,1
+Non Demented,OAS1_0078,MR1,mpr-3,1,0
+Non Demented,OAS1_0079,MR1,mpr-3,1,0
+Non Demented,OAS1_0080,MR2,mpr-3,1,0
+Non Demented,OAS1_0080,MR2,mpr-4,1,0
+Non Demented,OAS1_0081,MR1,mpr-1,1,0
+Non Demented,OAS1_0083,MR1,mpr-3,1,0
+Non Demented,OAS1_0083,MR1,mpr-4,1,0
+Non Demented,OAS1_0085,MR1,mpr-1,1,0
+Non Demented,OAS1_0085,MR1,mpr-2,1,0
+Non Demented,OAS1_0086,MR1,mpr-2,1,0
+Non Demented,OAS1_0086,MR1,mpr-4,1,0
+Non Demented,OAS1_0087,MR1,mpr-1,1,0
+Non Demented,OAS1_0087,MR1,mpr-4,1,0
+Non Demented,OAS1_0088,MR1,mpr-2,1,0
+Non Demented,OAS1_0088,MR1,mpr-3,1,0
+Non Demented,OAS1_0090,MR1,mpr-3,1,1
+Non Demented,OAS1_0090,MR1,mpr-4,1,0
+Non Demented,OAS1_0091,MR1,mpr-1,1,0
+Non Demented,OAS1_0091,MR1,mpr-2,1,0
+Non Demented,OAS1_0092,MR2,mpr-1,1,1
+Non Demented,OAS1_0092,MR2,mpr-4,1,0
+Non Demented,OAS1_0095,MR1,mpr-1,1,0
+Non Demented,OAS1_0095,MR1,mpr-4,1,0
+Non Demented,OAS1_0096,MR1,mpr-2,1,0
+Non Demented,OAS1_0096,MR1,mpr-3,1,0
+Non Demented,OAS1_0097,MR1,mpr-3,1,0
+Non Demented,OAS1_0097,MR1,mpr-4,1,0
+Non Demented,OAS1_0099,MR1,mpr-1,1,0
+Non Demented,OAS1_0099,MR1,mpr-4,1,0
+Non Demented,OAS1_0101,MR2,mpr-2,1,0
+Non Demented,OAS1_0101,MR2,mpr-3,1,0
+Non Demented,OAS1_0102,MR1,mpr-2,1,0
+Non Demented,OAS1_0102,MR1,mpr-3,1,0
+Non Demented,OAS1_0103,MR1,mpr-1,1,0
+Non Demented,OAS1_0103,MR1,mpr-3,1,0
+Non Demented,OAS1_0104,MR1,mpr-1,1,0
+Non Demented,OAS1_0104,MR1,mpr-2,1,0
+Non Demented,OAS1_0105,MR1,mpr-4,1,0
+Non Demented,OAS1_0106,MR1,mpr-3,1,0
+Non Demented,OAS1_0106,MR1,mpr-4,1,0
+Non Demented,OAS1_0107,MR1,mpr-1,1,1
+Non Demented,OAS1_0107,MR1,mpr-2,1,0
+Non Demented,OAS1_0108,MR1,mpr-1,1,0
+Non Demented,OAS1_0108,MR1,mpr-3,1,0
+Non Demented,OAS1_0109,MR1,mpr-4,1,0
+Non Demented,OAS1_0110,MR1,mpr-1,1,0
+Non Demented,OAS1_0110,MR1,mpr-2,1,0
+Non Demented,OAS1_0111,MR2,mpr-1,1,0
+Non Demented,OAS1_0111,MR2,mpr-3,1,0
+Non Demented,OAS1_0112,MR1,mpr-4,1,0
+Non Demented,OAS1_0113,MR1,mpr-2,1,0
+Non Demented,OAS1_0113,MR1,mpr-3,1,1
+Non Demented,OAS1_0114,MR1,mpr-3,1,1
+Non Demented,OAS1_0114,MR1,mpr-4,1,0
+Non Demented,OAS1_0116,MR1,mpr-1,1,0
+Non Demented,OAS1_0116,MR1,mpr-2,1,0
+Non Demented,OAS1_0117,MR2,mpr-2,1,0
+Non Demented,OAS1_0117,MR2,mpr-4,1,1
+Non Demented,OAS1_0119,MR1,mpr-1,1,0
+Non Demented,OAS1_0119,MR1,mpr-2,1,1
+Non Demented,OAS1_0121,MR1,mpr-3,1,0
+Non Demented,OAS1_0121,MR1,mpr-4,1,1
+Non Demented,OAS1_0125,MR1,mpr-3,1,0
+Non Demented,OAS1_0125,MR1,mpr-4,1,0
+Non Demented,OAS1_0126,MR1,mpr-1,1,0
+Non Demented,OAS1_0126,MR1,mpr-2,1,0
+Non Demented,OAS1_0127,MR1,mpr-1,1,0
+Non Demented,OAS1_0127,MR1,mpr-2,1,0
+Non Demented,OAS1_0129,MR1,mpr-3,1,0
+Non Demented,OAS1_0129,MR1,mpr-4,1,0
+Non Demented,OAS1_0130,MR1,mpr-1,1,0
+Non Demented,OAS1_0130,MR1,mpr-2,1,1
+Non Demented,OAS1_0131,MR1,mpr-3,1,0
+Non Demented,OAS1_0131,MR1,mpr-4,1,0
+Non Demented,OAS1_0132,MR1,mpr-1,1,0
+Non Demented,OAS1_0132,MR1,mpr-2,1,0
+Non Demented,OAS1_0133,MR1,mpr-3,1,0
+Non Demented,OAS1_0133,MR1,mpr-4,1,0
+Non Demented,OAS1_0135,MR1,mpr-1,1,1
+Non Demented,OAS1_0135,MR1,mpr-4,1,0
+Non Demented,OAS1_0136,MR1,mpr-2,1,0
+Non Demented,OAS1_0138,MR1,mpr-3,1,0
+Non Demented,OAS1_0139,MR1,mpr-2,1,1
+Non Demented,OAS1_0139,MR1,mpr-4,1,0
+Non Demented,OAS1_0140,MR1,mpr-1,1,0
+Non Demented,OAS1_0140,MR1,mpr-3,1,0
+Non Demented,OAS1_0141,MR1,mpr-1,1,0
+Non Demented,OAS1_0141,MR1,mpr-3,1,0
+Non Demented,OAS1_0144,MR1,mpr-2,1,0
+Non Demented,OAS1_0144,MR1,mpr-4,1,0
+Non Demented,OAS1_0145,MR2,mpr-2,1,1
+Non Demented,OAS1_0145,MR2,mpr-4,1,0
+Non Demented,OAS1_0146,MR1,mpr-3,1,1
+Non Demented,OAS1_0146,MR1,mpr-4,1,0
+Non Demented,OAS1_0147,MR1,mpr-1,1,0
+Non Demented,OAS1_0147,MR1,mpr-2,1,0
+Non Demented,OAS1_0148,MR1,mpr-1,1,0
+Non Demented,OAS1_0148,MR1,mpr-2,1,0
+Non Demented,OAS1_0150,MR2,mpr-1,1,0
+Non Demented,OAS1_0150,MR2,mpr-3,1,0
+Non Demented,OAS1_0151,MR1,mpr-3,1,0
+Non Demented,OAS1_0151,MR1,mpr-4,1,1
+Non Demented,OAS1_0152,MR1,mpr-1,1,0
+Non Demented,OAS1_0152,MR1,mpr-2,1,0
+Non Demented,OAS1_0153,MR1,mpr-4,1,0
+Non Demented,OAS1_0156,MR2,mpr-2,1,0
+Non Demented,OAS1_0156,MR2,mpr-3,1,0
+Non Demented,OAS1_0157,MR1,mpr-1,1,1
+Non Demented,OAS1_0157,MR1,mpr-3,1,0
+Non Demented,OAS1_0159,MR1,mpr-2,1,0
+Non Demented,OAS1_0159,MR1,mpr-3,1,0
+Non Demented,OAS1_0160,MR1,mpr-2,1,1
+Non Demented,OAS1_0160,MR1,mpr-4,1,0
+Non Demented,OAS1_0162,MR1,mpr-3,1,0
+Non Demented,OAS1_0162,MR1,mpr-4,1,1
+Non Demented,OAS1_0163,MR1,mpr-1,1,0
+Non Demented,OAS1_0163,MR1,mpr-2,1,0
+Non Demented,OAS1_0165,MR1,mpr-1,1,0
+Non Demented,OAS1_0165,MR1,mpr-3,1,0
+Non Demented,OAS1_0167,MR1,mpr-3,1,1
+Non Demented,OAS1_0167,MR1,mpr-4,1,0
+Non Demented,OAS1_0168,MR1,mpr-2,1,0
+Non Demented,OAS1_0168,MR1,mpr-4,1,0
+Non Demented,OAS1_0169,MR1,mpr-1,1,0
+Non Demented,OAS1_0170,MR1,mpr-2,1,1
+Non Demented,OAS1_0170,MR1,mpr-4,1,0
+Non Demented,OAS1_0173,MR1,mpr-1,1,1
+Non Demented,OAS1_0174,MR1,mpr-3,1,0
+Non Demented,OAS1_0176,MR1,mpr-2,1,0
+Non Demented,OAS1_0176,MR1,mpr-3,1,1
+Non Demented,OAS1_0177,MR1,mpr-1,1,0
+Non Demented,OAS1_0178,MR1,mpr-3,1,0
+Non Demented,OAS1_0178,MR1,mpr-4,1,1
+Non Demented,OAS1_0180,MR1,mpr-1,1,0
+Non Demented,OAS1_0180,MR1,mpr-2,1,1
+Non Demented,OAS1_0181,MR1,mpr-1,1,0
+Non Demented,OAS1_0181,MR1,mpr-2,1,0
+Non Demented,OAS1_0182,MR1,mpr-3,1,0
+Non Demented,OAS1_0182,MR1,mpr-4,1,1
+Non Demented,OAS1_0183,MR1,mpr-3,1,1
+Non Demented,OAS1_0183,MR1,mpr-4,1,0
+Non Demented,OAS1_0186,MR1,mpr-2,1,0
+Non Demented,OAS1_0186,MR1,mpr-4,1,0
+Non Demented,OAS1_0188,MR1,mpr-1,1,0
+Non Demented,OAS1_0188,MR1,mpr-2,1,0
+Non Demented,OAS1_0189,MR1,mpr-1,1,0
+Non Demented,OAS1_0189,MR1,mpr-4,1,1
+Non Demented,OAS1_0190,MR1,mpr-2,1,0
+Non Demented,OAS1_0190,MR1,mpr-3,1,1
+Non Demented,OAS1_0191,MR2,mpr-1,1,1
+Non Demented,OAS1_0191,MR2,mpr-4,1,0
+Non Demented,OAS1_0192,MR1,mpr-1,1,0
+Non Demented,OAS1_0192,MR1,mpr-3,1,0
+Non Demented,OAS1_0193,MR1,mpr-2,1,0
+Non Demented,OAS1_0193,MR1,mpr-4,1,0
+Non Demented,OAS1_0195,MR1,mpr-1,1,0
+Non Demented,OAS1_0195,MR1,mpr-4,1,0
+Non Demented,OAS1_0197,MR1,mpr-3,1,0
+Non Demented,OAS1_0197,MR1,mpr-4,1,1
+Non Demented,OAS1_0198,MR1,mpr-1,1,0
+Non Demented,OAS1_0198,MR1,mpr-2,1,1
+Non Demented,OAS1_0199,MR1,mpr-1,1,1
+Non Demented,OAS1_0199,MR1,mpr-3,1,0
+Non Demented,OAS1_0200,MR1,mpr-3,1,0
+Non Demented,OAS1_0200,MR1,mpr-4,1,0
+Non Demented,OAS1_0201,MR1,mpr-2,1,1
+Non Demented,OAS1_0201,MR1,mpr-3,1,0
+Non Demented,OAS1_0202,MR2,mpr-1,1,0
+Non Demented,OAS1_0202,MR2,mpr-4,1,0
+Non Demented,OAS1_0203,MR1,mpr-1,1,1
+Non Demented,OAS1_0203,MR1,mpr-2,1,0
+Non Demented,OAS1_0204,MR1,mpr-3,1,0
+Non Demented,OAS1_0204,MR1,mpr-4,1,1
+Non Demented,OAS1_0206,MR1,mpr-1,1,0
+Non Demented,OAS1_0206,MR1,mpr-2,1,1
+Non Demented,OAS1_0207,MR1,mpr-1,1,0
+Non Demented,OAS1_0207,MR1,mpr-2,1,0
+Non Demented,OAS1_0208,MR1,mpr-2,1,0
+Non Demented,OAS1_0208,MR1,mpr-3,1,0
+Non Demented,OAS1_0209,MR1,mpr-3,1,0
+Non Demented,OAS1_0209,MR1,mpr-4,1,0
+Non Demented,OAS1_0211,MR1,mpr-1,1,0
+Non Demented,OAS1_0211,MR1,mpr-4,1,1
+Non Demented,OAS1_0212,MR1,mpr-1,1,0
+Non Demented,OAS1_0212,MR1,mpr-4,1,0
+Non Demented,OAS1_0213,MR1,mpr-2,1,0
+Non Demented,OAS1_0214,MR1,mpr-2,1,1
+Non Demented,OAS1_0214,MR1,mpr-3,1,0
+Non Demented,OAS1_0216,MR1,mpr-4,1,0
+Non Demented,OAS1_0218,MR1,mpr-4,1,0
+Non Demented,OAS1_0220,MR1,mpr-1,1,0
+Non Demented,OAS1_0220,MR1,mpr-3,1,0
+Non Demented,OAS1_0221,MR1,mpr-2,1,0
+Non Demented,OAS1_0222,MR1,mpr-3,1,1
+Non Demented,OAS1_0222,MR1,mpr-4,1,0
+Non Demented,OAS1_0224,MR1,mpr-1,1,0
+Non Demented,OAS1_0224,MR1,mpr-3,1,0
+Non Demented,OAS1_0227,MR1,mpr-1,1,0
+Non Demented,OAS1_0227,MR1,mpr-4,1,0
+Non Demented,OAS1_0228,MR1,mpr-1,1,0
+Non Demented,OAS1_0228,MR1,mpr-2,1,0
+Non Demented,OAS1_0229,MR1,mpr-2,1,0
+Non Demented,OAS1_0229,MR1,mpr-4,1,0
+Non Demented,OAS1_0230,MR2,mpr-2,1,0
+Non Demented,OAS1_0230,MR2,mpr-3,1,0
+Non Demented,OAS1_0231,MR1,mpr-1,1,0
+Non Demented,OAS1_0231,MR1,mpr-3,1,0
+Non Demented,OAS1_0232,MR1,mpr-2,1,0
+Non Demented,OAS1_0232,MR1,mpr-3,1,0
+Non Demented,OAS1_0234,MR1,mpr-2,1,1
+Non Demented,OAS1_0234,MR1,mpr-4,1,0
+Non Demented,OAS1_0235,MR1,mpr-1,1,0
+Non Demented,OAS1_0235,MR1,mpr-3,1,1
+Non Demented,OAS1_0236,MR2,mpr-1,1,0
+Non Demented,OAS1_0237,MR1,mpr-1,1,0
+Non Demented,OAS1_0237,MR1,mpr-4,1,0
+Non Demented,OAS1_0239,MR2,mpr-2,1,0
+Non Demented,OAS1_0239,MR2,mpr-3,1,0
+Non Demented,OAS1_0241,MR1,mpr-2,1,0
+Non Demented,OAS1_0241,MR1,mpr-4,1,0
+Non Demented,OAS1_0244,MR1,mpr-1,1,0
+Non Demented,OAS1_0244,MR1,mpr-3,1,0
+Non Demented,OAS1_0246,MR1,mpr-3,1,0
+Non Demented,OAS1_0246,MR1,mpr-4,1,0
+Non Demented,OAS1_0249,MR2,mpr-1,1,0
+Non Demented,OAS1_0249,MR2,mpr-4,1,0
+Non Demented,OAS1_0250,MR1,mpr-1,1,0
+Non Demented,OAS1_0250,MR1,mpr-2,1,0
+Non Demented,OAS1_0253,MR1,mpr-2,1,0
+Non Demented,OAS1_0253,MR1,mpr-3,1,1
+Non Demented,OAS1_0254,MR1,mpr-5,1,1
+Non Demented,OAS1_0254,MR1,mpr-6,1,0
+Non Demented,OAS1_0255,MR1,mpr-2,1,0
+Non Demented,OAS1_0255,MR1,mpr-4,1,0
+Non Demented,OAS1_0256,MR1,mpr-3,1,0
+Non Demented,OAS1_0256,MR1,mpr-4,1,1
+Non Demented,OAS1_0258,MR1,mpr-1,1,0
+Non Demented,OAS1_0258,MR1,mpr-2,1,0
+Non Demented,OAS1_0259,MR1,mpr-3,1,0
+Non Demented,OAS1_0259,MR1,mpr-4,1,0
+Non Demented,OAS1_0260,MR1,mpr-1,1,1
+Non Demented,OAS1_0260,MR1,mpr-2,1,0
+Non Demented,OAS1_0261,MR1,mpr-1,1,1
+Non Demented,OAS1_0261,MR1,mpr-4,1,0
+Non Demented,OAS1_0262,MR1,mpr-1,1,1
+Non Demented,OAS1_0262,MR1,mpr-3,1,0
+Non Demented,OAS1_0264,MR1,mpr-3,1,1
+Non Demented,OAS1_0264,MR1,mpr-4,1,0
+Non Demented,OAS1_0265,MR1,mpr-2,1,0
+Non Demented,OAS1_0266,MR1,mpr-1,1,0
+Non Demented,OAS1_0266,MR1,mpr-3,1,1
+Non Demented,OAS1_0270,MR1,mpr-2,1,0
+Non Demented,OAS1_0271,MR1,mpr-1,1,1
+Non Demented,OAS1_0271,MR1,mpr-4,1,0
+Non Demented,OAS1_0274,MR1,mpr-2,1,0
+Non Demented,OAS1_0274,MR1,mpr-3,1,0
+Non Demented,OAS1_0275,MR1,mpr-3,1,0
+Non Demented,OAS1_0275,MR1,mpr-4,1,0
+Non Demented,OAS1_0277,MR1,mpr-1,1,1
+Non Demented,OAS1_0277,MR1,mpr-4,1,0
+Non Demented,OAS1_0279,MR1,mpr-2,1,0
+Non Demented,OAS1_0279,MR1,mpr-4,1,1
+Non Demented,OAS1_0280,MR1,mpr-1,1,0
+Non Demented,OAS1_0280,MR1,mpr-3,1,0
+Non Demented,OAS1_0281,MR1,mpr-2,1,0
+Non Demented,OAS1_0282,MR1,mpr-3,1,0
+Non Demented,OAS1_0282,MR1,mpr-4,1,0
+Non Demented,OAS1_0283,MR1,mpr-2,1,1
+Non Demented,OAS1_0284,MR1,mpr-1,1,0
+Non Demented,OAS1_0284,MR1,mpr-4,1,1
+Non Demented,OAS1_0285,MR2,mpr-2,1,0
+Non Demented,OAS1_0285,MR2,mpr-4,1,1
+Non Demented,OAS1_0289,MR1,mpr-2,1,0
+Non Demented,OAS1_0289,MR1,mpr-3,1,0
+Non Demented,OAS1_0292,MR1,mpr-1,1,0
+Non Demented,OAS1_0292,MR1,mpr-4,1,0
+Non Demented,OAS1_0293,MR1,mpr-2,1,0
+Non Demented,OAS1_0294,MR1,mpr-1,1,0
+Non Demented,OAS1_0294,MR1,mpr-3,1,0
+Non Demented,OAS1_0295,MR1,mpr-1,1,0
+Non Demented,OAS1_0295,MR1,mpr-3,1,0
+Non Demented,OAS1_0296,MR1,mpr-2,1,1
+Non Demented,OAS1_0296,MR1,mpr-4,1,0
+Non Demented,OAS1_0299,MR1,mpr-3,1,0
+Non Demented,OAS1_0301,MR1,mpr-2,1,1
+Non Demented,OAS1_0301,MR1,mpr-4,1,0
+Non Demented,OAS1_0302,MR1,mpr-1,1,0
+Non Demented,OAS1_0302,MR1,mpr-4,1,0
+Non Demented,OAS1_0303,MR1,mpr-1,1,0
+Non Demented,OAS1_0303,MR1,mpr-2,1,0
+Non Demented,OAS1_0305,MR1,mpr-2,1,0
+Non Demented,OAS1_0305,MR1,mpr-3,1,0
+Non Demented,OAS1_0309,MR1,mpr-1,1,0
+Non Demented,OAS1_0309,MR1,mpr-3,1,0
+Non Demented,OAS1_0310,MR1,mpr-3,1,0
+Non Demented,OAS1_0310,MR1,mpr-4,1,1
+Non Demented,OAS1_0311,MR1,mpr-1,1,0
+Non Demented,OAS1_0311,MR1,mpr-4,1,0
+Non Demented,OAS1_0313,MR1,mpr-1,1,0
+Non Demented,OAS1_0313,MR1,mpr-2,1,0
+Non Demented,OAS1_0314,MR1,mpr-3,1,1
+Non Demented,OAS1_0314,MR1,mpr-4,1,0
+Non Demented,OAS1_0317,MR1,mpr-1,1,1
+Non Demented,OAS1_0317,MR1,mpr-2,1,0
+Non Demented,OAS1_0318,MR1,mpr-2,1,0
+Non Demented,OAS1_0318,MR1,mpr-3,1,0
+Non Demented,OAS1_0319,MR1,mpr-1,1,1
+Non Demented,OAS1_0319,MR1,mpr-4,1,0
+Non Demented,OAS1_0321,MR1,mpr-2,1,0
+Non Demented,OAS1_0322,MR1,mpr-3,1,0
+Non Demented,OAS1_0322,MR1,mpr-4,1,0
+Non Demented,OAS1_0323,MR1,mpr-1,1,0
+Non Demented,OAS1_0323,MR1,mpr-3,1,0
+Non Demented,OAS1_0325,MR1,mpr-2,1,0
+Non Demented,OAS1_0325,MR1,mpr-3,1,0
+Non Demented,OAS1_0326,MR1,mpr-2,1,1
+Non Demented,OAS1_0326,MR1,mpr-4,1,0
+Non Demented,OAS1_0327,MR1,mpr-1,1,1
+Non Demented,OAS1_0327,MR1,mpr-4,1,0
+Non Demented,OAS1_0328,MR1,mpr-1,1,0
+Non Demented,OAS1_0328,MR1,mpr-2,1,0
+Non Demented,OAS1_0330,MR1,mpr-3,1,1
+Non Demented,OAS1_0330,MR1,mpr-4,1,0
+Non Demented,OAS1_0331,MR1,mpr-1,1,1
+Non Demented,OAS1_0331,MR1,mpr-2,1,0
+Non Demented,OAS1_0332,MR1,mpr-3,1,0
+Non Demented,OAS1_0332,MR1,mpr-4,1,0
+Non Demented,OAS1_0333,MR1,mpr-2,1,0
+Non Demented,OAS1_0333,MR1,mpr-3,1,0
+Non Demented,OAS1_0336,MR1,mpr-1,1,0
+Non Demented,OAS1_0336,MR1,mpr-4,1,0
+Non Demented,OAS1_0337,MR1,mpr-1,1,0
+Non Demented,OAS1_0337,MR1,mpr-2,1,0
+Non Demented,OAS1_0338,MR1,mpr-3,1,0
+Non Demented,OAS1_0338,MR1,mpr-4,1,1
+Non Demented,OAS1_0340,MR1,mpr-1,1,0
+Non Demented,OAS1_0340,MR1,mpr-2,1,0
+Non Demented,OAS1_0341,MR1,mpr-3,1,0
+Non Demented,OAS1_0341,MR1,mpr-4,1,0
+Non Demented,OAS1_0342,MR1,mpr-1,1,0
+Non Demented,OAS1_0342,MR1,mpr-4,1,1
+Non Demented,OAS1_0343,MR1,mpr-2,1,0
+Non Demented,OAS1_0343,MR1,mpr-3,1,0
+Non Demented,OAS1_0344,MR1,mpr-1,1,0
+Non Demented,OAS1_0344,MR1,mpr-2,1,0
+Non Demented,OAS1_0345,MR1,mpr-3,1,0
+Non Demented,OAS1_0345,MR1,mpr-4,1,0
+Non Demented,OAS1_0346,MR1,mpr-1,1,1
+Non Demented,OAS1_0346,MR1,mpr-3,1,0
+Non Demented,OAS1_0348,MR1,mpr-2,1,0
+Non Demented,OAS1_0348,MR1,mpr-4,1,0
+Non Demented,OAS1_0349,MR1,mpr-3,1,0
+Non Demented,OAS1_0350,MR1,mpr-1,1,0
+Non Demented,OAS1_0350,MR1,mpr-4,1,1
+Non Demented,OAS1_0353,MR2,mpr-3,1,0
+Non Demented,OAS1_0353,MR2,mpr-4,1,0
+Non Demented,OAS1_0354,MR1,mpr-1,1,0
+Non Demented,OAS1_0354,MR1,mpr-2,1,1
+Non Demented,OAS1_0355,MR1,mpr-3,1,0
+Non Demented,OAS1_0355,MR1,mpr-4,1,1
+Non Demented,OAS1_0356,MR1,mpr-2,1,0
+Non Demented,OAS1_0356,MR1,mpr-4,1,0
+Non Demented,OAS1_0357,MR1,mpr-2,1,0
+Non Demented,OAS1_0357,MR1,mpr-3,1,0
+Non Demented,OAS1_0358,MR1,mpr-1,1,0
+Non Demented,OAS1_0358,MR1,mpr-2,1,1
+Non Demented,OAS1_0359,MR1,mpr-1,1,0
+Non Demented,OAS1_0359,MR1,mpr-3,1,1
+Non Demented,OAS1_0361,MR1,mpr-3,1,0
+Non Demented,OAS1_0361,MR1,mpr-4,1,0
+Non Demented,OAS1_0363,MR1,mpr-2,1,0
+Non Demented,OAS1_0365,MR1,mpr-1,1,0
+Non Demented,OAS1_0365,MR1,mpr-4,1,1
+Non Demented,OAS1_0366,MR1,mpr-3,1,0
+Non Demented,OAS1_0366,MR1,mpr-4,1,1
+Non Demented,OAS1_0367,MR1,mpr-1,1,0
+Non Demented,OAS1_0367,MR1,mpr-2,1,0
+Non Demented,OAS1_0368,MR2,mpr-2,1,1
+Non Demented,OAS1_0368,MR2,mpr-3,1,0
+Non Demented,OAS1_0369,MR1,mpr-1,1,1
+Non Demented,OAS1_0369,MR1,mpr-2,1,0
+Non Demented,OAS1_0370,MR1,mpr-1,1,0
+Non Demented,OAS1_0370,MR1,mpr-3,1,0
+Non Demented,OAS1_0371,MR1,mpr-3,1,0
+Non Demented,OAS1_0371,MR1,mpr-4,1,1
+Non Demented,OAS1_0372,MR1,mpr-1,1,0
+Non Demented,OAS1_0372,MR1,mpr-2,1,1
+Non Demented,OAS1_0375,MR1,mpr-2,1,1
+Non Demented,OAS1_0375,MR1,mpr-4,1,0
+Non Demented,OAS1_0376,MR1,mpr-3,1,0
+Non Demented,OAS1_0376,MR1,mpr-4,1,0
+Non Demented,OAS1_0377,MR1,mpr-3,1,1
+Non Demented,OAS1_0377,MR1,mpr-4,1,0
+Non Demented,OAS1_0378,MR1,mpr-1,1,0
+Non Demented,OAS1_0378,MR1,mpr-2,1,1
+Non Demented,OAS1_0379,MR2,mpr-1,1,0
+Non Demented,OAS1_0381,MR1,mpr-1,1,1
+Non Demented,OAS1_0381,MR1,mpr-2,1,0
+Very Mild Demented,OAS1_0003,MR1,mpr-1,2,0
+Very Mild Demented,OAS1_0003,MR1,mpr-2,2,1
+Very Mild Demented,OAS1_0003,MR1,mpr-3,2,0
+Very Mild Demented,OAS1_0003,MR1,mpr-4,2,0
+Very Mild Demented,OAS1_0015,MR1,mpr-1,3,1
+Very Mild Demented,OAS1_0015,MR1,mpr-2,3,0
+Very Mild Demented,OAS1_0015,MR1,mpr-3,3,1
+Very Mild Demented,OAS1_0016,MR1,mpr-1,3,1
+Very Mild Demented,OAS1_0016,MR1,mpr-2,3,0
+Very Mild Demented,OAS1_0016,MR1,mpr-3,3,0
+Very Mild Demented,OAS1_0021,MR1,mpr-1,2,0
+Very Mild Demented,OAS1_0021,MR1,mpr-2,2,1
+Very Mild Demented,OAS1_0021,MR1,mpr-3,2,1
+Very Mild Demented,OAS1_0021,MR1,mpr-4,3,0
+Very Mild Demented,OAS1_0022,MR1,mpr-1,2,0
+Very Mild Demented,OAS1_0022,MR1,mpr-2,2,1
+Very Mild Demented,OAS1_0022,MR1,mpr-3,2,1
+Very Mild Demented,OAS1_0022,MR1,mpr-4,3,0
+Very Mild Demented,OAS1_0023,MR1,mpr-1,2,0
+Very Mild Demented,OAS1_0023,MR1,mpr-2,2,1
+Very Mild Demented,OAS1_0023,MR1,mpr-3,2,0
+Very Mild Demented,OAS1_0023,MR1,mpr-4,3,1
+Very Mild Demented,OAS1_0039,MR1,mpr-1,3,1
+Very Mild Demented,OAS1_0039,MR1,mpr-2,3,0
+Very Mild Demented,OAS1_0039,MR1,mpr-3,3,1
+Very Mild Demented,OAS1_0041,MR1,mpr-1,2,0
+Very Mild Demented,OAS1_0041,MR1,mpr-2,2,0
+Very Mild Demented,OAS1_0041,MR1,mpr-3,2,0
+Very Mild Demented,OAS1_0041,MR1,mpr-4,3,1
+Very Mild Demented,OAS1_0042,MR1,mpr-1,2,1
+Very Mild Demented,OAS1_0042,MR1,mpr-2,2,0
+Very Mild Demented,OAS1_0042,MR1,mpr-3,2,1
+Very Mild Demented,OAS1_0042,MR1,mpr-4,3,0
+Very Mild Demented,OAS1_0046,MR1,mpr-1,2,1
+Very Mild Demented,OAS1_0046,MR1,mpr-2,2,0
+Very Mild Demented,OAS1_0046,MR1,mpr-3,2,0
+Very Mild Demented,OAS1_0046,MR1,mpr-4,3,1
+Very Mild Demented,OAS1_0060,MR1,mpr-1,2,0
+Very Mild Demented,OAS1_0060,MR1,mpr-2,2,0
+Very Mild Demented,OAS1_0060,MR1,mpr-3,2,0
+Very Mild Demented,OAS1_0060,MR1,mpr-4,2,1
+Very Mild Demented,OAS1_0066,MR1,mpr-1,2,0
+Very Mild Demented,OAS1_0066,MR1,mpr-2,2,0
+Very Mild Demented,OAS1_0066,MR1,mpr-3,2,0
+Very Mild Demented,OAS1_0066,MR1,mpr-4,2,1
+Very Mild Demented,OAS1_0082,MR1,mpr-1,2,1
+Very Mild Demented,OAS1_0082,MR1,mpr-2,2,1
+Very Mild Demented,OAS1_0082,MR1,mpr-3,2,0
+Very Mild Demented,OAS1_0082,MR1,mpr-4,3,0
+Very Mild Demented,OAS1_0084,MR1,mpr-1,2,0
+Very Mild Demented,OAS1_0084,MR1,mpr-2,2,0
+Very Mild Demented,OAS1_0084,MR1,mpr-3,2,1
+Very Mild Demented,OAS1_0084,MR1,mpr-4,3,1
+Very Mild Demented,OAS1_0094,MR1,mpr-1,2,0
+Very Mild Demented,OAS1_0094,MR1,mpr-2,2,1
+Very Mild Demented,OAS1_0094,MR1,mpr-3,2,1
+Very Mild Demented,OAS1_0094,MR1,mpr-4,3,0
+Very Mild Demented,OAS1_0098,MR1,mpr-1,2,0
+Very Mild Demented,OAS1_0098,MR1,mpr-2,2,0
+Very Mild Demented,OAS1_0098,MR1,mpr-3,2,1
+Very Mild Demented,OAS1_0098,MR1,mpr-4,2,1
+Very Mild Demented,OAS1_0115,MR1,mpr-1,3,1
+Very Mild Demented,OAS1_0115,MR1,mpr-2,2,1
+Very Mild Demented,OAS1_0115,MR1,mpr-3,2,0
+Very Mild Demented,OAS1_0115,MR1,mpr-4,2,0
+Very Mild Demented,OAS1_0120,MR1,mpr-1,2,1
+Very Mild Demented,OAS1_0120,MR1,mpr-2,2,1
+Very Mild Demented,OAS1_0120,MR1,mpr-3,2,0
+Very Mild Demented,OAS1_0120,MR1,mpr-4,3,0
+Very Mild Demented,OAS1_0123,MR1,mpr-1,2,0
+Very Mild Demented,OAS1_0123,MR1,mpr-2,2,0
+Very Mild Demented,OAS1_0123,MR1,mpr-3,2,0
+Very Mild Demented,OAS1_0123,MR1,mpr-4,2,1
+Very Mild Demented,OAS1_0124,MR1,mpr-1,2,0
+Very Mild Demented,OAS1_0124,MR1,mpr-2,2,1
+Very Mild Demented,OAS1_0124,MR1,mpr-3,2,0
+Very Mild Demented,OAS1_0124,MR1,mpr-4,2,1
+Very Mild Demented,OAS1_0142,MR1,mpr-1,2,0
+Very Mild Demented,OAS1_0142,MR1,mpr-2,3,1
+Very Mild Demented,OAS1_0142,MR1,mpr-3,2,0
+Very Mild Demented,OAS1_0142,MR1,mpr-4,2,1
+Very Mild Demented,OAS1_0143,MR1,mpr-1,2,0
+Very Mild Demented,OAS1_0143,MR1,mpr-2,2,1
+Very Mild Demented,OAS1_0143,MR1,mpr-3,3,1
+Very Mild Demented,OAS1_0143,MR1,mpr-4,2,0
+Very Mild Demented,OAS1_0155,MR1,mpr-1,3,0
+Very Mild Demented,OAS1_0155,MR1,mpr-2,2,1
+Very Mild Demented,OAS1_0155,MR1,mpr-3,2,0
+Very Mild Demented,OAS1_0155,MR1,mpr-4,2,1
+Very Mild Demented,OAS1_0158,MR1,mpr-1,2,0
+Very Mild Demented,OAS1_0158,MR1,mpr-2,2,1
+Very Mild Demented,OAS1_0158,MR1,mpr-3,3,1
+Very Mild Demented,OAS1_0158,MR1,mpr-4,2,0
+Very Mild Demented,OAS1_0161,MR1,mpr-1,2,0
+Very Mild Demented,OAS1_0161,MR1,mpr-2,2,0
+Very Mild Demented,OAS1_0161,MR1,mpr-3,2,1
+Very Mild Demented,OAS1_0161,MR1,mpr-4,2,0
+Very Mild Demented,OAS1_0164,MR1,mpr-1,2,0
+Very Mild Demented,OAS1_0164,MR1,mpr-2,2,1
+Very Mild Demented,OAS1_0164,MR1,mpr-3,2,0
+Very Mild Demented,OAS1_0164,MR1,mpr-4,2,0
+Very Mild Demented,OAS1_0166,MR1,mpr-1,2,0
+Very Mild Demented,OAS1_0166,MR1,mpr-2,2,1
+Very Mild Demented,OAS1_0166,MR1,mpr-3,2,1
+Very Mild Demented,OAS1_0166,MR1,mpr-4,2,0
+Very Mild Demented,OAS1_0179,MR1,mpr-1,2,1
+Very Mild Demented,OAS1_0179,MR1,mpr-2,2,0
+Very Mild Demented,OAS1_0179,MR1,mpr-3,2,0
+Very Mild Demented,OAS1_0179,MR1,mpr-4,2,0
+Very Mild Demented,OAS1_0205,MR1,mpr-1,2,0
+Very Mild Demented,OAS1_0205,MR1,mpr-2,3,1
+Very Mild Demented,OAS1_0205,MR1,mpr-3,2,0
+Very Mild Demented,OAS1_0205,MR1,mpr-4,2,1
+Very Mild Demented,OAS1_0210,MR1,mpr-1,2,0
+Very Mild Demented,OAS1_0210,MR1,mpr-2,2,1
+Very Mild Demented,OAS1_0210,MR1,mpr-3,2,1
+Very Mild Demented,OAS1_0210,MR1,mpr-4,3,0
+Very Mild Demented,OAS1_0217,MR1,mpr-1,2,0
+Very Mild Demented,OAS1_0217,MR1,mpr-2,2,1
+Very Mild Demented,OAS1_0217,MR1,mpr-3,3,1
+Very Mild Demented,OAS1_0217,MR1,mpr-4,2,0
+Very Mild Demented,OAS1_0226,MR1,mpr-1,3,1
+Very Mild Demented,OAS1_0226,MR1,mpr-2,2,0
+Very Mild Demented,OAS1_0226,MR1,mpr-3,2,0
+Very Mild Demented,OAS1_0226,MR1,mpr-4,2,0
+Very Mild Demented,OAS1_0233,MR1,mpr-1,2,0
+Very Mild Demented,OAS1_0233,MR1,mpr-2,2,1
+Very Mild Demented,OAS1_0233,MR1,mpr-3,2,0
+Very Mild Demented,OAS1_0233,MR1,mpr-4,2,0
+Very Mild Demented,OAS1_0238,MR1,mpr-1,2,0
+Very Mild Demented,OAS1_0238,MR1,mpr-2,2,0
+Very Mild Demented,OAS1_0238,MR1,mpr-3,2,0
+Very Mild Demented,OAS1_0238,MR1,mpr-4,2,1
+Very Mild Demented,OAS1_0240,MR1,mpr-1,3,1
+Very Mild Demented,OAS1_0240,MR1,mpr-2,3,1
+Very Mild Demented,OAS1_0240,MR1,mpr-3,3,0
+Very Mild Demented,OAS1_0243,MR1,mpr-1,2,1
+Very Mild Demented,OAS1_0243,MR1,mpr-2,2,0
+Very Mild Demented,OAS1_0243,MR1,mpr-3,2,0
+Very Mild Demented,OAS1_0243,MR1,mpr-4,3,1
+Very Mild Demented,OAS1_0247,MR1,mpr-1,2,1
+Very Mild Demented,OAS1_0247,MR1,mpr-2,2,0
+Very Mild Demented,OAS1_0247,MR1,mpr-3,2,0
+Very Mild Demented,OAS1_0247,MR1,mpr-4,2,0
+Very Mild Demented,OAS1_0263,MR1,mpr-1,2,1
+Very Mild Demented,OAS1_0263,MR1,mpr-2,2,1
+Very Mild Demented,OAS1_0263,MR1,mpr-3,2,1
+Very Mild Demented,OAS1_0263,MR1,mpr-4,3,0
+Very Mild Demented,OAS1_0267,MR1,mpr-1,2,0
+Very Mild Demented,OAS1_0267,MR1,mpr-2,3,0
+Very Mild Demented,OAS1_0267,MR1,mpr-3,3,1
+Very Mild Demented,OAS1_0272,MR1,mpr-1,2,1
+Very Mild Demented,OAS1_0272,MR1,mpr-2,2,1
+Very Mild Demented,OAS1_0272,MR1,mpr-3,2,0
+Very Mild Demented,OAS1_0272,MR1,mpr-4,3,0
+Very Mild Demented,OAS1_0273,MR1,mpr-1,3,1
+Very Mild Demented,OAS1_0273,MR1,mpr-2,3,1
+Very Mild Demented,OAS1_0273,MR1,mpr-3,2,0
+Very Mild Demented,OAS1_0286,MR1,mpr-1,2,1
+Very Mild Demented,OAS1_0286,MR1,mpr-2,2,0
+Very Mild Demented,OAS1_0286,MR1,mpr-3,2,0
+Very Mild Demented,OAS1_0286,MR1,mpr-4,3,1
+Very Mild Demented,OAS1_0287,MR1,mpr-1,2,0
+Very Mild Demented,OAS1_0287,MR1,mpr-2,2,0
+Very Mild Demented,OAS1_0287,MR1,mpr-3,2,0
+Very Mild Demented,OAS1_0287,MR1,mpr-4,2,1
+Very Mild Demented,OAS1_0288,MR1,mpr-1,2,1
+Very Mild Demented,OAS1_0288,MR1,mpr-2,2,0
+Very Mild Demented,OAS1_0288,MR1,mpr-3,2,1
+Very Mild Demented,OAS1_0288,MR1,mpr-4,3,0
+Very Mild Demented,OAS1_0290,MR1,mpr-1,2,0
+Very Mild Demented,OAS1_0290,MR1,mpr-2,2,0
+Very Mild Demented,OAS1_0290,MR1,mpr-3,2,1
+Very Mild Demented,OAS1_0290,MR1,mpr-4,2,1
+Very Mild Demented,OAS1_0298,MR1,mpr-1,2,1
+Very Mild Demented,OAS1_0298,MR1,mpr-2,2,0
+Very Mild Demented,OAS1_0298,MR1,mpr-3,2,0
+Very Mild Demented,OAS1_0298,MR1,mpr-4,2,0
+Very Mild Demented,OAS1_0300,MR1,mpr-1,2,1
+Very Mild Demented,OAS1_0300,MR1,mpr-2,2,0
+Very Mild Demented,OAS1_0300,MR1,mpr-3,2,1
+Very Mild Demented,OAS1_0300,MR1,mpr-4,2,0
+Very Mild Demented,OAS1_0304,MR1,mpr-1,2,0
+Very Mild Demented,OAS1_0304,MR1,mpr-2,2,0
+Very Mild Demented,OAS1_0304,MR1,mpr-3,2,1
+Very Mild Demented,OAS1_0304,MR1,mpr-4,3,1
+Very Mild Demented,OAS1_0307,MR1,mpr-1,2,0
+Very Mild Demented,OAS1_0307,MR1,mpr-2,2,0
+Very Mild Demented,OAS1_0307,MR1,mpr-3,2,1
+Very Mild Demented,OAS1_0307,MR1,mpr-4,3,1
+Very Mild Demented,OAS1_0312,MR1,mpr-1,2,1
+Very Mild Demented,OAS1_0312,MR1,mpr-2,2,0
+Very Mild Demented,OAS1_0312,MR1,mpr-3,2,1
+Very Mild Demented,OAS1_0312,MR1,mpr-4,3,1
+Very Mild Demented,OAS1_0315,MR1,mpr-1,2,0
+Very Mild Demented,OAS1_0315,MR1,mpr-2,2,1
+Very Mild Demented,OAS1_0315,MR1,mpr-3,2,1
+Very Mild Demented,OAS1_0315,MR1,mpr-4,3,0
+Very Mild Demented,OAS1_0329,MR1,mpr-1,2,1
+Very Mild Demented,OAS1_0329,MR1,mpr-2,2,0
+Very Mild Demented,OAS1_0329,MR1,mpr-3,2,0
+Very Mild Demented,OAS1_0329,MR1,mpr-4,2,1
+Very Mild Demented,OAS1_0335,MR1,mpr-1,2,0
+Very Mild Demented,OAS1_0335,MR1,mpr-2,2,0
+Very Mild Demented,OAS1_0335,MR1,mpr-3,2,1
+Very Mild Demented,OAS1_0335,MR1,mpr-4,2,0
+Very Mild Demented,OAS1_0339,MR1,mpr-1,3,1
+Very Mild Demented,OAS1_0339,MR1,mpr-2,2,0
+Very Mild Demented,OAS1_0339,MR1,mpr-3,2,0
+Very Mild Demented,OAS1_0339,MR1,mpr-4,2,1
+Very Mild Demented,OAS1_0352,MR1,mpr-1,2,0
+Very Mild Demented,OAS1_0352,MR1,mpr-2,3,1
+Very Mild Demented,OAS1_0352,MR1,mpr-3,3,0
+Very Mild Demented,OAS1_0362,MR1,mpr-1,2,0
+Very Mild Demented,OAS1_0362,MR1,mpr-2,2,1
+Very Mild Demented,OAS1_0362,MR1,mpr-3,2,0
+Very Mild Demented,OAS1_0362,MR1,mpr-4,3,1
+Very Mild Demented,OAS1_0374,MR1,mpr-1,2,0
+Very Mild Demented,OAS1_0374,MR1,mpr-2,2,0
+Very Mild Demented,OAS1_0374,MR1,mpr-3,2,1
+Very Mild Demented,OAS1_0374,MR1,mpr-4,3,1
+Very Mild Demented,OAS1_0380,MR1,mpr-1,2,1
+Very Mild Demented,OAS1_0380,MR1,mpr-2,2,1
+Very Mild Demented,OAS1_0380,MR1,mpr-3,2,0
+Very Mild Demented,OAS1_0380,MR1,mpr-4,3,0
