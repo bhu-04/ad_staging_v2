@@ -1,0 +1,13 @@
+{
+  "frozen_at": "2026-10-06T22:33:49+05:30",
+  "checkpoint": "cnn2d_best.pt",
+  "checkpoint_sha256": "f07464f19e45890d74eb4ce20c5fa16592b02213b5e86983b3f3614c6d5a2b1c",
+  "selection_metric": "validation macro-F1 (tie-break: val accuracy, then lower val loss)",
+  "best_epoch": 14,
+  "attempts_used": 1,
+  "seed_of_selected_attempt": 42,
+  "best_val_macro_f1": 0.4657970755531731,
+  "best_val_acc": 0.4772727272727273,
+  "best_val_loss": 1.1465634974566372,
+  "degenerate": false
+}

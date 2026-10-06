@@ -1,0 +1,30 @@
+{
+  "class_names": [
+    "Non Demented",
+    "Very Mild Demented",
+    "Mild Demented",
+    "Moderate Demented"
+  ],
+  "image_size": [
+    96,
+    96
+  ],
+  "dropout_p": 0.35,
+  "model_name": "densenet2d",
+  "pretrained": false,
+  "split_strategy": "locked-subject-level",
+  "split_sizes": {
+    "train": 273,
+    "val": 44
+  },
+  "val_split_hash": "61784e909faabcaa",
+  "best_val_acc": 0.4318181818181818,
+  "best_val_macro_f1": 0.33483078766097635,
+  "seed": 42,
+  "experiment_id": "V2-NORM-ZSCORE-DENSENET2D",
+  "parent_experiment": "V2-B0-DENSENET2D",
+  "best_epoch": 1,
+  "attempts_used": 1,
+  "test_split_accessed": false,
+  "checkpoint_sha256_at_save": "ecd54613fd8f2d020a9be48e75f27b0f45e23a99e8d6c025eb70aeb0dfaf4a89"
+}

@@ -1,0 +1,75 @@
+{
+  "n": 44,
+  "accuracy": 0.4772727272727273,
+  "macro_precision_all4": 0.4238215488215488,
+  "macro_recall_all4": 0.3630952380952381,
+  "macro_f1_all4": 0.34934780666487986,
+  "macro_f1_present_classes": 0.4657970755531731,
+  "classes_present_in_true": [
+    "Non Demented",
+    "Very Mild Demented",
+    "Mild Demented"
+  ],
+  "per_class": {
+    "Non Demented": {
+      "precision": 0.8333333333333334,
+      "recall": 0.3333333333333333,
+      "f1": 0.47619047619047616,
+      "support": 15
+    },
+    "Very Mild Demented": {
+      "precision": 0.45454545454545453,
+      "recall": 0.3333333333333333,
+      "f1": 0.38461538461538464,
+      "support": 15
+    },
+    "Mild Demented": {
+      "precision": 0.4074074074074074,
+      "recall": 0.7857142857142857,
+      "f1": 0.5365853658536586,
+      "support": 14
+    },
+    "Moderate Demented": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 0
+    }
+  },
+  "confusion_matrix": [
+    [
+      5,
+      3,
+      7,
+      0
+    ],
+    [
+      1,
+      5,
+      9,
+      0
+    ],
+    [
+      0,
+      3,
+      11,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0
+    ]
+  ],
+  "ece_10bins": 0.2720160653192648,
+  "brier": 0.697227254633659,
+  "roc_auc_macro_ovr": null,
+  "roc_auc_note": "not reported on validation (Moderate Demented absent from validation split)",
+  "role": "VALIDATION (model selection)",
+  "selection_macro_f1_as_computed_by_train_py": 0.4657970755531731,
+  "val_loss_at_best_epoch": 1.1465634974566372,
+  "best_epoch": 14,
+  "checkpoint_reproduces_training_metrics": true,
+  "note": "Moderate Demented is absent from validation; macro_f1_present_classes is the 3-class value."
+}
