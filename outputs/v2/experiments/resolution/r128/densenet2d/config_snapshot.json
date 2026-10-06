@@ -1,0 +1,94 @@
+{
+  "mode": "demo",
+  "image_size": [
+    128,
+    128
+  ],
+  "epochs": 25,
+  "max_attempts": 2,
+  "batch_size": 32,
+  "learning_rate": 0.001,
+  "weight_decay": 0.0001,
+  "dropout_p": 0.35,
+  "early_stop_patience": 6,
+  "lr_scheduler": "plateau",
+  "class_balance_strategy": "loss",
+  "random_seed": 42,
+  "optimizer": "AdamW",
+  "loss": "CrossEntropyLoss(weight=inverse-frequency class weights)",
+  "scheduler_params": "ReduceLROnPlateau(mode=min, factor=0.5, patience=3) on val_loss",
+  "checkpoint_selection": "val macro-F1 > val accuracy > lower val loss (src/train.py)",
+  "preprocessing": "grayscale -> bilinear resize -> per-image zero-mean/unit-variance",
+  "train_augmentation": "RandomHorizontalFlip(p=0.5) + RandomRotation(+/-10 deg, bilinear, fill=0)",
+  "eval_augmentation": "none (deterministic)",
+  "preprocess_cache": true,
+  "vit": {
+    "patch_size": 8,
+    "embed_dim": 32,
+    "depth": 3,
+    "num_heads": 4,
+    "mlp_dim": 64
+  },
+  "pretrained": false,
+  "experiment_id": "V2-R128-DENSENET2D",
+  "parent_experiment": "V2-B0-DENSENET2D",
+  "experiment": "E1-resolution",
+  "model": "DenseNet2D",
+  "n_parameters": 20596,
+  "class_weights": [
+    0.9750000238418579,
+    0.9750000238418579,
+    0.9349315166473389,
+    1.1375000476837158
+  ],
+  "class_order": [
+    "Non Demented",
+    "Very Mild Demented",
+    "Mild Demented",
+    "Moderate Demented"
+  ],
+  "dataset": "outputs/final_400/final_400.csv",
+  "split": "outputs/splits/split_assignments.csv",
+  "dataset_sha256": "cd62ce417cc29a7f56682366e2fbf83f337c3ec7dd5efe906a4d4c478e2a0f59",
+  "split_file_sha256": "70246e6e39f4694b52c7a80f4871f1f48d831d8d04a92007ca8d52b06a4981b9",
+  "split_sizes_used": {
+    "train": 273,
+    "val": 44
+  },
+  "val_split_hash": "61784e909faabcaa",
+  "test_split_accessed": false,
+  "changed_vs_phase3": {
+    "image_size": [
+      [
+        96,
+        96
+      ],
+      [
+        128,
+        128
+      ]
+    ]
+  },
+  "git": {
+    "commit": "46f538601114cd7775192ae877bb6d5cca4fc790",
+    "branch": "main",
+    "remote": "https://github.com/bhu-04/ad_staging_v2.git",
+    "status_porcelain": [
+      "?? run_phase4_e1.py"
+    ]
+  },
+  "environment": {
+    "python": "3.10.0",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "torch": "2.13.0+cpu",
+    "torchvision": "0.28.0+cpu",
+    "numpy": "2.2.6",
+    "pandas": "2.2.2",
+    "sklearn": "1.5.1",
+    "device": "cpu",
+    "gpu": null,
+    "cpu_threads": 20,
+    "num_workers": 2
+  },
+  "started": "2026-10-06T22:14:06+05:30"
+}

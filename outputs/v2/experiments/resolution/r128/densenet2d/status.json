@@ -1,0 +1,15 @@
+{
+  "model": "densenet2d",
+  "experiment_id": "V2-R128-DENSENET2D",
+  "started": "2026-10-06T22:14:06+05:30",
+  "status": "complete",
+  "finished": "2026-10-06T22:19:07+05:30",
+  "train_seconds": 294.0,
+  "peak_gpu_mem_mb": null,
+  "best_epoch": 9,
+  "epochs_run_last_attempt": 15,
+  "attempts_used": 1,
+  "degenerate": false,
+  "checkpoint_sha256": "21c05bba9b6f544800d14e03c33af9df607ccb88100fadee6f7ec2d7c797f7bd",
+  "n_parameters": 20596
+}

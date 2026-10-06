@@ -1,0 +1,13 @@
+{
+  "frozen_at": "2026-10-06T22:19:00+05:30",
+  "checkpoint": "densenet2d_best.pt",
+  "checkpoint_sha256": "21c05bba9b6f544800d14e03c33af9df607ccb88100fadee6f7ec2d7c797f7bd",
+  "selection_metric": "validation macro-F1 (tie-break: val accuracy, then lower val loss)",
+  "best_epoch": 9,
+  "attempts_used": 1,
+  "seed_of_selected_attempt": 42,
+  "best_val_macro_f1": 0.32229675495929366,
+  "best_val_acc": 0.45454545454545453,
+  "best_val_loss": 1.2365988818081943,
+  "degenerate": false
+}
