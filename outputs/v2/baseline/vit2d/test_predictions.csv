@@ -1,0 +1,84 @@
+filepath,subject_id,class_name,y_true,y_pred,p_0_Non_Demented,p_1_Very_Mild_Demented,p_2_Mild_Demented,p_3_Moderate_Demented
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\non demented\OAS1_0371_MR1_mpr-4_100.jpg,OAS1_0371,Non Demented,0,1,0.24358824,0.30360362,0.24477144,0.2080367
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\non demented\OAS1_0317_MR1_mpr-1_123.jpg,OAS1_0317,Non Demented,0,1,0.26033524,0.27188024,0.24648125,0.22130328
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\non demented\OAS1_0139_MR1_mpr-2_106.jpg,OAS1_0139,Non Demented,0,1,0.26705617,0.29139456,0.23223023,0.20931901
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\non demented\OAS1_0204_MR1_mpr-4_110.jpg,OAS1_0204,Non Demented,0,1,0.2638742,0.27536562,0.24939843,0.21136183
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\non demented\OAS1_0130_MR1_mpr-2_100.jpg,OAS1_0130,Non Demented,0,1,0.24604546,0.2660082,0.25293508,0.23501131
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\non demented\OAS1_0381_MR1_mpr-1_140.jpg,OAS1_0381,Non Demented,0,1,0.26059994,0.3228024,0.22630274,0.19029501
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\non demented\OAS1_0235_MR1_mpr-3_146.jpg,OAS1_0235,Non Demented,0,1,0.2603705,0.27846277,0.24561353,0.2155532
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\non demented\OAS1_0326_MR1_mpr-2_101.jpg,OAS1_0326,Non Demented,0,1,0.25553375,0.2799602,0.23653005,0.22797602
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\non demented\OAS1_0260_MR1_mpr-1_144.jpg,OAS1_0260,Non Demented,0,1,0.24641481,0.29306847,0.25537863,0.20513807
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\non demented\OAS1_0018_MR1_mpr-4_111.jpg,OAS1_0018,Non Demented,0,1,0.24142401,0.26974145,0.2526652,0.23616941
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\non demented\OAS1_0330_MR1_mpr-3_102.jpg,OAS1_0330,Non Demented,0,1,0.23697962,0.28405765,0.24439889,0.23456389
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\non demented\OAS1_0377_MR1_mpr-3_116.jpg,OAS1_0377,Non Demented,0,0,0.28503147,0.28004,0.22524546,0.2096831
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\non demented\OAS1_0173_MR1_mpr-1_160.jpg,OAS1_0173,Non Demented,0,1,0.23918612,0.31900248,0.2487815,0.19302978
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\non demented\OAS1_0040_MR1_mpr-4_159.jpg,OAS1_0040,Non Demented,0,1,0.26281998,0.2985084,0.22623776,0.21243383
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\non demented\OAS1_0327_MR1_mpr-1_134.jpg,OAS1_0327,Non Demented,0,1,0.25702724,0.30293465,0.23840153,0.20163655
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\very mild demented\OAS1_0021_MR1_mpr-3_100.jpg,OAS1_0021,Very Mild Demented,1,1,0.2632636,0.28200874,0.23864146,0.21608621
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\very mild demented\OAS1_0263_MR1_mpr-1_102.jpg,OAS1_0263,Very Mild Demented,1,1,0.26412907,0.27508268,0.24013242,0.2206558
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\very mild demented\OAS1_0098_MR1_mpr-4_116.jpg,OAS1_0098,Very Mild Demented,1,1,0.2583532,0.2765119,0.27063912,0.19449574
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\very mild demented\OAS1_0273_MR1_mpr-2_114.jpg,OAS1_0273,Very Mild Demented,1,1,0.26080403,0.2755397,0.24462098,0.21903537
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\very mild demented\OAS1_0022_MR1_mpr-2_142.jpg,OAS1_0022,Very Mild Demented,1,1,0.27548337,0.2767832,0.22603029,0.22170311
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\very mild demented\OAS1_0226_MR1_mpr-1_119.jpg,OAS1_0226,Very Mild Demented,1,1,0.23279014,0.30526376,0.25723213,0.2047139
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\very mild demented\OAS1_0164_MR1_mpr-2_115.jpg,OAS1_0164,Very Mild Demented,1,1,0.25091138,0.3170951,0.22445883,0.20753476
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\very mild demented\OAS1_0238_MR1_mpr-4_110.jpg,OAS1_0238,Very Mild Demented,1,1,0.2672436,0.2889713,0.24428184,0.19950327
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\very mild demented\OAS1_0298_MR1_mpr-1_113.jpg,OAS1_0298,Very Mild Demented,1,1,0.24838598,0.31009802,0.24452263,0.19699335
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\very mild demented\OAS1_0263_MR1_mpr-3_107.jpg,OAS1_0263,Very Mild Demented,1,1,0.2558363,0.31250244,0.23009014,0.20157106
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\very mild demented\OAS1_0021_MR1_mpr-2_120.jpg,OAS1_0021,Very Mild Demented,1,1,0.26278856,0.28261578,0.23133504,0.2232607
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\very mild demented\OAS1_0273_MR1_mpr-1_133.jpg,OAS1_0273,Very Mild Demented,1,1,0.24186192,0.30482534,0.24762428,0.20568852
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\very mild demented\OAS1_0098_MR1_mpr-3_107.jpg,OAS1_0098,Very Mild Demented,1,1,0.24985825,0.28404874,0.25682214,0.20927091
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\very mild demented\OAS1_0263_MR1_mpr-2_112.jpg,OAS1_0263,Very Mild Demented,1,1,0.26430655,0.31722203,0.21814133,0.20033014
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\very mild demented\OAS1_0022_MR1_mpr-3_123.jpg,OAS1_0022,Very Mild Demented,1,1,0.26930618,0.28813353,0.23150378,0.21105647
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Mild dementia\OAS1_0035_MR1_mpr-2_105.jpg,OAS1_0035,Mild Demented,2,2,0.21473916,0.25691235,0.27348456,0.25486386
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Mild dementia\OAS1_0373_MR1_mpr-4_108.jpg,OAS1_0373,Mild Demented,2,1,0.24916527,0.27787164,0.24253514,0.23042792
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Mild dementia\OAS1_0137_MR1_mpr-2_111.jpg,OAS1_0137,Mild Demented,2,1,0.24698769,0.27648604,0.260461,0.2160653
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Mild dementia\OAS1_0035_MR1_mpr-3_122.jpg,OAS1_0035,Mild Demented,2,1,0.25086367,0.27075183,0.26009706,0.21828741
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Mild dementia\OAS1_0137_MR1_mpr-3_117.jpg,OAS1_0137,Mild Demented,2,1,0.25380087,0.27912182,0.24578269,0.22129458
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Mild dementia\OAS1_0373_MR1_mpr-1_116.jpg,OAS1_0373,Mild Demented,2,1,0.2404401,0.29621348,0.2651456,0.1982008
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Mild dementia\OAS1_0035_MR1_mpr-4_117.jpg,OAS1_0035,Mild Demented,2,1,0.23625779,0.28973207,0.26395035,0.21005976
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Mild dementia\OAS1_0035_MR1_mpr-1_143.jpg,OAS1_0035,Mild Demented,2,1,0.24280642,0.3004577,0.24624534,0.2104905
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Mild dementia\OAS1_0137_MR1_mpr-4_129.jpg,OAS1_0137,Mild Demented,2,1,0.24104296,0.28095442,0.26844677,0.20955591
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Mild dementia\OAS1_0373_MR1_mpr-2_148.jpg,OAS1_0373,Mild Demented,2,1,0.23876356,0.30888042,0.25165248,0.2007035
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Mild dementia\OAS1_0035_MR1_mpr-4_100.jpg,OAS1_0035,Mild Demented,2,3,0.22656465,0.25562382,0.257495,0.26031652
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Mild dementia\OAS1_0373_MR1_mpr-3_122.jpg,OAS1_0373,Mild Demented,2,1,0.25508153,0.28587714,0.26041314,0.19862816
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Mild dementia\OAS1_0137_MR1_mpr-2_103.jpg,OAS1_0137,Mild Demented,2,1,0.25771666,0.27227247,0.25491488,0.21509592
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-2_134.jpg,OAS1_0308,Moderate Demented,3,1,0.23021074,0.30269748,0.26422617,0.20286562
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_140.jpg,OAS1_0308,Moderate Demented,3,1,0.25514728,0.2764189,0.26067612,0.20775768
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_145.jpg,OAS1_0308,Moderate Demented,3,1,0.25346738,0.29134274,0.25350472,0.20168515
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_151.jpg,OAS1_0308,Moderate Demented,3,1,0.26498628,0.27156812,0.25203174,0.21141389
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_113.jpg,OAS1_0308,Moderate Demented,3,2,0.24320805,0.23927975,0.26536515,0.25214696
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_129.jpg,OAS1_0308,Moderate Demented,3,1,0.25284407,0.26963735,0.2525003,0.2250183
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_159.jpg,OAS1_0308,Moderate Demented,3,1,0.25875095,0.26789862,0.25533414,0.21801625
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_105.jpg,OAS1_0308,Moderate Demented,3,0,0.25832877,0.25109228,0.24582343,0.24475555
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-2_119.jpg,OAS1_0308,Moderate Demented,3,2,0.24319242,0.25558567,0.2735902,0.22763173
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_137.jpg,OAS1_0308,Moderate Demented,3,1,0.23886499,0.30389148,0.25631276,0.20093068
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_109.jpg,OAS1_0308,Moderate Demented,3,2,0.23544104,0.2544792,0.26907277,0.24100703
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_147.jpg,OAS1_0308,Moderate Demented,3,1,0.25677437,0.2847427,0.25800297,0.20047988
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-2_102.jpg,OAS1_0308,Moderate Demented,3,2,0.25064924,0.23949638,0.2654295,0.24442491
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_132.jpg,OAS1_0308,Moderate Demented,3,1,0.24022749,0.28876308,0.26107633,0.20993313
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_155.jpg,OAS1_0308,Moderate Demented,3,0,0.27015507,0.2652601,0.24649464,0.21809019
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_123.jpg,OAS1_0308,Moderate Demented,3,2,0.25240842,0.25301942,0.26184022,0.23273195
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_142.jpg,OAS1_0308,Moderate Demented,3,1,0.25505745,0.28695884,0.25777662,0.20020705
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_116.jpg,OAS1_0308,Moderate Demented,3,1,0.24311338,0.25400814,0.25345013,0.24942836
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-2_137.jpg,OAS1_0308,Moderate Demented,3,1,0.24175729,0.30034864,0.26367623,0.19421789
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-2_144.jpg,OAS1_0308,Moderate Demented,3,1,0.25421202,0.2940442,0.25032595,0.20141788
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_149.jpg,OAS1_0308,Moderate Demented,3,1,0.25665215,0.27451852,0.2633766,0.20545274
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_136.jpg,OAS1_0308,Moderate Demented,3,1,0.22969623,0.30016467,0.2703079,0.1998313
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_121.jpg,OAS1_0308,Moderate Demented,3,2,0.25228614,0.2557738,0.26152676,0.23041327
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_126.jpg,OAS1_0308,Moderate Demented,3,2,0.2454344,0.25660568,0.27219653,0.22576332
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_100.jpg,OAS1_0308,Moderate Demented,3,1,0.24651948,0.258932,0.25061244,0.24393606
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-2_157.jpg,OAS1_0308,Moderate Demented,3,1,0.2614349,0.2698873,0.253287,0.21539077
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_153.jpg,OAS1_0308,Moderate Demented,3,1,0.2687079,0.27291295,0.24236378,0.21601537
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_137.jpg,OAS1_0308,Moderate Demented,3,1,0.24729076,0.29389024,0.26021498,0.19860397
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-2_146.jpg,OAS1_0308,Moderate Demented,3,1,0.25475472,0.2849784,0.25287014,0.2073968
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_133.jpg,OAS1_0308,Moderate Demented,3,1,0.23685394,0.2963457,0.2614243,0.20537601
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_123.jpg,OAS1_0308,Moderate Demented,3,2,0.25378767,0.25080934,0.2648464,0.2305565
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_134.jpg,OAS1_0308,Moderate Demented,3,1,0.23744988,0.3019813,0.2500363,0.21053249
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_141.jpg,OAS1_0308,Moderate Demented,3,1,0.25718814,0.2904326,0.25652012,0.19585913
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_103.jpg,OAS1_0308,Moderate Demented,3,2,0.25123256,0.24297093,0.26486233,0.2409342
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-4_108.jpg,OAS1_0308,Moderate Demented,3,2,0.23508286,0.2544491,0.26349875,0.24696933
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_138.jpg,OAS1_0308,Moderate Demented,3,1,0.24078955,0.29943123,0.26320738,0.19657186
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-3_109.jpg,OAS1_0308,Moderate Demented,3,2,0.22931464,0.2546867,0.27992353,0.23607507
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-2_113.jpg,OAS1_0308,Moderate Demented,3,2,0.23953894,0.24504498,0.25985393,0.2555622
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-2_140.jpg,OAS1_0308,Moderate Demented,3,1,0.25524467,0.28661993,0.25767145,0.20046385
+C:\Users\bhuva\OneDrive\Documents\AD_staging-main\data\oasis_subset\Moderate dementia\OAS1_0308_MR1_mpr-1_160.jpg,OAS1_0308,Moderate Demented,3,1,0.26083434,0.27042785,0.24894325,0.21979459

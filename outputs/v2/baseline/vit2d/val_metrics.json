@@ -1,0 +1,75 @@
+{
+  "n": 44,
+  "accuracy": 0.38636363636363635,
+  "macro_precision_all4": 0.5277777777777778,
+  "macro_recall_all4": 0.2869047619047619,
+  "macro_f1_all4": 0.24203431372549017,
+  "macro_f1_present_classes": 0.32271241830065356,
+  "classes_present_in_true": [
+    "Non Demented",
+    "Very Mild Demented",
+    "Mild Demented"
+  ],
+  "per_class": {
+    "Non Demented": {
+      "precision": 1.0,
+      "recall": 0.06666666666666667,
+      "f1": 0.125,
+      "support": 15
+    },
+    "Very Mild Demented": {
+      "precision": 0.3611111111111111,
+      "recall": 0.8666666666666667,
+      "f1": 0.5098039215686274,
+      "support": 15
+    },
+    "Mild Demented": {
+      "precision": 0.75,
+      "recall": 0.21428571428571427,
+      "f1": 0.3333333333333333,
+      "support": 14
+    },
+    "Moderate Demented": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 0
+    }
+  },
+  "confusion_matrix": [
+    [
+      1,
+      13,
+      1,
+      0
+    ],
+    [
+      0,
+      13,
+      0,
+      2
+    ],
+    [
+      0,
+      10,
+      3,
+      1
+    ],
+    [
+      0,
+      0,
+      0,
+      0
+    ]
+  ],
+  "ece_10bins": 0.09629528836059391,
+  "brier": 0.7206241152769057,
+  "roc_auc_macro_ovr": null,
+  "roc_auc_note": "not reported on validation (Moderate Demented absent from validation split)",
+  "role": "VALIDATION (model selection)",
+  "selection_macro_f1_as_computed_by_train_py": 0.24203431372549017,
+  "selection_macro_f1_note": "src/train.py calls f1_score(average='macro') without labels=, so the average is over labels present in y_true UNION y_pred. Validation has no Moderate images: if the model never predicts Moderate this is a 3-class mean; if it does, an extra F1=0 class lowers it. See macro_f1_present_classes for the 3-class value.",
+  "val_loss_at_best_epoch": 1.3248893889513882,
+  "best_epoch": 3,
+  "checkpoint_reproduces_training_metrics": true
+}

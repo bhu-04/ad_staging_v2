@@ -1,0 +1,30 @@
+{
+  "class_names": [
+    "Non Demented",
+    "Very Mild Demented",
+    "Mild Demented",
+    "Moderate Demented"
+  ],
+  "image_size": [
+    96,
+    96
+  ],
+  "dropout_p": 0.35,
+  "model_name": "cnn2d",
+  "pretrained": false,
+  "split_strategy": "locked-subject-level",
+  "split_sizes": {
+    "train": 273,
+    "val": 44,
+    "test": 83
+  },
+  "val_split_hash": "61784e909faabcaa",
+  "test_split_hash": "707898440b2988aa",
+  "best_val_acc": 0.4318181818181818,
+  "best_val_macro_f1": 0.4364892843153713,
+  "seed": 42,
+  "experiment_id": "V2-B0-CNN2D",
+  "best_epoch": 9,
+  "attempts_used": 1,
+  "checkpoint_sha256_at_save": "58470f0d76ec348c4141edf6aaf7405806b70cff6b1db5119b237e850a19fa94"
+}

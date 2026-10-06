@@ -1,0 +1,14 @@
+{
+  "model": "cnn2d",
+  "started": "2026-10-06T21:30:34+05:30",
+  "status": "complete",
+  "finished": "2026-10-06T21:31:15+05:30",
+  "train_seconds": 30.6,
+  "total_seconds": 41.0,
+  "best_epoch": 9,
+  "epochs_run_last_attempt": 15,
+  "attempts_used": 1,
+  "degenerate": false,
+  "checkpoint_sha256": "58470f0d76ec348c4141edf6aaf7405806b70cff6b1db5119b237e850a19fa94",
+  "n_parameters": 98148
+}

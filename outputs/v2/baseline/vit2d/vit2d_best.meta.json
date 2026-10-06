@@ -1,0 +1,30 @@
+{
+  "class_names": [
+    "Non Demented",
+    "Very Mild Demented",
+    "Mild Demented",
+    "Moderate Demented"
+  ],
+  "image_size": [
+    96,
+    96
+  ],
+  "dropout_p": 0.35,
+  "model_name": "vit2d",
+  "pretrained": false,
+  "split_strategy": "locked-subject-level",
+  "split_sizes": {
+    "train": 273,
+    "val": 44,
+    "test": 83
+  },
+  "val_split_hash": "61784e909faabcaa",
+  "test_split_hash": "707898440b2988aa",
+  "best_val_acc": 0.38636363636363635,
+  "best_val_macro_f1": 0.24203431372549017,
+  "seed": 42,
+  "experiment_id": "V2-B0-VIT2D",
+  "best_epoch": 3,
+  "attempts_used": 1,
+  "checkpoint_sha256_at_save": "a5bd44c7a012228d4dce147ec3a6fce40a24ef9844a7c525b620fa6b76b8c300"
+}

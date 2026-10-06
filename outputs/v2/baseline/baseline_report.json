@@ -1,0 +1,1269 @@
+{
+  "phase": "Phase 3 - V2 baseline",
+  "generated": "2026-10-06T21:33:21+05:30",
+  "baseline_config": {
+    "mode": "demo",
+    "image_size": [
+      96,
+      96
+    ],
+    "epochs": 25,
+    "max_attempts": 2,
+    "batch_size": 32,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "dropout_p": 0.35,
+    "early_stop_patience": 6,
+    "lr_scheduler": "plateau",
+    "class_balance_strategy": "loss",
+    "random_seed": 42,
+    "optimizer": "AdamW",
+    "loss": "CrossEntropyLoss(weight=inverse-frequency class weights)",
+    "scheduler_params": "ReduceLROnPlateau(mode=min, factor=0.5, patience=3) on val_loss",
+    "checkpoint_selection": "val macro-F1 > val accuracy > lower val loss (src/train.py)",
+    "preprocessing": "grayscale -> bilinear resize -> per-image zero-mean/unit-variance",
+    "train_augmentation": "RandomHorizontalFlip(p=0.5) + RandomRotation(+/-10 deg, bilinear, fill=0)",
+    "eval_augmentation": "none (deterministic)",
+    "preprocess_cache": true,
+    "vit": {
+      "patch_size": 8,
+      "embed_dim": 32,
+      "depth": 3,
+      "num_heads": 4,
+      "mlp_dim": 64
+    },
+    "pretrained": false
+  },
+  "git": {
+    "commit": "7c1e682b460e2c5122bdff19d318c293a3338e8c",
+    "branch": "main",
+    "remote": "https://github.com/bhu-04/ad_staging_v2.git",
+    "status_porcelain": [
+      "?? run_phase3_baseline.py"
+    ]
+  },
+  "environment": {
+    "python": "3.10.0",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "torch": "2.13.0+cpu",
+    "torchvision": "0.28.0+cpu",
+    "numpy": "2.2.6",
+    "pandas": "2.2.2",
+    "sklearn": "1.5.1",
+    "device": "cpu",
+    "gpu": null,
+    "cpu_threads": 20,
+    "num_workers": 2
+  },
+  "dataset": {
+    "train": {
+      "images": 273,
+      "subjects": 126,
+      "images_per_class": {
+        "Non Demented": 70,
+        "Very Mild Demented": 70,
+        "Mild Demented": 73,
+        "Moderate Demented": 60
+      },
+      "subjects_per_class": {
+        "Non Demented": 70,
+        "Very Mild Demented": 40,
+        "Mild Demented": 15,
+        "Moderate Demented": 1
+      }
+    },
+    "val": {
+      "images": 44,
+      "subjects": 27,
+      "images_per_class": {
+        "Non Demented": 15,
+        "Very Mild Demented": 15,
+        "Mild Demented": 14,
+        "Moderate Demented": 0
+      },
+      "subjects_per_class": {
+        "Non Demented": 15,
+        "Very Mild Demented": 9,
+        "Mild Demented": 3,
+        "Moderate Demented": 0
+      }
+    },
+    "test": {
+      "images": 83,
+      "subjects": 28,
+      "images_per_class": {
+        "Non Demented": 15,
+        "Very Mild Demented": 15,
+        "Mild Demented": 13,
+        "Moderate Demented": 40
+      },
+      "subjects_per_class": {
+        "Non Demented": 15,
+        "Very Mild Demented": 9,
+        "Mild Demented": 3,
+        "Moderate Demented": 1
+      }
+    }
+  },
+  "data_loader_crosscheck": {
+    "status": "identical_to_data_acquisition"
+  },
+  "issues": [],
+  "deviations": [
+    "Phase 3 uses the 'demo' profile in src/config.py (96\u00d796, 25 epochs, patience 6, AdamW lr 1e-3 / wd 1e-4, batch 32, dropout 0.35, ReduceLROnPlateau, loss-weighted CE, seed 42). `run_pipeline.py --mode demo` only performs a forward-pass demonstration and does not train, so this dedicated runner calls src.train.train_model directly. The 'full' profile (64\u00d764, 30 epochs) is NOT the baseline.",
+    "src/train.py::train_model writes a single shared training_history.json to config.METRICS_DIR; the runner redirects METRICS_DIR to each model's own directory during training so nothing shared is overwritten.",
+    "src/train.py computes validation macro-F1 with f1_score(average='macro') and no labels=. Validation has no Moderate images, so the selection metric averages over a prediction-dependent class set (3 or 4 classes). This is the documented repository behaviour and was kept unchanged; macro-F1 over the 3 present classes is reported alongside it.",
+    "run_pipeline.run_demo builds DenseNet2D with dropout_p=0.3, whereas config.DROPOUT_P = 0.35; the baseline uses 0.35 for all models. DenseNet2D is the compact from-scratch network (the pretrained DenseNet121 path is not used).",
+    "train_model's degenerate-checkpoint retry (MAX_ATTEMPTS=2) can change seed (+1), dropout (-0.1) and epochs (\u00d71.5) for a second attempt. It is part of the existing configuration; attempts used and the seed of the selected attempt are recorded.",
+    "train.py does not store best_epoch or write checkpoint metadata; the runner derives best_epoch with the same improvement rule and writes the .meta.json sidecar via checkpoint_utils.",
+    "Smoke-test V1 hashes were recorded on a CRLF (Windows) checkout; Git blobs are LF. The runner accepts a locked hash if the raw bytes or the CRLF-normalised bytes match, and records which.",
+    "Single seed (42); no repeated runs, so run-to-run variance is not estimated."
+  ],
+  "limitations": [
+    "Moderate Demented comes from only two independent subjects. Validation has none, so validation metrics say nothing about Moderate performance; the Moderate test result is a single-subject result (OAS1_0308) after training on one other subject (OAS1_0351).",
+    "Slices from the same subject are not independent; all reported metrics are slice-level, not patient-level. No subject-level aggregation was performed in Phase 3.",
+    "Validation (44 images / 27 subjects) and test (83 images / 28 subjects) are small; small numeric differences between models are not evidence of superiority.",
+    "2D slices from the OASIS-derived dataset only; no clinical validity is claimed.",
+    "Test ROC-AUC is computed only because all four classes appear in the test split; it inherits the single-subject Moderate limitation."
+  ],
+  "v1_integrity": {
+    "before_locked_hash_check": "PASS",
+    "after_locked_hash_check": "PASS",
+    "locked_hashes_before": {
+      "outputs/final_400/final_400.csv": {
+        "locked": "cd62ce417cc29a7f56682366e2fbf83f337c3ec7dd5efe906a4d4c478e2a0f59",
+        "matched_via": "raw",
+        "raw": "cd62ce417cc29a7f56682366e2fbf83f337c3ec7dd5efe906a4d4c478e2a0f59",
+        "crlf_normalised": "cd62ce417cc29a7f56682366e2fbf83f337c3ec7dd5efe906a4d4c478e2a0f59"
+      },
+      "outputs/splits/split_assignments.csv": {
+        "locked": "70246e6e39f4694b52c7a80f4871f1f48d831d8d04a92007ca8d52b06a4981b9",
+        "matched_via": "raw",
+        "raw": "70246e6e39f4694b52c7a80f4871f1f48d831d8d04a92007ca8d52b06a4981b9",
+        "crlf_normalised": "70246e6e39f4694b52c7a80f4871f1f48d831d8d04a92007ca8d52b06a4981b9"
+      }
+    },
+    "locked_hashes_after": {
+      "outputs/final_400/final_400.csv": {
+        "locked": "cd62ce417cc29a7f56682366e2fbf83f337c3ec7dd5efe906a4d4c478e2a0f59",
+        "matched_via": "raw",
+        "raw": "cd62ce417cc29a7f56682366e2fbf83f337c3ec7dd5efe906a4d4c478e2a0f59",
+        "crlf_normalised": "cd62ce417cc29a7f56682366e2fbf83f337c3ec7dd5efe906a4d4c478e2a0f59"
+      },
+      "outputs/splits/split_assignments.csv": {
+        "locked": "70246e6e39f4694b52c7a80f4871f1f48d831d8d04a92007ca8d52b06a4981b9",
+        "matched_via": "raw",
+        "raw": "70246e6e39f4694b52c7a80f4871f1f48d831d8d04a92007ca8d52b06a4981b9",
+        "crlf_normalised": "70246e6e39f4694b52c7a80f4871f1f48d831d8d04a92007ca8d52b06a4981b9"
+      }
+    },
+    "files_snapshotted": 21,
+    "diff": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "unchanged": true
+  },
+  "models": {
+    "cnn2d": {
+      "model": "cnn2d",
+      "started": "2026-10-06T21:30:34+05:30",
+      "status": "complete",
+      "finished": "2026-10-06T21:31:15+05:30",
+      "train_seconds": 30.6,
+      "total_seconds": 41.0,
+      "best_epoch": 9,
+      "epochs_run_last_attempt": 15,
+      "attempts_used": 1,
+      "degenerate": false,
+      "checkpoint_sha256": "58470f0d76ec348c4141edf6aaf7405806b70cff6b1db5119b237e850a19fa94",
+      "n_parameters": 98148,
+      "config": {
+        "mode": "demo",
+        "image_size": [
+          96,
+          96
+        ],
+        "epochs": 25,
+        "max_attempts": 2,
+        "batch_size": 32,
+        "learning_rate": 0.001,
+        "weight_decay": 0.0001,
+        "dropout_p": 0.35,
+        "early_stop_patience": 6,
+        "lr_scheduler": "plateau",
+        "class_balance_strategy": "loss",
+        "random_seed": 42,
+        "optimizer": "AdamW",
+        "loss": "CrossEntropyLoss(weight=inverse-frequency class weights)",
+        "scheduler_params": "ReduceLROnPlateau(mode=min, factor=0.5, patience=3) on val_loss",
+        "checkpoint_selection": "val macro-F1 > val accuracy > lower val loss (src/train.py)",
+        "preprocessing": "grayscale -> bilinear resize -> per-image zero-mean/unit-variance",
+        "train_augmentation": "RandomHorizontalFlip(p=0.5) + RandomRotation(+/-10 deg, bilinear, fill=0)",
+        "eval_augmentation": "none (deterministic)",
+        "preprocess_cache": true,
+        "vit": {
+          "patch_size": 8,
+          "embed_dim": 32,
+          "depth": 3,
+          "num_heads": 4,
+          "mlp_dim": 64
+        },
+        "pretrained": false,
+        "experiment_id": "V2-B0-CNN2D",
+        "model": "CNN2D",
+        "n_parameters": 98148,
+        "class_weights": [
+          0.9750000238418579,
+          0.9750000238418579,
+          0.9349315166473389,
+          1.1375000476837158
+        ],
+        "class_order": [
+          "Non Demented",
+          "Very Mild Demented",
+          "Mild Demented",
+          "Moderate Demented"
+        ],
+        "dataset": "outputs/final_400/final_400.csv",
+        "split": "outputs/splits/split_assignments.csv",
+        "split_sizes": {
+          "train": 273,
+          "val": 44,
+          "test": 83
+        },
+        "val_split_hash": "61784e909faabcaa",
+        "test_split_hash": "707898440b2988aa",
+        "git": {
+          "commit": "7c1e682b460e2c5122bdff19d318c293a3338e8c",
+          "branch": "main",
+          "remote": "https://github.com/bhu-04/ad_staging_v2.git",
+          "status_porcelain": [
+            "?? run_phase3_baseline.py"
+          ]
+        },
+        "environment": {
+          "python": "3.10.0",
+          "platform": "Windows-10-10.0.26200-SP0",
+          "torch": "2.13.0+cpu",
+          "torchvision": "0.28.0+cpu",
+          "numpy": "2.2.6",
+          "pandas": "2.2.2",
+          "sklearn": "1.5.1",
+          "device": "cpu",
+          "gpu": null,
+          "cpu_threads": 20,
+          "num_workers": 2
+        },
+        "started": "2026-10-06T21:30:34+05:30"
+      },
+      "frozen": {
+        "frozen_at": "2026-10-06T21:31:04+05:30",
+        "checkpoint": "cnn2d_best.pt",
+        "checkpoint_sha256": "58470f0d76ec348c4141edf6aaf7405806b70cff6b1db5119b237e850a19fa94",
+        "selection_metric": "validation macro-F1 (tie-break: val accuracy, then lower val loss)",
+        "best_epoch": 9,
+        "attempts_used": 1,
+        "seed_of_selected_attempt": 42,
+        "best_val_macro_f1": 0.4364892843153713,
+        "best_val_acc": 0.4318181818181818,
+        "best_val_loss": 1.0532858209176497,
+        "degenerate": false
+      },
+      "val": {
+        "n": 44,
+        "accuracy": 0.4318181818181818,
+        "macro_precision_all4": 0.37426839464882944,
+        "macro_recall_all4": 0.32738095238095244,
+        "macro_f1_all4": 0.3273669632365285,
+        "macro_f1_present_classes": 0.4364892843153713,
+        "classes_present_in_true": [
+          "Non Demented",
+          "Very Mild Demented",
+          "Mild Demented"
+        ],
+        "per_class": {
+          "Non Demented": {
+            "precision": 0.875,
+            "recall": 0.4666666666666667,
+            "f1": 0.6086956521739131,
+            "support": 15
+          },
+          "Very Mild Demented": {
+            "precision": 0.23076923076923078,
+            "recall": 0.2,
+            "f1": 0.21428571428571427,
+            "support": 15
+          },
+          "Mild Demented": {
+            "precision": 0.391304347826087,
+            "recall": 0.6428571428571429,
+            "f1": 0.4864864864864865,
+            "support": 14
+          },
+          "Moderate Demented": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            7,
+            5,
+            3,
+            0
+          ],
+          [
+            1,
+            3,
+            11,
+            0
+          ],
+          [
+            0,
+            5,
+            9,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "ece_10bins": 0.2153939410508017,
+        "brier": 0.6720886271683605,
+        "roc_auc_macro_ovr": null,
+        "roc_auc_note": "not reported on validation (Moderate Demented absent from validation split)",
+        "role": "VALIDATION (model selection)",
+        "selection_macro_f1_as_computed_by_train_py": 0.4364892843153713,
+        "selection_macro_f1_note": "src/train.py calls f1_score(average='macro') without labels=, so the average is over labels present in y_true UNION y_pred. Validation has no Moderate images: if the model never predicts Moderate this is a 3-class mean; if it does, an extra F1=0 class lowers it. See macro_f1_present_classes for the 3-class value.",
+        "val_loss_at_best_epoch": 1.0532858209176497,
+        "best_epoch": 9,
+        "checkpoint_reproduces_training_metrics": true
+      },
+      "test": {
+        "n": 83,
+        "accuracy": 0.26506024096385544,
+        "macro_precision_all4": 0.41911764705882354,
+        "macro_recall_all4": 0.39743589743589747,
+        "macro_f1_all4": 0.29907407407407405,
+        "macro_f1_present_classes": 0.29907407407407405,
+        "classes_present_in_true": [
+          "Non Demented",
+          "Very Mild Demented",
+          "Mild Demented",
+          "Moderate Demented"
+        ],
+        "per_class": {
+          "Non Demented": {
+            "precision": 1.0,
+            "recall": 0.3333333333333333,
+            "f1": 0.5,
+            "support": 15
+          },
+          "Very Mild Demented": {
+            "precision": 0.5,
+            "recall": 0.3333333333333333,
+            "f1": 0.4,
+            "support": 15
+          },
+          "Mild Demented": {
+            "precision": 0.17647058823529413,
+            "recall": 0.9230769230769231,
+            "f1": 0.2962962962962963,
+            "support": 13
+          },
+          "Moderate Demented": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 40
+          }
+        },
+        "confusion_matrix": [
+          [
+            5,
+            4,
+            6,
+            0
+          ],
+          [
+            0,
+            5,
+            10,
+            0
+          ],
+          [
+            0,
+            1,
+            12,
+            0
+          ],
+          [
+            0,
+            0,
+            40,
+            0
+          ]
+        ],
+        "ece_10bins": 0.3955476183371308,
+        "brier": 1.0814754162231164,
+        "roc_auc_macro_ovr": 0.5993724099657752,
+        "roc_auc_note": "computed, but the Moderate class comes from a single test subject; treat as descriptive only",
+        "role": "TEST (final held-out evaluation; not used for any decision)",
+        "checkpoint_sha256": "58470f0d76ec348c4141edf6aaf7405806b70cff6b1db5119b237e850a19fa94",
+        "moderate_caveat": "Moderate Demented test images all come from one subject (OAS1_0308); training Moderate images from one other subject (OAS1_0351). Moderate test metrics are single-subject."
+      },
+      "history": {
+        "train_loss": [
+          1.3197179906097525,
+          1.1079911980436834,
+          1.0066087451173273,
+          0.9045952226652767,
+          0.8605435025560987,
+          0.8110975867662674,
+          0.7726194201371609,
+          0.7376322514844902,
+          0.7535767336904784,
+          0.707918399201208,
+          0.6896273574549636,
+          0.6592559729303632,
+          0.6267835229307741,
+          0.6255547410839206,
+          0.604174962301394
+        ],
+        "train_acc": [
+          0.3882783882783883,
+          0.5238095238095238,
+          0.575091575091575,
+          0.6336996336996337,
+          0.6703296703296703,
+          0.6483516483516484,
+          0.6593406593406593,
+          0.663003663003663,
+          0.6886446886446886,
+          0.684981684981685,
+          0.6813186813186813,
+          0.7582417582417582,
+          0.717948717948718,
+          0.7289377289377289,
+          0.7582417582417582
+        ],
+        "val_loss": [
+          1.4201680421829224,
+          1.7320547754114324,
+          2.025600650093772,
+          1.702932964671742,
+          1.2939274311065674,
+          1.649390155618841,
+          1.2465227192098445,
+          1.1150364008816807,
+          1.0532858209176497,
+          1.8158595670353284,
+          1.0449058576063677,
+          1.431938182223927,
+          1.3023254329508,
+          1.3719585158608176,
+          1.1184684363278476
+        ],
+        "val_acc": [
+          0.3409090909090909,
+          0.3409090909090909,
+          0.3409090909090909,
+          0.3409090909090909,
+          0.3409090909090909,
+          0.3409090909090909,
+          0.4772727272727273,
+          0.3409090909090909,
+          0.4318181818181818,
+          0.25,
+          0.3409090909090909,
+          0.4090909090909091,
+          0.3409090909090909,
+          0.3181818181818182,
+          0.38636363636363635
+        ],
+        "val_macro_f1": [
+          0.1694915254237288,
+          0.13157894736842105,
+          0.1694915254237288,
+          0.1694915254237288,
+          0.1724137931034483,
+          0.16087962962962962,
+          0.4364478114478114,
+          0.24107142857142858,
+          0.4364892843153713,
+          0.20604575163398692,
+          0.34172871281061373,
+          0.30975274725274726,
+          0.2408405172413793,
+          0.2619345238095238,
+          0.2910714285714286
+        ],
+        "best_val_acc": 0.4318181818181818,
+        "best_val_loss": 1.0532858209176497,
+        "best_val_macro_f1": 0.4364892843153713,
+        "best_val_per_class": {
+          "Non Demented": {
+            "precision": 0.875,
+            "recall": 0.4666666666666667,
+            "f1": 0.6086956521739131,
+            "support": 15
+          },
+          "Very Mild Demented": {
+            "precision": 0.23076923076923078,
+            "recall": 0.2,
+            "f1": 0.21428571428571427,
+            "support": 15
+          },
+          "Mild Demented": {
+            "precision": 0.391304347826087,
+            "recall": 0.6428571428571429,
+            "f1": 0.4864864864864865,
+            "support": 14
+          },
+          "Moderate Demented": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "degenerate": false,
+        "seed": 42,
+        "epochs_run": 15
+      }
+    },
+    "densenet2d": {
+      "model": "densenet2d",
+      "started": "2026-10-06T21:31:17+05:30",
+      "status": "complete",
+      "finished": "2026-10-06T21:32:39+05:30",
+      "train_seconds": 72.8,
+      "total_seconds": 82.0,
+      "best_epoch": 11,
+      "epochs_run_last_attempt": 17,
+      "attempts_used": 1,
+      "degenerate": false,
+      "checkpoint_sha256": "27cb54218e1af2cb86d57a65acec3524fb0b6512b721a111cf9726dfe4de9729",
+      "n_parameters": 20596,
+      "config": {
+        "mode": "demo",
+        "image_size": [
+          96,
+          96
+        ],
+        "epochs": 25,
+        "max_attempts": 2,
+        "batch_size": 32,
+        "learning_rate": 0.001,
+        "weight_decay": 0.0001,
+        "dropout_p": 0.35,
+        "early_stop_patience": 6,
+        "lr_scheduler": "plateau",
+        "class_balance_strategy": "loss",
+        "random_seed": 42,
+        "optimizer": "AdamW",
+        "loss": "CrossEntropyLoss(weight=inverse-frequency class weights)",
+        "scheduler_params": "ReduceLROnPlateau(mode=min, factor=0.5, patience=3) on val_loss",
+        "checkpoint_selection": "val macro-F1 > val accuracy > lower val loss (src/train.py)",
+        "preprocessing": "grayscale -> bilinear resize -> per-image zero-mean/unit-variance",
+        "train_augmentation": "RandomHorizontalFlip(p=0.5) + RandomRotation(+/-10 deg, bilinear, fill=0)",
+        "eval_augmentation": "none (deterministic)",
+        "preprocess_cache": true,
+        "vit": {
+          "patch_size": 8,
+          "embed_dim": 32,
+          "depth": 3,
+          "num_heads": 4,
+          "mlp_dim": 64
+        },
+        "pretrained": false,
+        "experiment_id": "V2-B0-DENSENET2D",
+        "model": "DenseNet2D",
+        "n_parameters": 20596,
+        "class_weights": [
+          0.9750000238418579,
+          0.9750000238418579,
+          0.9349315166473389,
+          1.1375000476837158
+        ],
+        "class_order": [
+          "Non Demented",
+          "Very Mild Demented",
+          "Mild Demented",
+          "Moderate Demented"
+        ],
+        "dataset": "outputs/final_400/final_400.csv",
+        "split": "outputs/splits/split_assignments.csv",
+        "split_sizes": {
+          "train": 273,
+          "val": 44,
+          "test": 83
+        },
+        "val_split_hash": "61784e909faabcaa",
+        "test_split_hash": "707898440b2988aa",
+        "git": {
+          "commit": "7c1e682b460e2c5122bdff19d318c293a3338e8c",
+          "branch": "main",
+          "remote": "https://github.com/bhu-04/ad_staging_v2.git",
+          "status_porcelain": [
+            "?? run_phase3_baseline.py"
+          ]
+        },
+        "environment": {
+          "python": "3.10.0",
+          "platform": "Windows-10-10.0.26200-SP0",
+          "torch": "2.13.0+cpu",
+          "torchvision": "0.28.0+cpu",
+          "numpy": "2.2.6",
+          "pandas": "2.2.2",
+          "sklearn": "1.5.1",
+          "device": "cpu",
+          "gpu": null,
+          "cpu_threads": 20,
+          "num_workers": 2
+        },
+        "started": "2026-10-06T21:31:17+05:30"
+      },
+      "frozen": {
+        "frozen_at": "2026-10-06T21:32:29+05:30",
+        "checkpoint": "densenet2d_best.pt",
+        "checkpoint_sha256": "27cb54218e1af2cb86d57a65acec3524fb0b6512b721a111cf9726dfe4de9729",
+        "selection_metric": "validation macro-F1 (tie-break: val accuracy, then lower val loss)",
+        "best_epoch": 11,
+        "attempts_used": 1,
+        "seed_of_selected_attempt": 42,
+        "best_val_macro_f1": 0.4976608187134503,
+        "best_val_acc": 0.5227272727272727,
+        "best_val_loss": 1.0795476653359153,
+        "degenerate": false
+      },
+      "val": {
+        "n": 44,
+        "accuracy": 0.5227272727272727,
+        "macro_precision_all4": 0.42083333333333334,
+        "macro_recall_all4": 0.3952380952380953,
+        "macro_f1_all4": 0.3732456140350877,
+        "macro_f1_present_classes": 0.4976608187134503,
+        "classes_present_in_true": [
+          "Non Demented",
+          "Very Mild Demented",
+          "Mild Demented"
+        ],
+        "per_class": {
+          "Non Demented": {
+            "precision": 0.6666666666666666,
+            "recall": 0.6666666666666666,
+            "f1": 0.6666666666666666,
+            "support": 15
+          },
+          "Very Mild Demented": {
+            "precision": 0.6,
+            "recall": 0.2,
+            "f1": 0.3,
+            "support": 15
+          },
+          "Mild Demented": {
+            "precision": 0.4166666666666667,
+            "recall": 0.7142857142857143,
+            "f1": 0.5263157894736842,
+            "support": 14
+          },
+          "Moderate Demented": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            10,
+            1,
+            4,
+            0
+          ],
+          [
+            2,
+            3,
+            10,
+            0
+          ],
+          [
+            3,
+            1,
+            10,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "ece_10bins": 0.16318041014242934,
+        "brier": 0.6239927045570434,
+        "roc_auc_macro_ovr": null,
+        "roc_auc_note": "not reported on validation (Moderate Demented absent from validation split)",
+        "role": "VALIDATION (model selection)",
+        "selection_macro_f1_as_computed_by_train_py": 0.4976608187134503,
+        "selection_macro_f1_note": "src/train.py calls f1_score(average='macro') without labels=, so the average is over labels present in y_true UNION y_pred. Validation has no Moderate images: if the model never predicts Moderate this is a 3-class mean; if it does, an extra F1=0 class lowers it. See macro_f1_present_classes for the 3-class value.",
+        "val_loss_at_best_epoch": 1.0795476653359153,
+        "best_epoch": 11,
+        "checkpoint_reproduces_training_metrics": true
+      },
+      "test": {
+        "n": 83,
+        "accuracy": 0.25301204819277107,
+        "macro_precision_all4": 0.375,
+        "macro_recall_all4": 0.3782051282051282,
+        "macro_f1_all4": 0.27332395686826066,
+        "macro_f1_present_classes": 0.27332395686826066,
+        "classes_present_in_true": [
+          "Non Demented",
+          "Very Mild Demented",
+          "Mild Demented",
+          "Moderate Demented"
+        ],
+        "per_class": {
+          "Non Demented": {
+            "precision": 0.6666666666666666,
+            "recall": 0.5333333333333333,
+            "f1": 0.5925925925925926,
+            "support": 15
+          },
+          "Very Mild Demented": {
+            "precision": 0.6666666666666666,
+            "recall": 0.13333333333333333,
+            "f1": 0.2222222222222222,
+            "support": 15
+          },
+          "Mild Demented": {
+            "precision": 0.16666666666666666,
+            "recall": 0.8461538461538461,
+            "f1": 0.27848101265822783,
+            "support": 13
+          },
+          "Moderate Demented": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 40
+          }
+        },
+        "confusion_matrix": [
+          [
+            8,
+            1,
+            6,
+            0
+          ],
+          [
+            4,
+            2,
+            9,
+            0
+          ],
+          [
+            0,
+            0,
+            11,
+            2
+          ],
+          [
+            0,
+            0,
+            40,
+            0
+          ]
+        ],
+        "ece_10bins": 0.23373794827194078,
+        "brier": 0.9228720783598252,
+        "roc_auc_macro_ovr": 0.5608064871744762,
+        "roc_auc_note": "computed, but the Moderate class comes from a single test subject; treat as descriptive only",
+        "role": "TEST (final held-out evaluation; not used for any decision)",
+        "checkpoint_sha256": "27cb54218e1af2cb86d57a65acec3524fb0b6512b721a111cf9726dfe4de9729",
+        "moderate_caveat": "Moderate Demented test images all come from one subject (OAS1_0308); training Moderate images from one other subject (OAS1_0351). Moderate test metrics are single-subject."
+      },
+      "history": {
+        "train_loss": [
+          1.3738576361547896,
+          1.2806473826314066,
+          1.2489009763731624,
+          1.2088547185227112,
+          1.186509561626029,
+          1.1557417505390042,
+          1.1194822155075632,
+          1.0877726516880832,
+          1.0616746706403655,
+          1.0363087086450486,
+          1.00765987717625,
+          0.9976438524085524,
+          0.9848218523102366,
+          0.9906253541782225,
+          0.9564333370317033,
+          0.9279585142275353,
+          0.9161061502638317
+        ],
+        "train_acc": [
+          0.2673992673992674,
+          0.38461538461538464,
+          0.41025641025641024,
+          0.46886446886446886,
+          0.5054945054945055,
+          0.5384615384615384,
+          0.5274725274725275,
+          0.5970695970695971,
+          0.5567765567765568,
+          0.5934065934065934,
+          0.5897435897435898,
+          0.5934065934065934,
+          0.5970695970695971,
+          0.575091575091575,
+          0.6153846153846154,
+          0.6190476190476191,
+          0.6483516483516484
+        ],
+        "val_loss": [
+          1.3737791559912942,
+          1.3814670280976729,
+          1.4195893027565696,
+          1.401316924528642,
+          1.311113346706737,
+          1.1759739572351628,
+          1.2308872938156128,
+          1.1780646172436802,
+          1.3299868757074529,
+          1.2539285909045825,
+          1.0795476653359153,
+          1.2421128424731167,
+          1.1801481463692405,
+          1.2546244751323352,
+          1.1755661205811934,
+          1.1442166024988347,
+          1.3151018186049028
+        ],
+        "val_acc": [
+          0.3409090909090909,
+          0.25,
+          0.18181818181818182,
+          0.22727272727272727,
+          0.38636363636363635,
+          0.45454545454545453,
+          0.3181818181818182,
+          0.4318181818181818,
+          0.3181818181818182,
+          0.36363636363636365,
+          0.5227272727272727,
+          0.4318181818181818,
+          0.38636363636363635,
+          0.3409090909090909,
+          0.4318181818181818,
+          0.4772727272727273,
+          0.2727272727272727
+        ],
+        "val_macro_f1": [
+          0.20617283950617282,
+          0.13414634146341464,
+          0.14285714285714285,
+          0.15625,
+          0.2728937728937729,
+          0.325,
+          0.2374981340498582,
+          0.2972681704260652,
+          0.2134502923976608,
+          0.2109090909090909,
+          0.4976608187134503,
+          0.31096681096681095,
+          0.298708372237784,
+          0.2658653846153846,
+          0.28274509803921566,
+          0.44734299516908216,
+          0.23368983957219253
+        ],
+        "best_val_acc": 0.5227272727272727,
+        "best_val_loss": 1.0795476653359153,
+        "best_val_macro_f1": 0.4976608187134503,
+        "best_val_per_class": {
+          "Non Demented": {
+            "precision": 0.6666666666666666,
+            "recall": 0.6666666666666666,
+            "f1": 0.6666666666666666,
+            "support": 15
+          },
+          "Very Mild Demented": {
+            "precision": 0.6,
+            "recall": 0.2,
+            "f1": 0.3,
+            "support": 15
+          },
+          "Mild Demented": {
+            "precision": 0.4166666666666667,
+            "recall": 0.7142857142857143,
+            "f1": 0.5263157894736842,
+            "support": 14
+          },
+          "Moderate Demented": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "degenerate": false,
+        "seed": 42,
+        "epochs_run": 17
+      }
+    },
+    "vit2d": {
+      "model": "vit2d",
+      "started": "2026-10-06T21:32:41+05:30",
+      "status": "complete",
+      "finished": "2026-10-06T21:33:19+05:30",
+      "train_seconds": 29.7,
+      "total_seconds": 38.0,
+      "best_epoch": 3,
+      "epochs_run_last_attempt": 9,
+      "attempts_used": 1,
+      "degenerate": false,
+      "checkpoint_sha256": "a5bd44c7a012228d4dce147ec3a6fce40a24ef9844a7c525b620fa6b76b8c300",
+      "n_parameters": 32580,
+      "config": {
+        "mode": "demo",
+        "image_size": [
+          96,
+          96
+        ],
+        "epochs": 25,
+        "max_attempts": 2,
+        "batch_size": 32,
+        "learning_rate": 0.001,
+        "weight_decay": 0.0001,
+        "dropout_p": 0.35,
+        "early_stop_patience": 6,
+        "lr_scheduler": "plateau",
+        "class_balance_strategy": "loss",
+        "random_seed": 42,
+        "optimizer": "AdamW",
+        "loss": "CrossEntropyLoss(weight=inverse-frequency class weights)",
+        "scheduler_params": "ReduceLROnPlateau(mode=min, factor=0.5, patience=3) on val_loss",
+        "checkpoint_selection": "val macro-F1 > val accuracy > lower val loss (src/train.py)",
+        "preprocessing": "grayscale -> bilinear resize -> per-image zero-mean/unit-variance",
+        "train_augmentation": "RandomHorizontalFlip(p=0.5) + RandomRotation(+/-10 deg, bilinear, fill=0)",
+        "eval_augmentation": "none (deterministic)",
+        "preprocess_cache": true,
+        "vit": {
+          "patch_size": 8,
+          "embed_dim": 32,
+          "depth": 3,
+          "num_heads": 4,
+          "mlp_dim": 64
+        },
+        "pretrained": false,
+        "experiment_id": "V2-B0-VIT2D",
+        "model": "ViT2D",
+        "n_parameters": 32580,
+        "class_weights": [
+          0.9750000238418579,
+          0.9750000238418579,
+          0.9349315166473389,
+          1.1375000476837158
+        ],
+        "class_order": [
+          "Non Demented",
+          "Very Mild Demented",
+          "Mild Demented",
+          "Moderate Demented"
+        ],
+        "dataset": "outputs/final_400/final_400.csv",
+        "split": "outputs/splits/split_assignments.csv",
+        "split_sizes": {
+          "train": 273,
+          "val": 44,
+          "test": 83
+        },
+        "val_split_hash": "61784e909faabcaa",
+        "test_split_hash": "707898440b2988aa",
+        "git": {
+          "commit": "7c1e682b460e2c5122bdff19d318c293a3338e8c",
+          "branch": "main",
+          "remote": "https://github.com/bhu-04/ad_staging_v2.git",
+          "status_porcelain": [
+            "?? run_phase3_baseline.py"
+          ]
+        },
+        "environment": {
+          "python": "3.10.0",
+          "platform": "Windows-10-10.0.26200-SP0",
+          "torch": "2.13.0+cpu",
+          "torchvision": "0.28.0+cpu",
+          "numpy": "2.2.6",
+          "pandas": "2.2.2",
+          "sklearn": "1.5.1",
+          "device": "cpu",
+          "gpu": null,
+          "cpu_threads": 20,
+          "num_workers": 2
+        },
+        "started": "2026-10-06T21:32:41+05:30"
+      },
+      "frozen": {
+        "frozen_at": "2026-10-06T21:33:11+05:30",
+        "checkpoint": "vit2d_best.pt",
+        "checkpoint_sha256": "a5bd44c7a012228d4dce147ec3a6fce40a24ef9844a7c525b620fa6b76b8c300",
+        "selection_metric": "validation macro-F1 (tie-break: val accuracy, then lower val loss)",
+        "best_epoch": 3,
+        "attempts_used": 1,
+        "seed_of_selected_attempt": 42,
+        "best_val_macro_f1": 0.24203431372549017,
+        "best_val_acc": 0.38636363636363635,
+        "best_val_loss": 1.3248893889513882,
+        "degenerate": false
+      },
+      "val": {
+        "n": 44,
+        "accuracy": 0.38636363636363635,
+        "macro_precision_all4": 0.5277777777777778,
+        "macro_recall_all4": 0.2869047619047619,
+        "macro_f1_all4": 0.24203431372549017,
+        "macro_f1_present_classes": 0.32271241830065356,
+        "classes_present_in_true": [
+          "Non Demented",
+          "Very Mild Demented",
+          "Mild Demented"
+        ],
+        "per_class": {
+          "Non Demented": {
+            "precision": 1.0,
+            "recall": 0.06666666666666667,
+            "f1": 0.125,
+            "support": 15
+          },
+          "Very Mild Demented": {
+            "precision": 0.3611111111111111,
+            "recall": 0.8666666666666667,
+            "f1": 0.5098039215686274,
+            "support": 15
+          },
+          "Mild Demented": {
+            "precision": 0.75,
+            "recall": 0.21428571428571427,
+            "f1": 0.3333333333333333,
+            "support": 14
+          },
+          "Moderate Demented": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            1,
+            13,
+            1,
+            0
+          ],
+          [
+            0,
+            13,
+            0,
+            2
+          ],
+          [
+            0,
+            10,
+            3,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "ece_10bins": 0.09629528836059391,
+        "brier": 0.7206241152769057,
+        "roc_auc_macro_ovr": null,
+        "roc_auc_note": "not reported on validation (Moderate Demented absent from validation split)",
+        "role": "VALIDATION (model selection)",
+        "selection_macro_f1_as_computed_by_train_py": 0.24203431372549017,
+        "selection_macro_f1_note": "src/train.py calls f1_score(average='macro') without labels=, so the average is over labels present in y_true UNION y_pred. Validation has no Moderate images: if the model never predicts Moderate this is a 3-class mean; if it does, an extra F1=0 class lowers it. See macro_f1_present_classes for the 3-class value.",
+        "val_loss_at_best_epoch": 1.3248893889513882,
+        "best_epoch": 3,
+        "checkpoint_reproduces_training_metrics": true
+      },
+      "test": {
+        "n": 83,
+        "accuracy": 0.20481927710843373,
+        "macro_precision_all4": 0.15938228438228436,
+        "macro_recall_all4": 0.2858974358974359,
+        "macro_f1_all4": 0.1396011396011396,
+        "macro_f1_present_classes": 0.1396011396011396,
+        "classes_present_in_true": [
+          "Non Demented",
+          "Very Mild Demented",
+          "Mild Demented",
+          "Moderate Demented"
+        ],
+        "per_class": {
+          "Non Demented": {
+            "precision": 0.3333333333333333,
+            "recall": 0.06666666666666667,
+            "f1": 0.1111111111111111,
+            "support": 15
+          },
+          "Very Mild Demented": {
+            "precision": 0.22727272727272727,
+            "recall": 1.0,
+            "f1": 0.37037037037037035,
+            "support": 15
+          },
+          "Mild Demented": {
+            "precision": 0.07692307692307693,
+            "recall": 0.07692307692307693,
+            "f1": 0.07692307692307693,
+            "support": 13
+          },
+          "Moderate Demented": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 40
+          }
+        },
+        "confusion_matrix": [
+          [
+            1,
+            14,
+            0,
+            0
+          ],
+          [
+            0,
+            15,
+            0,
+            0
+          ],
+          [
+            0,
+            11,
+            1,
+            1
+          ],
+          [
+            2,
+            26,
+            12,
+            0
+          ]
+        ],
+        "ece_10bins": 0.09718957157757194,
+        "brier": 0.7629670104401302,
+        "roc_auc_macro_ovr": 0.6323257880969919,
+        "roc_auc_note": "computed, but the Moderate class comes from a single test subject; treat as descriptive only",
+        "role": "TEST (final held-out evaluation; not used for any decision)",
+        "checkpoint_sha256": "a5bd44c7a012228d4dce147ec3a6fce40a24ef9844a7c525b620fa6b76b8c300",
+        "moderate_caveat": "Moderate Demented test images all come from one subject (OAS1_0308); training Moderate images from one other subject (OAS1_0351). Moderate test metrics are single-subject."
+      },
+      "history": {
+        "train_loss": [
+          1.4811007251669637,
+          1.445400479949001,
+          1.4001680398598695,
+          1.4215651418699886,
+          1.3752100476415166,
+          1.3972876622126653,
+          1.3829425730548062,
+          1.3704170709127907,
+          1.3947616942199594
+        ],
+        "train_acc": [
+          0.2673992673992674,
+          0.29304029304029305,
+          0.304029304029304,
+          0.29304029304029305,
+          0.304029304029304,
+          0.2967032967032967,
+          0.2783882783882784,
+          0.2857142857142857,
+          0.2893772893772894
+        ],
+        "val_loss": [
+          1.4286900541999124,
+          1.501637252894315,
+          1.3248893889513882,
+          1.4210578203201294,
+          1.4278039498762651,
+          1.451333923773332,
+          1.4614025896245784,
+          1.48005333813754,
+          1.4725846702402288
+        ],
+        "val_acc": [
+          0.045454545454545456,
+          0.0,
+          0.38636363636363635,
+          0.1590909090909091,
+          0.022727272727272728,
+          0.0,
+          0.0,
+          0.022727272727272728,
+          0.11363636363636363
+        ],
+        "val_macro_f1": [
+          0.05263157894736842,
+          0.0,
+          0.24203431372549017,
+          0.13327674023769098,
+          0.027777777777777776,
+          0.0,
+          0.0,
+          0.027777777777777776,
+          0.09791666666666667
+        ],
+        "best_val_acc": 0.38636363636363635,
+        "best_val_loss": 1.3248893889513882,
+        "best_val_macro_f1": 0.24203431372549017,
+        "best_val_per_class": {
+          "Non Demented": {
+            "precision": 1.0,
+            "recall": 0.06666666666666667,
+            "f1": 0.125,
+            "support": 15
+          },
+          "Very Mild Demented": {
+            "precision": 0.3611111111111111,
+            "recall": 0.8666666666666667,
+            "f1": 0.5098039215686274,
+            "support": 15
+          },
+          "Mild Demented": {
+            "precision": 0.75,
+            "recall": 0.21428571428571427,
+            "f1": 0.3333333333333333,
+            "support": 14
+          },
+          "Moderate Demented": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "degenerate": false,
+        "seed": 42,
+        "epochs_run": 9
+      }
+    }
+  }
+}

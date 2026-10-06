@@ -1,0 +1,73 @@
+{
+  "n": 83,
+  "accuracy": 0.26506024096385544,
+  "macro_precision_all4": 0.41911764705882354,
+  "macro_recall_all4": 0.39743589743589747,
+  "macro_f1_all4": 0.29907407407407405,
+  "macro_f1_present_classes": 0.29907407407407405,
+  "classes_present_in_true": [
+    "Non Demented",
+    "Very Mild Demented",
+    "Mild Demented",
+    "Moderate Demented"
+  ],
+  "per_class": {
+    "Non Demented": {
+      "precision": 1.0,
+      "recall": 0.3333333333333333,
+      "f1": 0.5,
+      "support": 15
+    },
+    "Very Mild Demented": {
+      "precision": 0.5,
+      "recall": 0.3333333333333333,
+      "f1": 0.4,
+      "support": 15
+    },
+    "Mild Demented": {
+      "precision": 0.17647058823529413,
+      "recall": 0.9230769230769231,
+      "f1": 0.2962962962962963,
+      "support": 13
+    },
+    "Moderate Demented": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 40
+    }
+  },
+  "confusion_matrix": [
+    [
+      5,
+      4,
+      6,
+      0
+    ],
+    [
+      0,
+      5,
+      10,
+      0
+    ],
+    [
+      0,
+      1,
+      12,
+      0
+    ],
+    [
+      0,
+      0,
+      40,
+      0
+    ]
+  ],
+  "ece_10bins": 0.3955476183371308,
+  "brier": 1.0814754162231164,
+  "roc_auc_macro_ovr": 0.5993724099657752,
+  "roc_auc_note": "computed, but the Moderate class comes from a single test subject; treat as descriptive only",
+  "role": "TEST (final held-out evaluation; not used for any decision)",
+  "checkpoint_sha256": "58470f0d76ec348c4141edf6aaf7405806b70cff6b1db5119b237e850a19fa94",
+  "moderate_caveat": "Moderate Demented test images all come from one subject (OAS1_0308); training Moderate images from one other subject (OAS1_0351). Moderate test metrics are single-subject."
+}

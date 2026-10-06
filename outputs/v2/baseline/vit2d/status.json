@@ -1,0 +1,14 @@
+{
+  "model": "vit2d",
+  "started": "2026-10-06T21:32:41+05:30",
+  "status": "complete",
+  "finished": "2026-10-06T21:33:19+05:30",
+  "train_seconds": 29.7,
+  "total_seconds": 38.0,
+  "best_epoch": 3,
+  "epochs_run_last_attempt": 9,
+  "attempts_used": 1,
+  "degenerate": false,
+  "checkpoint_sha256": "a5bd44c7a012228d4dce147ec3a6fce40a24ef9844a7c525b620fa6b76b8c300",
+  "n_parameters": 32580
+}
